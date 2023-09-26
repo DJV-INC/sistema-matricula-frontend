@@ -1,9 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment , useEffect, useState} from "react";
 import { Table } from "reactstrap";
 
 import './style.css'
+import API from "../../../../services/API";
 
 export default function ContentTable() {
+   const [data, setData] = useState({dados: []})
+
+   useEffect(() => {
+         API.get("http://localhost:8080/api/v1/alunos").then((res) => {
+            setData(res)
+         })
+      }, []);
+
   return (
     <Fragment>
       <Table striped>
@@ -19,33 +28,21 @@ export default function ContentTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Jacob</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>Larry</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {
+            data.dados.map((item) => {
+               return (
+                  <tr>
+                     <th scope="row">{item.id}</th>
+                     <td>{item.nomeCompleto}</td>
+                     <td>{item.rg}</td>
+                     <td>{item.cpf}</td>
+                     <td>{item.email}</td>
+                     <td>{toString(item.status)}</td>
+                     <td>...</td>
+                  </tr>
+               )
+            })
+          }
         </tbody>
       </Table>
     </Fragment>
