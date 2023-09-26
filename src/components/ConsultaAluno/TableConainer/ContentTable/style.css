@@ -1,0 +1,12 @@
+td{
+   font-weight: 500;
+}
+
+th{
+   font-weight: 800;
+}
+
+.table{
+   --bs-table-striped-bg: #F7F6FE;
+   --bs-table-bg: #fff;
+}

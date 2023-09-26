@@ -1,10 +1,13 @@
-
+import { Fragment } from "react";
+import ConsultaAluno from "../components/ConsultaAluno";
+import HeaderNavbar from "../components/HeaderNavbar";
 
 function Home() {
   return (
-    <div className="App">
-      <h1>Funfante</h1>
-    </div>
+    <Fragment>
+      <HeaderNavbar/>
+      <ConsultaAluno/>
+    </Fragment>
   );
 }
 
