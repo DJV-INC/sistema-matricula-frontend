@@ -5,9 +5,6 @@ import Home from "./pages/Home";
 import AddAluno from "./components/AddAluno";
 
 
-
-
-
 export default function Router() {
   	return (
 		<Routes>
