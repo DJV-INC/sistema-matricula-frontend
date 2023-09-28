@@ -13,6 +13,7 @@ export default function Router() {
 		<Routes>
 			<Route exact path="/" element={<Home/>}/>
 			<Route exact path="/addAluno" element={<AddAluno/>}/>
+			<Route exact path="/" element={<Home/>}/>		
 		</Routes>
   	);
 }
