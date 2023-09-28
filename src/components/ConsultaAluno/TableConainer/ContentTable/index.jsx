@@ -1,17 +1,32 @@
 import React, { Fragment , useEffect, useState} from "react";
-import { Table } from "reactstrap";
+import { Button, Table } from "reactstrap";
 
 import './style.css'
 import API from "../../../../services/API";
+import Status from "./Status";
+import { Link } from "react-router-dom";
 
 export default function ContentTable() {
-   const [data, setData] = useState({dados: []})
+  const [data, setData] = useState({dados: []})
+  const [dropdown, setDropdown] = useState(false)
 
-   useEffect(() => {
-         API.get("http://localhost:8080/api/v1/alunos").then((res) => {
-            setData(res)
-         })
-      }, []);
+  useEffect(() => {
+    API.get("http://localhost:8080/api/v1/alunos").then((res) => {
+      setData(res)
+    })
+  }, []);
+
+  function dropdownToggle(id, target) {
+    setDropdown(false)
+  
+    return(
+      <div className="dropdown">
+        <button>Visualizar aluno</button>
+        <button>Inserir imagem</button>
+        <button>Excluir</button>
+      </div>
+    )
+  }
 
   return (
     <Fragment>
@@ -32,13 +47,17 @@ export default function ContentTable() {
             data.dados.map((item) => {
                return (
                   <tr>
-                     <th scope="row">{item.id}</th>
-                     <td>{item.nomeCompleto}</td>
-                     <td>{item.rg}</td>
-                     <td>{item.cpf}</td>
-                     <td>{item.email}</td>
-                     <td>{toString(item.status)}</td>
-                     <td>...</td>
+                    <th scope="row">{item.id}</th>
+                    <td>{item.nomeCompleto}</td>
+                    <td>{item.rg}</td>
+                    <td>{item.cpf}</td>
+                    <td>{item.email}</td>
+                    <td><Status status={item.status}/></td>
+                    <td>
+                        <button className="options-btn" onClick={(e) => {dropdownToggle(item.id, e.target)}}>
+                          <span className="material-symbols-rounded">more_vert</span>
+                        </button>
+                    </td>
                   </tr>
                )
             })
