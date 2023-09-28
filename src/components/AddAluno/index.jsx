@@ -20,15 +20,18 @@ export default function AddAluno() {
 
           <Form>
 
-
+            {/* Titulo da pagina */}
 
             <h1>Adicionar Aluno</h1>
             <hr />
             <h2>Dados Pessoais</h2>
 
-
+            {/* Formularios */}
 
             <FormGroup>
+              
+              {/* Form do Nome */}
+
               <Label for="NomeCompleto">
                 Nome Completo
               </Label>
@@ -38,7 +41,7 @@ export default function AddAluno() {
               />
             </FormGroup>
 
-
+            {/* Form do RG */}
 
             <Row>
               <Col md={6}>
@@ -193,14 +196,12 @@ export default function AddAluno() {
             </Row>
 
 
-            <Row className='button-div-addaluno'>
-              <div >
+            <Row>
+              <div className='botoes-div-addaluno'>
 
                   <Button className="Cancel">
                     Cancelar
                   </Button>
-
-                  <> </>
 
                   <Button className='Confirm'>
                     Adicionar

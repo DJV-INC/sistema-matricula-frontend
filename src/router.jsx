@@ -12,8 +12,7 @@ export default function Router() {
   	return (
 		<Routes>
 			<Route exact path="/" element={<Home/>}/>
-			<Route exact path="/addAluno" element={<AddAluno/>}/>
-			<Route exact path="/" element={<Home/>}/>		
+			<Route exact path="/addAluno" element={<AddAluno/>}/>	
 		</Routes>
   	);
 }
