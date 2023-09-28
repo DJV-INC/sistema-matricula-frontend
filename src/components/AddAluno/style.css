@@ -1,0 +1,48 @@
+.modal-addaluno {
+    padding: 15%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: #E0E0E0;
+}
+
+.field-addaluno {
+    padding: 33px;
+    padding-top: 30px;
+    border-radius: 4px;
+}
+
+h1 {
+    font-family: Montserrat semibold;
+    font-size: 20px;
+}
+
+hr {
+    color: #CCCCCC, 20%;
+}
+
+h2 {
+    font-family: Montserrat semibold;
+    font-size: 16px;
+    color: #333333;
+}
+
+label {
+    font-family: Montserrat;
+    font-size: 14px;
+}
+
+.button-div-addaluno{
+    display: flex;
+}
+
+.Confirm{
+    background-color: #0B9529;
+    color: #fff;
+    border: 0;
+}
+
+.Cancel{
+    background-color: #000;
+    color: #fff;
+    border: 0;
+}
