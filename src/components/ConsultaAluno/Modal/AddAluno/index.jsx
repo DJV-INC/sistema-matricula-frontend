@@ -2,6 +2,7 @@
 import React from 'react'
 import './style.css'
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 export default function AddAluno() {
   return (
@@ -199,9 +200,9 @@ export default function AddAluno() {
             <Row>
               <div className='botoes-div-addaluno'>
 
-                  <Button className="Cancel">
+                  <Link to={"/"} className="Cancel">
                     Cancelar
-                  </Button>
+                  </Link>
 
                   <Button className='Confirm'>
                     Adicionar

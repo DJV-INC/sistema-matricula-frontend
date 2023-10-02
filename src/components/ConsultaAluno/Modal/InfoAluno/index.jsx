@@ -1,10 +1,16 @@
 import './style.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Table } from 'reactstrap';
 
 
-function ModalInfo(props) {
+function InfoAluno(props) {
+
+    const item = {
+        nomeCompleto: "aaa",
+        rg: "aa345",
+        cpf: "aasr4",
+        email: "4534@g"
+    }
 
     return (
 
@@ -14,7 +20,7 @@ function ModalInfo(props) {
             <div className="info">
                 <div className="info_item">
                     <p className="title_item">Nome</p>
-                    <p className="subtitle_item">{props.item.nomeCompleto}</p>
+                    <p className="subtitle_item">{item.nomeCompleto}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">Status</p>
@@ -22,15 +28,15 @@ function ModalInfo(props) {
                 </div>
                 <div className="info_item">
                     <p className="title_item">RG</p>
-                    <p className="subtitle_item">{props.item.rg}</p>
+                    <p className="subtitle_item">{item.rg}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">CPF</p>
-                    <p className="subtitle_item">{props.item.cpf}</p>
+                    <p className="subtitle_item">{item.cpf}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">Email</p>
-                    <p className="subtitle_item">{props.item.email}</p>
+                    <p className="subtitle_item">{item.email}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">Data de Nascimento</p>
@@ -71,4 +77,4 @@ function ModalInfo(props) {
     )
 }
 
-export default ModalInfo
+export default InfoAluno
