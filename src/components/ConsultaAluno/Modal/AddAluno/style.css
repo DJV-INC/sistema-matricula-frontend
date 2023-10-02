@@ -53,9 +53,31 @@ label {
     border: 0;
 }
 
+.Confirm:hover{
+    background-color: #ffffff;
+    border: 1px solid #0B9529;
+    color: #0B9529;
+}
+
 .Cancel {
     width: 100%;
     background-color: #000;
     color: #fff;
     border: 0;
+    border-radius: 0.25rem;
+    padding: 0.490rem 0.10rem;
+    transition-duration: 0.4s;
+}
+
+.Cancel:hover{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: #000000;
+}
+
+.Link-addAluno-cancel{
+    width: 107%;
+    justify-content: center;
+    align-items: center;
+    
 }

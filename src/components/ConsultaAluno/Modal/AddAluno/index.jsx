@@ -30,7 +30,7 @@ export default function AddAluno() {
             {/* Formularios */}
 
             <FormGroup>
-              
+
               {/* Form do Nome */}
 
               <Label for="NomeCompleto">
@@ -200,13 +200,15 @@ export default function AddAluno() {
             <Row>
               <div className='botoes-div-addaluno'>
 
-                  <Link to={"/"} className="Cancel">
+                <Link to={"/"} className='Link-addAluno-cancel'>
+                  <button className="Cancel btn">
                     Cancelar
-                  </Link>
+                  </button>
+                </Link>
 
-                  <Button className='Confirm'>
-                    Adicionar
-                  </Button>
+                <Button className='Confirm'>
+                  Adicionar
+                </Button>
 
               </div>
             </Row>

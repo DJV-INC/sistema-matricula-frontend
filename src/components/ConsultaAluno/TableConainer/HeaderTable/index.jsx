@@ -38,6 +38,7 @@ export default function HeaderTable() {
             <span class="material-symbols-rounded">chevron_right</span>
           </Button>
           <Link to={"/adicionar"} className="add-aluno-btn">
+            
             <span class="material-symbols-rounded">add</span>
             <span>Adicionar aluno</span>
           </Link>
