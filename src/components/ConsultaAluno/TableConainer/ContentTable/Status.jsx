@@ -3,7 +3,7 @@ import React from 'react'
 export default function Status(props) {
    const status = props.status;
 
-   if(status){
+   if(status === "ATIVA"){
       return (
          <span className="status-aluno true">
             Matriculado
@@ -11,7 +11,7 @@ export default function Status(props) {
       )
    }
 
-   if (!status) {
+   if (status === "INATIVA") {
       return (
          <span className="status-aluno false">
             Não matriculado

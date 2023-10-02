@@ -52,7 +52,7 @@ export default function ContentTable() {
                     <td>{item.rg}</td>
                     <td>{item.cpf}</td>
                     <td>{item.email}</td>
-                    <td><Status status={item.status}/></td>
+                    <td><Status status={item.statusMatricula}/></td>
                     <td>
                         <button className="options-btn" onClick={(e) => {dropdownToggle(item.id, e.target)}}>
                           <span className="material-symbols-rounded">more_vert</span>
