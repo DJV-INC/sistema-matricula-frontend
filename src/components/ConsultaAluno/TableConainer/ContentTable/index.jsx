@@ -3,8 +3,9 @@ import { Button, Table } from "reactstrap";
 
 import './style.css'
 import API from "../../../../services/API";
-import Status from "./Status";
 import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
+import Status from "../../Status";
 
 export default function ContentTable() {
   const [data, setData] = useState({dados: []})
@@ -54,8 +55,9 @@ export default function ContentTable() {
                     <td>{item.email}</td>
                     <td><Status status={item.statusMatricula}/></td>
                     <td>
-                        <button className="options-btn" onClick={(e) => {dropdownToggle(item.id, e.target)}}>
+                        <button className="options-btn" onClick={(e) => {dropdownToggle()}}>
                           <span className="material-symbols-rounded">more_vert</span>
+                          <Dropdown id={item.cpf}/>
                         </button>
                     </td>
                   </tr>

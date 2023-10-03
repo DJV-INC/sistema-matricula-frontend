@@ -1,34 +1,16 @@
 import React from "react";
 
 import "./style.css";
-import { useEffect, useState } from "react";
 import AddAluno from "./AddAluno";
 import InfoAluno from "./InfoAluno";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import EditAluno from "./EditAluno";
 
-export default function Modal({ openModal, closeModal, typemodal }) {
+export default function Modal({ closeModal, dataModal }) {
 
-   // const [isModalOpen, setIsModalOpen] = useState(false);
-
-   const { modalType = null, id = null } = useParams()
-
-   // useEffect(() => {
-   //    if (openModal) {
-   //       setIsModalOpen(true)
-   //    } else {
-   //       setIsModalOpen(false)
-   //    }
-   //    // if (isModalOpen) {
-   //    //    console.log("aa");
-   //    //    document.body.classList.add("modal-open");
-   //    // } else {
-   //    //    document.body.classList.remove("modal-open");
-   //    // }
-   // }, [openModal]);
-
+   const { modalType = null } = useParams()
 
    if (modalType === "adicionar") {
-      
       return (
          <div
            className={"modal"}
@@ -40,13 +22,12 @@ export default function Modal({ openModal, closeModal, typemodal }) {
    }
 
    if (modalType === "editar") {
-      
       return (
          <div
            className={"modal"}
            onClick={closeModal}
          >
-            <AddAluno/>
+            <EditAluno/>
          </div>
       );
    }
@@ -57,7 +38,7 @@ export default function Modal({ openModal, closeModal, typemodal }) {
            className={"modal"}
            onClick={closeModal}
          >
-            <InfoAluno/>
+            <InfoAluno dataModal={dataModal}/>
          </div>
       );
    }

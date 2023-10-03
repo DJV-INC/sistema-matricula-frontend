@@ -1,17 +1,27 @@
+import { useEffect, useState } from 'react';
 import './style.css'
 
 import { Table } from 'reactstrap';
+import { useParams, } from 'react-router-dom';
+import API from '../../../../services/API';
+import Status from '../../Status';
 
 
 function InfoAluno(props) {
+    
+    const {id} = useParams()
 
-    const item = {
-        nomeCompleto: "aaa",
-        rg: "aa345",
-        cpf: "aasr4",
-        email: "4534@g"
-    }
+    const [data, setData] = useState({})
 
+    useEffect(() => {
+        API.get(`http://localhost:8080/api/v1/aluno?cpf=${id}`).then((res) => {
+            if (res.error) {
+                alert(res.error)
+            }
+            setData(res.dados)
+        }).catch((error) => console.error(error))
+    }, [])
+    
     return (
 
         <div className="modal_aluno">
@@ -20,23 +30,23 @@ function InfoAluno(props) {
             <div className="info">
                 <div className="info_item">
                     <p className="title_item">Nome</p>
-                    <p className="subtitle_item">{item.nomeCompleto}</p>
+                    <p className="subtitle_item">{data.nomeCompleto}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">Status</p>
-                    <spam className="subtitle_item status">Matriculado</spam>
+                    <Status status={data.statusMatricula}/>
                 </div>
                 <div className="info_item">
                     <p className="title_item">RG</p>
-                    <p className="subtitle_item">{item.rg}</p>
+                    <p className="subtitle_item">{data.rg}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">CPF</p>
-                    <p className="subtitle_item">{item.cpf}</p>
+                    <p className="subtitle_item">{data.cpf}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">Email</p>
-                    <p className="subtitle_item">{item.email}</p>
+                    <p className="subtitle_item">{data.email}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">Data de Nascimento</p>

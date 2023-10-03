@@ -35,4 +35,16 @@ async function post(endpoint, body) {
    return response
 }
 
-export default { get, post }
+async function put(endpoint, body) {
+   const response = await fetch(endpoint, {
+      method: "PUT",
+      headers: {
+         "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+   })
+
+   return response
+}
+
+export default { get, post, put}
