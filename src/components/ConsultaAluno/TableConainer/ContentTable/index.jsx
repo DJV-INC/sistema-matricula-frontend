@@ -17,16 +17,19 @@ export default function ContentTable() {
     })
   }, []);
 
-  function dropdownToggle(id, target) {
-    setDropdown(false)
   
-    return(
-      <div className="dropdown">
-        <button>Visualizar aluno</button>
-        <button>Inserir imagem</button>
-        <button>Excluir</button>
-      </div>
-    )
+
+  function dropdownToggle(event) {
+    const nodelistDropdowns = document.querySelectorAll(".dropdown-container")
+    
+    for(let i = 0; i < nodelistDropdowns.length; i++){
+      nodelistDropdowns[i].classList.remove("active")
+    }
+
+    const btn = event.currentTarget
+
+    btn.querySelector(".dropdown-container").classList.add("active")
+
   }
 
   return (
@@ -55,7 +58,7 @@ export default function ContentTable() {
                     <td>{item.email}</td>
                     <td><Status status={item.statusMatricula}/></td>
                     <td>
-                        <button className="options-btn" onClick={(e) => {dropdownToggle()}}>
+                        <button className="options-btn" onClick={dropdownToggle}>
                           <span className="material-symbols-rounded">more_vert</span>
                           <Dropdown id={item.cpf}/>
                         </button>
