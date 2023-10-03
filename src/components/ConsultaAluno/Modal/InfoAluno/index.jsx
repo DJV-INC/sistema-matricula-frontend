@@ -14,7 +14,7 @@ function InfoAluno(props) {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        API.get(`http://localhost:8080/api/v1/aluno?cpf=${id}`).then((res) => {
+        API.get(`http://localhost:8080/api/v1/alunos?cpf=${id}`).then((res) => {
             if (res.error) {
                 alert(res.error)
             }

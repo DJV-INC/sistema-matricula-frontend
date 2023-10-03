@@ -27,7 +27,7 @@ export default function AddAluno() {
        estado: event.target.Estado.value,
     };
  
-    API.post("http://localhost:8080/api/v1/aluno", dados);
+    API.post("http://localhost:8080/api/v1/alunos", dados);
  
     alert("Aluno(a) cadastrado");
  
