@@ -94,7 +94,7 @@ export default function EditAluno() {
        estado: event.target.Estado.value,
     };
  
-    API.put("http://localhost:8080/api/v1/alunos", dados);
+    API.put("alunos", dados);
  
     alert("Aluno(a) atualizado");
  
@@ -103,7 +103,7 @@ export default function EditAluno() {
 
 
   useEffect(() => {
-    API.get(`http://localhost:8080/api/v1/alunos?cpf=${id}`).then((res) => {
+    API.get(`alunos`, `cpf=${id}`).then((res) => {
       if (res.error) {
         alert(res.error)
       }

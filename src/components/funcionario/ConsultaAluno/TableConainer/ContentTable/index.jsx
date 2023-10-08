@@ -11,7 +11,7 @@ export default function ContentTable() {
   const [data, setData] = useState({dados: []})
 
   useEffect(() => {
-    API.get("http://localhost:8080/api/v1/alunos").then((res) => {
+    API.get("alunos").then((res) => {
       setData(res)
     })
   }, []);

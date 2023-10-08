@@ -1,9 +1,14 @@
+const hostPath = "http://localhost:8080/"
+const apiPath = "api/v1/"
 
-async function get(endpoint) {
+const baseURL = hostPath + apiPath
+
+
+async function get(table, params = false) {
    let obj = {}
    
    try {
-      const resposta = await fetch(endpoint);
+      const resposta = await fetch(`${baseURL}${table}` + (params ? `?${params}` : ""));
 
       if (!resposta.ok) {
          throw new Error()
@@ -23,8 +28,8 @@ async function get(endpoint) {
    return obj
 }
 
-async function post(endpoint, body) {
-   const response = await fetch(endpoint, {
+async function post(table, body) {
+   const response = await fetch(`${baseURL}${table}`, {
       method: "POST",
       headers: {
          "Content-Type": "application/json"
@@ -35,8 +40,8 @@ async function post(endpoint, body) {
    return response
 }
 
-async function put(endpoint, body) {
-   const response = await fetch(endpoint, {
+async function put(table, body) {
+   const response = await fetch(`${baseURL}${table}`, {
       method: "PUT",
       headers: {
          "Content-Type": "application/json"
@@ -47,4 +52,16 @@ async function put(endpoint, body) {
    return response
 }
 
-export default { get, post, put}
+
+async function del(table, params = "") {
+   const res = await fetch(`${baseURL}${table}/${params}`, {
+      method: "DELETE",
+      headers: {
+         "Content-Type": "application/json"
+      },
+   })
+
+   return res
+}
+
+export default { get, post, put, del}
