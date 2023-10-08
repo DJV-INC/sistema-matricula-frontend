@@ -2,7 +2,7 @@ import {Route, Routes} from "react-router-dom"
 import React from "react";
 
 import Home from "./pages/Home";
-import DeleteAluno from "./components/funcionario/ConsultaAluno/Modal/deleteAluno";
+import DeleteAluno from "./components/funcionario/ConsultaAluno/Modal/DeleteAluno";
 
 
 export default function Router() {

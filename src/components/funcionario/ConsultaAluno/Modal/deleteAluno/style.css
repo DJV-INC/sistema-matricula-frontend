@@ -1,0 +1,66 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.modal_aluno{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1rem;
+
+    width: 500px;
+    height: min-content;
+    padding: 20px;
+
+    background: #fff;
+    border: 1px solid #00000018;
+    border-radius: 4px;
+}
+
+.title{
+    font-weight: 500;
+}
+
+.text_modal{
+    font-size: 15px;
+    font-weight: 500;
+    color:#3a3a3a;
+}
+
+.btn-modal{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-modal .link_cancel{
+    width: 50%;
+}
+
+.btn-modal .btn{
+    height: 40px;
+}
+
+.btn-modal .cancel_{
+    width: 100%;
+    color: #fff;
+    background-color: #242424;
+}
+
+.btn-modal .cancel_:hover{
+    background-color: #353535;
+}
+
+.btn-modal .excluir_ {
+    width: 50%;
+    background-color: #8b1111;
+    color: #fff;
+}
+
+.btn-modal .excluir_:hover{
+    background-color: #640c0c;
+}
+
