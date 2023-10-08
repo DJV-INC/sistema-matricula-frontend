@@ -1,85 +1,18 @@
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './style.css'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import API from '../../../../services/API';
+import { Link, useNavigate } from 'react-router-dom'
+import API from '../../../../../services/API'
 
-export default function EditAluno() {
+
+export default function AddAluno() {
   const navigate = useNavigate()
-  const {id} = useParams()
-  
-  const [data, setData] = useState({})
-  const [cpf, setCpf] = useState("")
-  const [nome, setNome] = useState("")
-  const [rg, setRg] = useState("")
-  const [dataNasc, setDataNasc] = useState("")
-  const [cep, setCep] = useState("")
-  const [estado, setEstado] = useState("")
-  const [cidade, setCidade] = useState("")
-  const [bairro, setBairro] = useState("")
-  const [logradouro, setLogradouro] = useState("")
-  const [numero, setNumero] = useState("")
-  const [email, setEmail] = useState("")
-  const [telefone, setTelefone] = useState("")
-
-  function handleNome(e) {
-    setNome(e.target.value)
-  }
-
-  function handleCpf(e) {
-    setCpf(e.target.value)
-  }
-
-  function handleRg(e) {
-    setRg(e.target.value)
-  }
-
-  function handleDataNasc(e) {
-    setDataNasc(e.target.value)
-  }
-
-  function handleCep(e) {
-    setCep(e.target.value)
-  }
-
-  function handleEstado(e) {
-    setEstado(e.target.value)
-  }
-
-  function handleCidade(e) {
-    setCidade(e.target.value)
-  }
-
-  function handleBairro(e) {
-    setBairro(e.target.value)
-  }
-
-  function handleLogradouro(e) {
-    setLogradouro(e.target.value)
-  }
-
-  function handleNumero(e) {
-    setNumero(e.target.value)
-  }
-
-  function handleEmail(e) {
-    setEmail(e.target.value)
-  }
-
-  function handleTelefone(e) {
-    setTelefone(e.target.value)
-  }
-
-  function handleNome(e) {
-    setNome(e.target.value)
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
  
     const dados = {
-       id: event.target.id.value,
        nomeCompleto: event.target.NomeCompleto.value,
        rg: event.target.RG.value,
        cpf: event.target.CPF.value,
@@ -94,38 +27,12 @@ export default function EditAluno() {
        estado: event.target.Estado.value,
     };
  
-    API.put("http://localhost:8080/api/v1/alunos", dados);
+    API.post("http://localhost:8080/api/v1/alunos", dados);
  
-    alert("Aluno(a) atualizado");
+    alert("Aluno(a) cadastrado");
  
     navigate(-1);
  }
-
-
-  useEffect(() => {
-    API.get(`http://localhost:8080/api/v1/alunos?cpf=${id}`).then((res) => {
-      if (res.error) {
-        alert(res.error)
-      }
-      setData(res)
-      setCpf(res.dados.cpf)
-      setNome(res.dados.nomeCompleto)
-      setRg(res.dados.rg)
-      setDataNasc(res.dados.dataNasc)
-      setCep(res.dados.cep)
-      setEstado(res.dados.estado)
-      setCidade(res.dados.cidade)
-      setBairro(res.dados.bairro)
-      setLogradouro(res.dados.logradouro)
-      setNumero(res.dados.numero)
-      setEmail(res.dados.email)
-      setTelefone(res.dados.telefone)
-    }).catch((error) => console.error(error))
-  }, []);
-
-  
-  try {  
-
 
   return (
     <div className='modal-addaluno'>
@@ -143,24 +50,15 @@ export default function EditAluno() {
 
             {/* Titulo da pagina */}
 
-            <h1>Editar Aluno</h1>
+            <h1>Adicionar Aluno</h1>
             <hr />
             <h2>Dados Pessoais</h2>
 
             {/* Formularios */}
 
-            <Input
-              id="id"
-              name="id"
-              value={data.dados.id}
-              style={{display : "nome"}}
-            />
-
             <FormGroup>
-              
+
               {/* Form do Nome */}
-
-
 
               <Label for="NomeCompleto">
                 Nome Completo
@@ -168,8 +66,6 @@ export default function EditAluno() {
               <Input
                 id="NomeCompleto"
                 name="Nome"
-                value={nome}
-                onChange={handleNome}
               />
             </FormGroup>
 
@@ -184,8 +80,6 @@ export default function EditAluno() {
                   <Input
                     id="RG"
                     name="RG"
-                    value={rg}
-                    onChange={handleRg}
                   />
                 </FormGroup>
               </Col>
@@ -197,8 +91,6 @@ export default function EditAluno() {
                   <Input
                     id="CPF"
                     name="CPF"
-                    value={cpf}
-                    onChange={handleCpf}
                   />
                 </FormGroup>
               </Col>
@@ -214,8 +106,6 @@ export default function EditAluno() {
                 id="Email"
                 name="Email"
                 type="Email"
-                value={email}
-                onChange={handleEmail}
               />
             </FormGroup>
 
@@ -231,8 +121,6 @@ export default function EditAluno() {
                     id="DataNasc"
                     name="DataNasc"
                     type="date"
-                    value={dataNasc}
-                    onChange={handleDataNasc}
                   />
                 </FormGroup>
               </Col>
@@ -244,8 +132,6 @@ export default function EditAluno() {
                   <Input
                     id="Tell"
                     name="Tell"
-                    value={telefone}
-                    onChange={handleTelefone}
                   />
                 </FormGroup>
               </Col>
@@ -267,8 +153,6 @@ export default function EditAluno() {
                   <Input
                     id="CEP"
                     name="CEP"
-                    value={cep}
-                    onChange={handleCep}
                   />
                 </FormGroup>
               </Col>
@@ -280,8 +164,6 @@ export default function EditAluno() {
                   <Input
                     id="Logradouro"
                     name="Logradouro"
-                    value={logradouro}
-                    onChange={handleLogradouro}
                   />
                 </FormGroup>
               </Col>
@@ -298,8 +180,6 @@ export default function EditAluno() {
                   <Input
                     id="Numero"
                     name="Numero"
-                    value={numero}
-                    onChange={handleNumero}
                   />
                 </FormGroup>
               </Col>
@@ -311,8 +191,6 @@ export default function EditAluno() {
                   <Input
                     id="Bairro"
                     name="Bairro"
-                    value={bairro}
-                    onChange={handleBairro}
                   />
                 </FormGroup>
               </Col>
@@ -329,8 +207,6 @@ export default function EditAluno() {
                   <Input
                     id="Cidade"
                     name="Cidade"
-                    value={cidade}
-                    onChange={handleCidade}
                   />
                 </FormGroup>
               </Col>
@@ -342,8 +218,6 @@ export default function EditAluno() {
                   <Input
                     id="Estado"
                     name="Estado"
-                    value={estado}
-                    onChange={handleEstado}
                   />
                 </FormGroup>
               </Col>
@@ -353,25 +227,22 @@ export default function EditAluno() {
             <Row>
               <div className='botoes-div-addaluno'>
 
-                  <Link to={"/"} className="Cancel">
+                <Link to={"/"} className='Link-addAluno-cancel'>
+                  <button className="Cancel btn">
                     Cancelar
-                  </Link>
+                  </button>
+                </Link>
 
-                  <Button className='Confirm'>
-                    Atualizar
-                  </Button>
+                <Button className='Confirm'>
+                  Adicionar
+                </Button>
 
               </div>
             </Row>
+
           </Form>
         </Col>
       </Row>
     </div >
   )
-
-  } catch (error) {
-    
-  }
-
-
 }

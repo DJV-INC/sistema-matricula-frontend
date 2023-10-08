@@ -2,14 +2,13 @@ import React, { Fragment , useEffect, useState} from "react";
 import { Button, Table } from "reactstrap";
 
 import './style.css'
-import API from "../../../../services/API";
+import API from "../../../../../services/API";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import Status from "../../Status";
 
 export default function ContentTable() {
   const [data, setData] = useState({dados: []})
-  const [dropdown, setDropdown] = useState(false)
 
   useEffect(() => {
     API.get("http://localhost:8080/api/v1/alunos").then((res) => {

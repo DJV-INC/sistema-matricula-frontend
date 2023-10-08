@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import ConsultaAluno from "../components/ConsultaAluno";
 import HeaderNavbar from "../components/HeaderNavbar";
+import ConsultaAluno from "../components/funcionario/ConsultaAluno";
 
 function Home() {
   return (

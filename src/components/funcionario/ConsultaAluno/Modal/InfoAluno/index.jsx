@@ -3,14 +3,12 @@ import './style.css'
 
 import { Table } from 'reactstrap';
 import { useParams, } from 'react-router-dom';
-import API from '../../../../services/API';
+import API from '../../../../../services/API';
 import Status from '../../Status';
 
 
 function InfoAluno(props) {
-    
     const {id} = useParams()
-
     const [data, setData] = useState({})
 
     useEffect(() => {
