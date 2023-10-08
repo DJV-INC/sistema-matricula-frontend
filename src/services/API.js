@@ -40,9 +40,9 @@ async function post(table, body) {
    return response
 }
 
-async function put(table, body) {
+async function patch(table, body) {
    const response = await fetch(`${baseURL}${table}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
          "Content-Type": "application/json"
       },
@@ -64,4 +64,4 @@ async function del(table, params = "") {
    return res
 }
 
-export default { get, post, put, del}
+export default { get, post, patch, del}

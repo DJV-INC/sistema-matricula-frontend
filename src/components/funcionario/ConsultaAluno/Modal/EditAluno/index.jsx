@@ -23,8 +23,17 @@ export default function EditAluno() {
   const [email, setEmail] = useState("")
   const [telefone, setTelefone] = useState("")
 
+  function dataConvert(data) {
+    let newData = data.split("/")
+    newData = newData.reverse();
+    newData = newData.join("-");
+    return newData;
+  }
+
+
+
   function handleNome(e) {
-    setNome(e.target.value)
+      setNome(e.target.value)
   }
 
   function handleCpf(e) {
@@ -71,30 +80,29 @@ export default function EditAluno() {
     setTelefone(e.target.value)
   }
 
-  function handleNome(e) {
-    setNome(e.target.value)
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
  
     const dados = {
        id: event.target.id.value,
-       nomeCompleto: event.target.NomeCompleto.value,
-       rg: event.target.RG.value,
-       cpf: event.target.CPF.value,
-       email: event.target.Email.value,
-       dataNasc: event.target.DataNasc.value,
-       telefone: event.target.Tell.value,
-       cep: event.target.CEP.value,
-       logradouro: event.target.Logradouro.value,
-       numero: event.target.Numero.value,
-       bairro: event.target.Bairro.value,
-       cidade: event.target.Cidade.value,
-       estado: event.target.Estado.value,
+       nomeCompleto: event.target.NomeCompleto.value != "" ? event.target.NomeCompleto.value : data.dados.nomeCompleto,
+       rg: event.target.RG.value != "" ? event.target.RG.value : data.dados.rg,
+       cpf: event.target.CPF.value != "" ? event.target.CPF.value : data.dados.cpf,
+       email: event.target.Email.value != "" ? event.target.Email.value : data.dados.email,
+       dataNasc: event.target.DataNasc.value != "" ? event.target.DataNasc.value : data.dados.dataNasc,
+       telefone: event.target.Tell.value != "" ? event.target.Tell.value : data.dados.telefone,
+       cep: event.target.CEP.value != "" ? event.target.CEP.value : data.dados.cep,
+       logradouro: event.target.Logradouro.value != "" ? event.target.Logradoro.value : data.dados.logradouro,
+       numero: event.target.Numero.value != "" ? event.target.Numero.value : data.dados.numero,
+       bairro: event.target.Bairro.value != "" ? event.target.Bairro.value : data.dados.bairro,
+       cidade: event.target.Cidade.value != "" ? event.target.Cidade.value : data.dados.cidade,
+       estado: event.target.Estado.value != "" ? event.target.Estado.value : data.dados.estado
     };
+
+    console.log(dados)
  
-    API.put("alunos", dados);
+    API.patch("alunos", dados);
  
     alert("Aluno(a) atualizado");
  
@@ -128,6 +136,7 @@ export default function EditAluno() {
 
 
   return (
+    
     <div className='modal-addaluno'>
       <Row>
         <Col
@@ -231,7 +240,7 @@ export default function EditAluno() {
                     id="DataNasc"
                     name="DataNasc"
                     type="date"
-                    value={dataNasc}
+                    value={dataConvert(dataNasc)}
                     onChange={handleDataNasc}
                   />
                 </FormGroup>
