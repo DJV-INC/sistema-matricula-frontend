@@ -31,12 +31,13 @@ export default function ContentTable() {
     
     document.body.addEventListener("click", (e) => {
       console.log(e.target);
-      if (e.target.contains() !== btn || e.target !== btn.querySelector(".dropdown-container") || e.target !== event.target) {
+      if (e.target !== btn || e.target !== btn.querySelector(".dropdown-container") || e.target !== event.target) {
         if (dropdown) {
           setDropdown(false)
         } else {
           setDropdown(true)
         }
+        
       }
     })
     
