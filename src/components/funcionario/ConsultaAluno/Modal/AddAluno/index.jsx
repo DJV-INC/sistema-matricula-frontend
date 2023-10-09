@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import API from '../../../../../services/API'
 
 
-export default function AddAluno() {
+export default function AddAluno(props) {
   const navigate = useNavigate()
 
   function handleSubmit(event) {
@@ -45,12 +45,16 @@ export default function AddAluno() {
           }}
           sm="12"
         >
-
+            <div className="title">Adicionar aluno
+                <button className="close_ btn" onClick={props.func}>
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
           <Form method='POST' onSubmit={handleSubmit}>
 
             {/* Titulo da pagina */}
 
-            <h1>Adicionar Aluno</h1>
+            
             <hr />
             <h2>Dados Pessoais</h2>
 

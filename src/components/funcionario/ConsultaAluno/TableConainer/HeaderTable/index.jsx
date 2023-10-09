@@ -46,7 +46,7 @@ export default function HeaderTable() {
         </div>
       </header>
 
-      <Modal openModal={toggleModal} closeModal={handleClose}/>
+      <Modal/>
 
     </Fragment>
   );

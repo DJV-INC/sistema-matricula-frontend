@@ -1,20 +1,24 @@
 import './style.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { Form } from 'reactstrap';
+import API from '../../../../../services/API';
 
-function DeleteAluno() {
+function DeleteAluno(props) {
 
     const navigate = useNavigate()
 
     const handleSubmit = () => {
-        alert("Excluiu")
-
-        navigate("/deletealuno")
+        API.del("alunos", props.cpf)
+        navigate("/")
     }
 
     return (
         <div className="modal_aluno">
-            <div className="title">Excluir aluno?</div>
+            <div className="title">Excluir aluno?
+                <button className="close_ btn" onClick={props.func}>
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
 
             <hr />
 
@@ -37,7 +41,7 @@ function DeleteAluno() {
                         </Link>
 
                         <button className='excluir_ btn'>
-                            Excluir
+                            Excluir {props.cpf}
                         </button>
 
                     </div>

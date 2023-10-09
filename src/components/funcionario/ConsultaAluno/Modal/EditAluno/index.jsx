@@ -5,7 +5,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import API from '../../../../../services/API';
 
-export default function EditAluno() {
+export default function EditAluno(props) {
   const navigate = useNavigate()
   const {id} = useParams()
   
@@ -86,18 +86,18 @@ export default function EditAluno() {
  
     const dados = {
        id: event.target.id.value,
-       nomeCompleto: event.target.NomeCompleto.value != "" ? event.target.NomeCompleto.value : data.dados.nomeCompleto,
-       rg: event.target.RG.value != "" ? event.target.RG.value : data.dados.rg,
-       cpf: event.target.CPF.value != "" ? event.target.CPF.value : data.dados.cpf,
-       email: event.target.Email.value != "" ? event.target.Email.value : data.dados.email,
-       dataNasc: event.target.DataNasc.value != "" ? event.target.DataNasc.value : data.dados.dataNasc,
-       telefone: event.target.Tell.value != "" ? event.target.Tell.value : data.dados.telefone,
-       cep: event.target.CEP.value != "" ? event.target.CEP.value : data.dados.cep,
-       logradouro: event.target.Logradouro.value != "" ? event.target.Logradoro.value : data.dados.logradouro,
-       numero: event.target.Numero.value != "" ? event.target.Numero.value : data.dados.numero,
-       bairro: event.target.Bairro.value != "" ? event.target.Bairro.value : data.dados.bairro,
-       cidade: event.target.Cidade.value != "" ? event.target.Cidade.value : data.dados.cidade,
-       estado: event.target.Estado.value != "" ? event.target.Estado.value : data.dados.estado
+       nomeCompleto: event.target.NomeCompleto.value !== "" ? event.target.NomeCompleto.value : data.dados.nomeCompleto,
+       rg: event.target.RG.value !=="" ? event.target.RG.value : data.dados.rg,
+       cpf: event.target.CPF.value !=="" ? event.target.CPF.value : data.dados.cpf,
+       email: event.target.Email.value !== "" ? event.target.Email.value : data.dados.email,
+       dataNasc: event.target.DataNasc.value !== "" ? event.target.DataNasc.value : data.dados.dataNasc,
+       telefone: event.target.Tell.value !== "" ? event.target.Tell.value : data.dados.telefone,
+       cep: event.target.CEP.value !== "" ? event.target.CEP.value : data.dados.cep,
+       logradouro: event.target.Logradouro.value !== "" ? event.target.Logradouro.value : data.dados.logradouro,
+       numero: event.target.Numero.value !== "" ? event.target.Numero.value : data.dados.numero,
+       bairro: event.target.Bairro.value !== "" ? event.target.Bairro.value : data.dados.bairro,
+       cidade: event.target.Cidade.value !== "" ? event.target.Cidade.value : data.dados.cidade,
+       estado: event.target.Estado.value !== "" ? event.target.Estado.value : data.dados.estado
     };
 
     console.log(dados)
@@ -148,11 +148,15 @@ export default function EditAluno() {
           sm="12"
         >
 
+          <div className="title">Editar aluno
+                <button className="close_ btn" onClick={props.func}>
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
           <Form method='POST' onSubmit={handleSubmit}>
 
             {/* Titulo da pagina */}
 
-            <h1>Editar Aluno</h1>
             <hr />
             <h2>Dados Pessoais</h2>
 

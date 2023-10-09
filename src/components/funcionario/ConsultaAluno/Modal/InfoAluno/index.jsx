@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './style.css'
 
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import { useParams, } from 'react-router-dom';
 import API from '../../../../../services/API';
 import Status from '../../Status';
@@ -23,7 +23,11 @@ function InfoAluno(props) {
     return (
 
         <div className="modal_aluno">
-            <div className="title">Informações do aluno</div>
+            <div className="title">Informações do aluno
+                <button className="close_ btn" onClick={props.func}>
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
 
             <div className="info">
                 <div className="info_item">

@@ -3,29 +3,29 @@ import React from "react";
 import "./style.css";
 import AddAluno from "./AddAluno";
 import InfoAluno from "./InfoAluno";
-import { redirect, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import EditAluno from "./EditAluno";
+import DeleteAluno from "./DeleteAluno";
 
-export default function Modal({ dataModal }) {
-   const { modalType = null } = useParams()
+export default function Modal() {
+   const { modalType = null , id: cpf = null } = useParams()
    const navigate = useNavigate()
 
-   function closeModal(event) {
-      console.log(event.target);
-      console.log(event.currentTarget);
+   function closeModal() {
+      //console.log(event.target);
+      //console.log(event.currentTarget);
 
-      if (event.target === event.currentTarget) {
+      //if (event.target === event.currentTarget) {
          navigate(-1)
-      }
+      //}
    }
    
    if (modalType === "adicionar") {
       return (
          <div
            className={"modal"}
-           onClick={closeModal}
          >
-            <AddAluno/>
+            <AddAluno func={closeModal}/>
          </div>
       );
    }
@@ -34,9 +34,8 @@ export default function Modal({ dataModal }) {
       return (
          <div
            className={"modal"}
-           onClick={closeModal}
          >
-            <EditAluno/>
+            <EditAluno func={closeModal}/>
          </div>
       );
    }
@@ -45,9 +44,18 @@ export default function Modal({ dataModal }) {
       return (
          <div
            className={"modal"}
-           onClick={closeModal}
          >
-            <InfoAluno dataModal={dataModal}/>
+            <InfoAluno func={closeModal}/>
+         </div>
+      );
+   }
+
+   if (modalType === "excluir") {
+      return (
+         <div
+           className={"modal"}
+         >
+            <DeleteAluno cpf={cpf} func={closeModal}/>
          </div>
       );
    }

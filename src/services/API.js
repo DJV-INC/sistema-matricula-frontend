@@ -54,6 +54,7 @@ async function patch(table, body) {
 
 
 async function del(table, params = "") {
+   console.log(`${baseURL}${table}/${params}`);
    const res = await fetch(`${baseURL}${table}/${params}`, {
       method: "DELETE",
       headers: {

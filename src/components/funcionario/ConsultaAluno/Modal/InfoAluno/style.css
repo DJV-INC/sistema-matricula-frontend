@@ -22,6 +22,19 @@
 
 .title{
     font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.title .close_{
+    padding: 0;
+    color: rgb(39, 39, 39);
+}
+
+.title .close_:hover{
+    background-color: rgb(219, 219, 219);
 }
 
 .modal_aluno .info{
