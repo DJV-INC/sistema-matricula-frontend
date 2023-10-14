@@ -7,17 +7,15 @@ import { Link, useParams } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import Status from "../../Status";
 
-export default function ContentTable() {
+export default function ContentTable({contentData}) {
   const params = useParams()
 
-  const [data, setData] = useState({dados: []})
   const [dropdown, setDropdown] = useState(false)
+  const [data, setData] = useState({dados: []})
 
   useEffect(() => {
-    API.get("alunos").then((res) => {
-      setData(res)
-    })
-  }, [params]);
+      setData(contentData)
+  }, [contentData]);
 
   function dropdownToggle(event) {
     const nodelistDropdowns = document.querySelectorAll(".dropdown-container")
@@ -28,7 +26,6 @@ export default function ContentTable() {
       nodelistDropdowns[i].classList.remove("active")
     }
     
-    
     document.body.addEventListener("click", (e) => {
       console.log(e.target);
       if (e.target !== btn || e.target !== btn.querySelector(".dropdown-container") || e.target !== event.target) {
@@ -37,7 +34,6 @@ export default function ContentTable() {
         } else {
           setDropdown(true)
         }
-        
       }
     })
     
@@ -53,43 +49,49 @@ export default function ContentTable() {
 
   }
 
-  return (
-    <Fragment>
-      <Table striped>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>RG</th>
-            <th>CPF</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            data.dados.map((item) => {
-               return (
-                  <tr>
-                    <th scope="row">{item.id}</th>
-                    <td>{item.nomeCompleto}</td>
-                    <td>{item.rg}</td>
-                    <td>{item.cpf}</td>
-                    <td>{item.email}</td>
-                    <td><Status status={item.statusMatricula}/></td>
-                    <td>
-                        <button className="options-btn" onClick={dropdownToggle}>
-                          <span className="material-symbols-rounded">more_vert</span>
-                          <Dropdown id={item.cpf}/>
-                        </button>
-                    </td>
-                  </tr>
-               )
-            })
-          }
-        </tbody>
-      </Table>
-    </Fragment>
-  );
+  try {
+    
+    return (
+      <Fragment>
+        <Table striped>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>RG</th>
+              <th>CPF</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              data.dados.map((item) => {
+                 return (
+                    <tr>
+                      <th scope="row">{item.id}</th>
+                      <td>{item.nomeCompleto}</td>
+                      <td>{item.rg}</td>
+                      <td>{item.cpf}</td>
+                      <td>{item.email}</td>
+                      <td><Status status={item.statusMatricula}/></td>
+                      <td>
+                          <button className="options-btn" onClick={dropdownToggle}>
+                            <span className="material-symbols-rounded">more_vert</span>
+                            <Dropdown id={item.cpf}/>
+                          </button>
+                      </td>
+                    </tr>
+                 )
+              })
+            }
+          </tbody>
+        </Table>
+      </Fragment>
+    );
+  } catch (error) {
+    
+  }
+
 }
