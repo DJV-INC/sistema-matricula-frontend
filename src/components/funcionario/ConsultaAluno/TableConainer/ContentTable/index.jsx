@@ -1,15 +1,12 @@
 import React, { Fragment , useEffect, useState} from "react";
-import { Button, Table } from "reactstrap";
-
-import './style.css'
-import API from "../../../../../services/API";
-import { Link, useParams } from "react-router-dom";
+import { Table } from "reactstrap";
+import { useParams } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import Status from "../../Status";
 
-export default function ContentTable({contentData}) {
-  const params = useParams()
+import './style.css'
 
+export default function ContentTable({contentData}) {
   const [dropdown, setDropdown] = useState(false)
   const [data, setData] = useState({dados: []})
 
@@ -45,8 +42,6 @@ export default function ContentTable({contentData}) {
         nodelistDropdowns[i].classList.remove("active")
       }
     }
-    
-
   }
 
   try {

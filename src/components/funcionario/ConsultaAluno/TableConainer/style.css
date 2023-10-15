@@ -1,8 +1,6 @@
 .header-table{
    display: grid;
-
    grid-template-columns: 1fr 50%;
-
    margin: 20px 0;
 }
 
@@ -59,4 +57,11 @@
    border-radius: 4px;
    font-weight: bold;
    font-size: 0.9rem;
+}
+
+.header-table .filtro-btn{
+   width: 130px;
+
+   display: flex;
+   justify-content: space-between;
 }

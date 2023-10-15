@@ -6,22 +6,49 @@ import Modal from "../Modal";
 import { Link, useParams } from "react-router-dom";
 import ContentTable from "./ContentTable";
 import API from "../../../../services/API";
+import FilterDropdown from "./FilterDropdown";
 
 export default function TableContainer() {
   const params = useParams()
 
-  const [toggleModal, setToggleModal] = useState(false)
   const [data, setData] = useState({dados: []})
+  const [pesquisa, setPesquisa] = useState(false)
+  const [tipoPesquisa, setTipoPesquisa] = useState(false)
+  const [dropdownPesquisa, setDropdownPesquisa] = useState([])
 
   function handleFilter(e) {
-    console.log(e.target.value);
+    setPesquisa(e.target.value)
+  }
+
+  function dropdownToggle(event) {
+    const filterDropdown = document.querySelectorAll(".dropdown-filter-container")[0]
+
+    setDropdownPesquisa(!dropdownPesquisa)
+
+    if (dropdownPesquisa) {
+      filterDropdown.classList.add("active")
+    } else {
+      filterDropdown.classList.remove("active")
+    }
   }
 
   useEffect(() => {
-    API.get("alunos").then((res) => {
-      setData(res)
-    })
-  }, [params]);
+    if (tipoPesquisa === "rg") {
+      API.get("alunos", `cpf=${pesquisa}`).then((res) => {
+        setData({dados: [res.dados]})
+      })
+    } 
+    if (tipoPesquisa === "cpf") {
+      API.get("alunos", `cpf=${pesquisa}`).then((res) => {
+        setData({dados: [res.dados]})
+      })
+    } 
+    if (!tipoPesquisa) {
+      API.get("alunos").then((res) => {
+        setData(res)
+      })
+    }
+  }, [params, pesquisa]);
 
   return (
     <Fragment>
@@ -29,10 +56,11 @@ export default function TableContainer() {
       <header className="header-table">
         <div className="right-header">
           <Input className="pesquisa-input" placeholder="Pesquisar" onChange={handleFilter}/>
-          <Button className="table-btn">
+          <Button className="table-btn filtro-btn" id="btn-handle-filter" onClick={dropdownToggle}>
+            <span>Filtro</span>
             <span class="material-symbols-rounded">tune</span>
-            <span>Icon</span>
           </Button>
+          <FilterDropdown setTipoPesquisa={setTipoPesquisa}/>
         </div>
 
         <div className="left-header">
@@ -53,8 +81,6 @@ export default function TableContainer() {
       </header>
 
       <Modal/>
-
-      {console.log(data)}
 
       <ContentTable contentData={data}/>
 

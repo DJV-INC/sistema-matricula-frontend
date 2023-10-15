@@ -9,7 +9,7 @@ async function get(table, params = false) {
    
    try {
       const resposta = await fetch(`${baseURL}${table}` + (params ? `?${params}` : ""));
-
+      console.log(`${baseURL}${table}` + `?${params}`);
       if (!resposta.ok) {
          throw new Error()
       }
