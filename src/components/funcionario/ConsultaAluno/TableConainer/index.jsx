@@ -12,8 +12,8 @@ export default function TableContainer() {
   const params = useParams()
 
   const [data, setData] = useState({dados: []})
-  const [pesquisa, setPesquisa] = useState(false)
-  const [tipoPesquisa, setTipoPesquisa] = useState(false)
+  const [pesquisa, setPesquisa] = useState(null)
+  const [tipoPesquisa, setTipoPesquisa] = useState("")
   const [dropdownPesquisa, setDropdownPesquisa] = useState([])
 
   function handleFilter(e) {
@@ -34,7 +34,7 @@ export default function TableContainer() {
 
   useEffect(() => {
     if (tipoPesquisa === "rg") {
-      API.get("alunos", `cpf=${pesquisa}`).then((res) => {
+      API.get("alunos", `rg=${pesquisa}`).then((res) => {
         setData({dados: [res.dados]})
       })
     } 
@@ -43,12 +43,12 @@ export default function TableContainer() {
         setData({dados: [res.dados]})
       })
     } 
-    if (!tipoPesquisa) {
+    if (!tipoPesquisa || tipoPesquisa === "") {
       API.get("alunos").then((res) => {
         setData(res)
       })
     }
-  }, [params, pesquisa]);
+  }, [params, pesquisa, tipoPesquisa]);
 
   return (
     <Fragment>
@@ -60,7 +60,7 @@ export default function TableContainer() {
             <span>Filtro</span>
             <span class="material-symbols-rounded">tune</span>
           </Button>
-          <FilterDropdown setTipoPesquisa={setTipoPesquisa}/>
+          <FilterDropdown setTipoPesquisa={setTipoPesquisa} tipoPesquisa={tipoPesquisa} />
         </div>
 
         <div className="left-header">
