@@ -1,0 +1,100 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.modal_aluno{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1rem;
+
+    width: 500px;
+    height: min-content;
+    padding: 20px;
+
+    background: #fff;
+    border: 1px solid #00000018;
+    border-radius: 4px;
+}
+
+.title{
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.title .close_{
+    padding: 0;
+    color: rgb(39, 39, 39);
+}
+
+.title .close_:hover{
+    background-color: rgb(219, 219, 219);
+}
+
+.modal_aluno .info{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 1.5rem;
+
+    width: 100%;
+    margin-top: 1rem;
+    padding: 20px;
+    
+    border: 1px solid #00000018;
+    border-radius: 4px;
+}
+
+.modal_aluno .info .info_item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 45%;
+}
+
+.modal_aluno .info .info_item .title_item{
+    font-size: 14px;
+    color: #808080;
+    font-weight: 400;
+    height: 0;
+}
+
+.modal_aluno .info .info_item .subtitle_item{
+    color: #1d1d1d;
+    font-weight: 500;
+    height: 0;
+}
+
+.modal_aluno .info .info_item .status{
+    color: #005515;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #bef3cc;
+    height: min-content;
+    width: min-content;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+/* Tabelinha - Matricula */
+
+.title_sec{
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+.table_matricula{
+    margin-top: 1rem;
+    border: 1px solid #8d8d8d49;
+    border-radius: 4px;
+}
+
+th, td{
+    text-align: center !important;
+}
