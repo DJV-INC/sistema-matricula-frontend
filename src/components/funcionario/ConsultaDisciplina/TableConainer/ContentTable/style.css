@@ -38,18 +38,19 @@ th{
 }
 
 .Tabelas{
-   display: flex;
+   display: grid;
+   grid-template-columns: 35% 1fr;
    justify-content: space-between;
    gap: 25px;
 }
 
 .TabDisciplina{
-   width: 30%;
+   width: 100%;
 }
 
 .TabProfessor{
    padding: 20px;
-   width: 70%;
+   width: auto;
    border: 1px solid #ccc;
    border-radius: 4px;
 }

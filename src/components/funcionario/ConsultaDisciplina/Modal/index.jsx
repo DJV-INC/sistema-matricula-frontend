@@ -12,12 +12,7 @@ export default function Modal() {
    const navigate = useNavigate()
 
    function closeModal() {
-      //console.log(event.target);
-      //console.log(event.currentTarget);
-
-      //if (event.target === event.currentTarget) {
-         navigate(-1)
-      //}
+      navigate(-1)
    }
    
    if (modalType === "adicionar") {
