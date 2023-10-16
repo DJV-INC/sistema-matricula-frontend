@@ -13,23 +13,13 @@ export default function AddDiciplina(props) {
     event.preventDefault();
  
     const dados = {
-       nomeCompleto: event.target.NomeCompleto.value,
-       rg: event.target.RG.value,
-       cpf: event.target.CPF.value,
-       email: event.target.Email.value,
-       dataNasc: event.target.DataNasc.value,
-       telefone: event.target.Tell.value,
-       cep: event.target.CEP.value,
-       logradouro: event.target.Logradouro.value,
-       numero: event.target.Numero.value,
-       bairro: event.target.Bairro.value,
-       cidade: event.target.Cidade.value,
-       estado: event.target.Estado.value,
+       nome: event.target.nome.value,
+      //  tipo: event.target.tipo.value
     };
  
-    API.post("http://localhost:8080/api/v1/alunos", dados);
+    API.post("disciplinas", dados);
  
-    alert("Aluno(a) cadastrado");
+    alert("Disciplina cadastrada");
  
     navigate(-1);
  }
@@ -45,7 +35,7 @@ export default function AddDiciplina(props) {
           }}
           sm="12"
         >
-            <div className="title">Adicionar aluno
+            <div className="title">Adicionar disciplina
                 <button className="close_ btn" onClick={props.func}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
@@ -65,168 +55,24 @@ export default function AddDiciplina(props) {
               {/* Form do Nome */}
 
               <Label for="NomeCompleto">
-                Nome Completo
+                Nome da Disciplina
               </Label>
               <Input
-                id="NomeCompleto"
-                name="Nome"
+                id="nome"
+                name="nome"
               />
             </FormGroup>
-
-            {/* Form do RG */}
-
-            <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="RG">
-                    RG
-                  </Label>
-                  <Input
-                    id="RG"
-                    name="RG"
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="CPF">
-                    CPF
-                  </Label>
-                  <Input
-                    id="CPF"
-                    name="CPF"
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-
-
 
             <FormGroup>
-              <Label for="Email">
-                Email
+              <Label for="tipo">
+                Tipo
               </Label>
               <Input
-                id="Email"
-                name="Email"
-                type="Email"
+                id="tipo"
+                name="tipo"
+                type="tipo"
               />
             </FormGroup>
-
-
-
-            <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="DataNasc">
-                    Data de Nascimento
-                  </Label>
-                  <Input
-                    id="DataNasc"
-                    name="DataNasc"
-                    type="date"
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="Tell">
-                    Telefone
-                  </Label>
-                  <Input
-                    id="Tell"
-                    name="Tell"
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-
-
-
-            <br />
-            <h2>Endereço</h2>
-
-
-
-            <Row>
-              <Col md={4}>
-                <FormGroup>
-                  <Label for="CEP">
-                    CEP
-                  </Label>
-                  <Input
-                    id="CEP"
-                    name="CEP"
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={8}>
-                <FormGroup>
-                  <Label for="Logradouro">
-                    Logradouro
-                  </Label>
-                  <Input
-                    id="Logradouro"
-                    name="Logradouro"
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-
-
-
-            <Row>
-              <Col md={4}>
-                <FormGroup>
-                  <Label for="Numero">
-                    Número
-                  </Label>
-                  <Input
-                    id="Numero"
-                    name="Numero"
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={8}>
-                <FormGroup>
-                  <Label for="Bairro">
-                    Bairro
-                  </Label>
-                  <Input
-                    id="Bairro"
-                    name="Bairro"
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-
-
-
-            <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="Cidade">
-                    Cidade
-                  </Label>
-                  <Input
-                    id="Cidade"
-                    name="Cidade"
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="Estado">
-                    Estado
-                  </Label>
-                  <Input
-                    id="Estado"
-                    name="Estado"
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-
 
             <Row>
               <div className='botoes-div-add-disciplina'>

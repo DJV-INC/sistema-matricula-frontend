@@ -15,7 +15,7 @@ export default function Router() {
 
 			<Route exact path="/disciplina" element={<FuncionarioDisciplina/>}/>
 				<Route exact path="/disciplina/:modalType/:id" element={<FuncionarioDisciplina/>}/>
-				<Route exact path="/diciplina/:modalType" element={<FuncionarioDisciplina/>}/>
+				<Route exact path="/disciplina/:modalType" element={<FuncionarioDisciplina/>}/>
 				
 		</Routes>
   	);
