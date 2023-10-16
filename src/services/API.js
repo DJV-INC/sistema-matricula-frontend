@@ -5,11 +5,12 @@ const baseURL = hostPath + apiPath
 
 
 async function get(table, params = false) {
+   
    let obj = {}
    
    try {
       const resposta = await fetch(`${baseURL}${table}` + (params ? `?${params}` : ""));
-      console.log(`${baseURL}${table}` + `?${params}`);
+
       if (!resposta.ok) {
          throw new Error()
       }
@@ -24,7 +25,6 @@ async function get(table, params = false) {
          error: error.message
       }
    }
-
    return obj
 }
 

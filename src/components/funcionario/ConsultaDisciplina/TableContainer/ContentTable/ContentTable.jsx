@@ -1,14 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Button, Table } from "reactstrap";
+import { Table } from "reactstrap";
+import Dropdown from "./Dropdown/Dropdown";
 
-import './style.css'
-import API from "../../../../../services/API";
-import { Link, useParams } from "react-router-dom";
-import Dropdown from "./Dropdown";
-import Status from "../../Status";
+import './ContentTable.css'
 
 export default function ContentTable({ contentData }) {
-  const params = useParams()
 
   const [dropdown, setDropdown] = useState(false)
   const [data, setData] = useState({ dados: [] })
@@ -61,6 +57,7 @@ export default function ContentTable({ contentData }) {
                   <th>ID</th>
                   <th>Disciplina</th>
                   <th>Tipo</th>
+                  <th>Opções</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,6 +68,12 @@ export default function ContentTable({ contentData }) {
                         <th scope="row">{item.id}</th>
                         <td>{item.nome}</td>
                         <td>{item.tipo}</td>
+                        <td>
+                          <button className="options-btn" onClick={dropdownToggle}>
+                            <span className="material-symbols-rounded">more_vert</span>
+                            <Dropdown id={item.id} />
+                          </button>
+                        </td>
                       </tr>
                     )
                   })
@@ -100,13 +103,6 @@ export default function ContentTable({ contentData }) {
                         <th scope="row">{item.id}</th>
                         <td>{item.nome}</td>
                         <td>{item.tipo}</td>
-                        <td></td>
-                        <td>
-                          {/* <button className="options-btn" onClick={dropdownToggle}>
-                            <span className="material-symbols-rounded">more_vert</span>
-                            <Dropdown id={item.id} />
-                          </button> */}
-                        </td>
                       </tr>
                     )
                   })
