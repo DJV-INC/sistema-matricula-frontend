@@ -46,7 +46,7 @@ export default function AddDiciplina(props) {
 
             
             <hr />
-            <h2>Dados Pessoais</h2>
+            <h2>Dados</h2>
 
             {/* Formularios */}
 
