@@ -10,10 +10,13 @@ export default function Router() {
   	return (
 		<Routes>
 			<Route exact path="/" element={<FuncionarioAluno/>}/>
-			<Route exact path="/:modalType/:id" element={<FuncionarioAluno/>}/>
-			<Route exact path="/:modalType" element={<FuncionarioAluno/>}/>
-			<Route exact path="/deletealuno" element={<DeleteAluno/>}/>
+				<Route exact path="/:modalType/:id" element={<FuncionarioAluno/>}/>
+				<Route exact path="/:modalType" element={<FuncionarioAluno/>}/>
+
 			<Route exact path="/disciplina" element={<FuncionarioDisciplina/>}/>
+				<Route exact path="/disciplina/:modalType/:id" element={<FuncionarioDisciplina/>}/>
+				<Route exact path="/diciplina/:modalType" element={<FuncionarioDisciplina/>}/>
+				
 		</Routes>
   	);
 }
