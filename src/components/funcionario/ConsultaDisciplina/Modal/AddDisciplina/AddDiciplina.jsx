@@ -14,7 +14,7 @@ export default function AddDiciplina(props) {
  
     const dados = {
        nome: event.target.nome.value,
-      //  tipo: event.target.tipo.value
+       tipo: event.target.tipo.value
     };
  
     API.post("disciplinas", dados);
