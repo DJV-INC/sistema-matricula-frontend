@@ -1,12 +1,12 @@
 
 import React from 'react'
-import './style.css'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import API from '../../../../../services/API'
 
+import './AddDiciplina.css'
 
-export default function AddAluno(props) {
+export default function AddDiciplina(props) {
   const navigate = useNavigate()
 
   function handleSubmit(event) {
@@ -35,10 +35,10 @@ export default function AddAluno(props) {
  }
 
   return (
-    <div className='modal-addaluno'>
+    <div className='modal-add-disciplina'>
       <Row>
         <Col
-          className="bg-light border, field-addaluno"
+          className="bg-light border, field-add-disciplina"
           md={{
             offset: 3,
             size: 6
@@ -229,9 +229,9 @@ export default function AddAluno(props) {
 
 
             <Row>
-              <div className='botoes-div-addaluno'>
+              <div className='botoes-div-add-disciplina'>
 
-                <Link to={"/"} className='Link-addAluno-cancel'>
+                <Link to={"/"} className='Link-add-disciplina-cancel'>
                   <button className="Cancel btn">
                     Cancelar
                   </button>

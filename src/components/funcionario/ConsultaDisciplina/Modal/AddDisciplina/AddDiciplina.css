@@ -1,4 +1,4 @@
-.field-addaluno {
+.field-add-disciplina {
     padding: 33px;
     padding-top: 30px;
 
@@ -38,7 +38,7 @@ label {
     border: 1px solid #CCCCCC;
 }
 
-.botoes-div-addaluno{
+.botoes-div-add-disciplina{
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -75,7 +75,7 @@ label {
     color: #000000;
 }
 
-.Link-addAluno-cancel{
+.Link-add-disciplina-cancel{
     width: 107%;
     justify-content: center;
     align-items: center;

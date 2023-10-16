@@ -7,7 +7,7 @@ export default function ConsultaAluno() {
   return (
       <div className="container-main">
         <div className='page-title'>
-          <h4>Diciplinas</h4>
+          <h4>Disciplinas</h4>
           <span>Registros</span>
         </div>
         <TableContainer/>

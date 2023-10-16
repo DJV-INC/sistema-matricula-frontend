@@ -1,11 +1,8 @@
 import React from "react";
 
 import "./style.css";
-import AddAluno from "./AddAluno";
-import InfoAluno from "./InfoAluno";
 import { useNavigate, useParams } from "react-router-dom";
-import EditAluno from "./EditAluno";
-import DeleteAluno from "./DeleteAluno";
+import AddDiciplina from "./AddDisciplina/AddDiciplina";
 
 export default function Modal() {
    const { modalType = null , id: cpf = null } = useParams()
@@ -20,7 +17,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <AddAluno func={closeModal}/>
+            <AddDiciplina func={closeModal}/>
          </div>
       );
    }
@@ -30,7 +27,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <EditAluno func={closeModal}/>
+            {/* <EditAluno func={closeModal}/> */}
          </div>
       );
    }
@@ -40,7 +37,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <InfoAluno func={closeModal}/>
+            {/* <InfoAluno func={closeModal}/> */}
          </div>
       );
    }
@@ -50,7 +47,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <DeleteAluno cpf={cpf} func={closeModal}/>
+            {/* <DeleteAluno cpf={cpf} func={closeModal}/> */}
          </div>
       );
    }
