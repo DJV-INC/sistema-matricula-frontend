@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import './style.css'
-import TableContainer from './TableConainer'
+import TableContainer from './TableContainer'
 
 export default function ConsultaAluno() {
   return (
