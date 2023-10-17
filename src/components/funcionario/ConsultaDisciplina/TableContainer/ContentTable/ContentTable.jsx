@@ -71,7 +71,7 @@ export default function ContentTable({ contentData }) {
                         <td>
                           <button className="options-btn" onClick={dropdownToggle}>
                             <span className="material-symbols-rounded">more_vert</span>
-                            <Dropdown id={item.id} />
+                            <Dropdown id={item.nome} />
                           </button>
                         </td>
                       </tr>
