@@ -4,6 +4,7 @@ import "./style.css";
 import { useNavigate, useParams } from "react-router-dom";
 import AddDiciplina from "./AddDisciplina/AddDiciplina";
 import DeleteDisciplina from "./DeleteDisciplina/DeleteDisciplina";
+import EditDisciplina from "./EditDisciplina/EditDisciplina";
 
 export default function Modal() {
    const { modalType = null , id = null } = useParams()
@@ -28,7 +29,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            {alert("foi")}
+            {<EditDisciplina/>}
          </div>
       );
    }

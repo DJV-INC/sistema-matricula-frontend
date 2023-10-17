@@ -49,6 +49,9 @@ async function patch(table, body) {
       body: JSON.stringify(body)
    })
 
+   console.log(`${baseURL}${table}` , body);
+
+
    return response
 }
 
