@@ -26,7 +26,7 @@ export default function EditDisciplina(props) {
     event.preventDefault();
  
     const dados = {
-       id: event.target.id.value,
+       id: id,
        nome: event.target.nome.value !== "" ? event.target.nome.value : data.dados.nome,
        tipo: event.target.tipo.value !== "" ? event.target.tipo.value : data.dados.tipo,
     };
@@ -45,8 +45,8 @@ export default function EditDisciplina(props) {
         alert(res.error)
       }
       setData(res)
-      setNome(res.dados.nomeCompleto)
-      setTipo(res.dados.cpf)
+      setNome(res.dados.nome)
+      setTipo(res.dados.tipo)
     }).catch((error) => console.error(error))
   }, []);
 
@@ -92,6 +92,8 @@ export default function EditDisciplina(props) {
               <Input
                 id="nome"
                 name="nome"
+                value={nome}
+                onChange={handleNome}
               />
               </FormGroup>
 
@@ -103,6 +105,8 @@ export default function EditDisciplina(props) {
                 id="tipo"
                 name="tipo"
                 type="tipo"
+                value={tipo}
+                onChange={handleTipo}
               />
               </FormGroup>
 

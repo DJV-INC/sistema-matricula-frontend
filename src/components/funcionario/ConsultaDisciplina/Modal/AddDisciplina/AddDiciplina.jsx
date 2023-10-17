@@ -59,6 +59,7 @@ export default function AddDiciplina(props) {
               </Label>
               <Input
                 id="nome"
+                
                 name="nome"
               />
             </FormGroup>
