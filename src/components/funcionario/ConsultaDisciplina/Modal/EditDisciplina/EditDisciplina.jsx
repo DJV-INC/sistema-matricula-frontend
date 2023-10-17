@@ -67,7 +67,7 @@ export default function EditDisciplina(props) {
           sm="12"
         >
 
-          <div className="title">Editar aluno
+          <div className="title">Editar Disciplina
                 <button className="close_ btn" onClick={props.func}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
@@ -77,16 +77,10 @@ export default function EditDisciplina(props) {
             {/* Titulo da pagina */}
 
             <hr />
-            <h2>Dados Pessoais</h2>
+            <h2>Dados da Disciplina</h2>
 
             {/* Formularios */}
 
-            <Input
-              id="id"
-              name="id"
-              value={data.dados.id}
-              style={{display : "nome"}}
-            />
 
               <FormGroup>
 
@@ -116,7 +110,7 @@ export default function EditDisciplina(props) {
             <Row>
               <div className='botoes-div-addaluno'>
 
-                  <Link to={"/"} className="Cancel">
+                  <Link to={"/disciplina"} className="Cancel">
                     Cancelar
                   </Link>
 

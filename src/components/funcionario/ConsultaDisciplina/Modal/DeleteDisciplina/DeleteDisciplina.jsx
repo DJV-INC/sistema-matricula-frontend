@@ -10,7 +10,7 @@ function DeleteDisciplina(props) {
 
     const handleSubmit = () => {
         API.del("disciplinas", props.id)
-        navigate(-1)
+        navigate("/disciplina")
     }
 
     return (
@@ -35,14 +35,14 @@ function DeleteDisciplina(props) {
 
                     <div className='btn-modal'>
 
-                        <Link to={"/"} className='link_cancel'>
+                        <Link to={"/disciplina"} className='link_cancel'>
                             <button className='cancel_ btn'>
                                 Cancelar
                             </button>
                         </Link>
-
+            
                         <button className='excluir_ btn'>
-                            Excluir {props.id}
+                            Excluir
                         </button>
 
                     </div>
