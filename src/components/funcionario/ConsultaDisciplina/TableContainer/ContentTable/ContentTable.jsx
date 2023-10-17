@@ -41,9 +41,11 @@ export default function ContentTable({ contentData }) {
         nodelistDropdowns[i].classList.remove("active")
       }
     }
-
-
   }
+
+  // function handleItem(e){
+
+  // }
 
   try {
 
@@ -64,14 +66,14 @@ export default function ContentTable({ contentData }) {
                 {
                   data.dados.map((item) => {
                     return (
-                      <tr>
+                      <tr >
                         <th scope="row">{item.id}</th>
                         <td>{item.nome}</td>
                         <td>{item.tipo}</td>
                         <td>
                           <button className="options-btn" onClick={dropdownToggle}>
                             <span className="material-symbols-rounded">more_vert</span>
-                            <Dropdown id={item.nome} />
+                            <Dropdown id={item.id} />
                           </button>
                         </td>
                       </tr>

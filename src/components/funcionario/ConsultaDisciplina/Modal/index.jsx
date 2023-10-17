@@ -3,9 +3,10 @@ import React from "react";
 import "./style.css";
 import { useNavigate, useParams } from "react-router-dom";
 import AddDiciplina from "./AddDisciplina/AddDiciplina";
+import DeleteDisciplina from "./DeleteDisciplina/DeleteDisciplina";
 
 export default function Modal() {
-   const { modalType = null , id: cpf = null } = useParams()
+   const { modalType = null , id = null } = useParams()
    const navigate = useNavigate()
 
    function closeModal() {
@@ -27,17 +28,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            {/* <EditAluno func={closeModal}/> */}
-         </div>
-      );
-   }
-
-   if (modalType === "consultar") {
-      return (
-         <div
-           className={"modal"}
-         >
-            {/* <InfoAluno func={closeModal}/> */}
+            {alert("foi")}
          </div>
       );
    }
@@ -47,7 +38,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            {/* <DeleteAluno cpf={cpf} func={closeModal}/> */}
+            <DeleteDisciplina id={id} func={closeModal}/>
          </div>
       );
    }
