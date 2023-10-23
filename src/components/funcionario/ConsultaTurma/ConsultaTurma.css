@@ -1,0 +1,22 @@
+.turma-table{
+   border: 1px solid rgba(0, 0, 0, 0.10);
+   border-radius: 4px;
+}
+
+.empty-table{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 300px;
+}
+
+.turma-table.content-table{
+   display: grid;
+   grid-template-areas: 
+      "title buttons"
+      "table table";
+}
+
+.turma-table.content-table .title{
+   grid-area: titile;
+}

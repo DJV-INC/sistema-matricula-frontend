@@ -60,3 +60,11 @@
    font-weight: bold;
    font-size: 0.9rem;
 }
+
+
+.content-tables{
+   display: grid;
+   grid-template-columns: 35% 1fr;
+   justify-content: space-between;
+   gap: 25px;
+}

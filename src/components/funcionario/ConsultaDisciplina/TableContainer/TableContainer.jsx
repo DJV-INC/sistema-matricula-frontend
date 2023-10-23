@@ -8,6 +8,7 @@ import API from "../../../../services/API";
 import FilterDropdown from "./FilterDropdown/FilterDropdown";
 
 import "./TableContainer.css";
+import ConsultaTurma from "../../ConsultaTurma/ConsultaTurma";
 
 export default function TableContainer() {
   const params = useParams()
@@ -16,6 +17,9 @@ export default function TableContainer() {
   const [pesquisa, setPesquisa] = useState(null)
   const [tipoPesquisa, setTipoPesquisa] = useState("")
   const [dropdownPesquisa, setDropdownPesquisa] = useState([])
+
+  const [dataTurma, setDataTurma] = useState(null)
+  const [id, setId] = useState(false)
 
   function handleFilter(e) {
     setPesquisa(e.target.value)
@@ -46,6 +50,14 @@ export default function TableContainer() {
     }
     
   }, [params, pesquisa, tipoPesquisa]);
+
+  useEffect(() => {
+    if (id) {
+      API.get("turmas", `id=${id}`).then(res => {
+        setDataTurma(res)
+      })
+    }
+  }, [id])
 
   return (
     <Fragment>
@@ -78,7 +90,11 @@ export default function TableContainer() {
 
       <Modal />
 
-      <ContentTable contentData={data} />
+      <div className="content-tables">
+        <ContentTable contentData={data} setId={setId} />
+        <ConsultaTurma data={dataTurma} />
+      </div>
+
 
     </Fragment>
   );

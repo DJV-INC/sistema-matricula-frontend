@@ -37,13 +37,6 @@ th{
    color: #CD6200;
 }
 
-.Tabelas{
-   display: grid;
-   grid-template-columns: 35% 1fr;
-   justify-content: space-between;
-   gap: 25px;
-}
-
 .TabDisciplina{
    width: 100%;
 }
@@ -53,4 +46,12 @@ th{
    width: auto;
    border: 1px solid #ccc;
    border-radius: 4px;
+}
+
+.item-disciplina-table :hover{
+   cursor: pointer;
+}
+
+.item-disciplina-table tr{
+   background-color: #1F9254 !important;
 }
