@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import HeaderNavbar from "../components/HeaderNavbar";
-import ConsultaDisciplina from "../components/funcionario/ConsultaDisciplina";
+import ConsultaDisciplina from "../components/funcionario/ConsultaDisciplina/ConsultaDisciplina";
 
 function FuncionarioDisciplina() {
     return (

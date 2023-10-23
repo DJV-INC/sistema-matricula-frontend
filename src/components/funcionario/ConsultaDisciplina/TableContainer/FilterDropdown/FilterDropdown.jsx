@@ -1,5 +1,5 @@
 import React from 'react'
-import "./style.css"
+import "./FilterDropdown.css"
 
 export default function FilterDropdown({setTipoPesquisa, tipoPesquisa}) {   
    const contentBtn = [

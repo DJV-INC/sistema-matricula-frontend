@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./style.css";
+import "./Modal.css";
 import { useNavigate, useParams } from "react-router-dom";
 import AddDiciplina from "./AddDisciplina/AddDiciplina";
 import DeleteDisciplina from "./DeleteDisciplina/DeleteDisciplina";

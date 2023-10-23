@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-import './style.css'
-import TableContainer from './TableContainer'
+import './ConsultaDisciplina.css'
+import TableContainer from './TableContainer/TableContainer'
 
-export default function ConsultaAluno() {
+export default function ConsultaDisciplina() {
   return (
       <div className="container-main">
         <div className='page-title'>
