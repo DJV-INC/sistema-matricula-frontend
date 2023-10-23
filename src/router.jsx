@@ -2,7 +2,6 @@ import {Route, Routes} from "react-router-dom"
 import React from "react";
 
 import FuncionarioAluno from "./pages/FuncionarioAluno";
-import DeleteAluno from "./components/funcionario/ConsultaAluno/Modal/DeleteAluno";
 import FuncionarioDisciplina from "./pages/FuncionarioDisciplina";
 
 

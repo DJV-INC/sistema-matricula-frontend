@@ -1,6 +1,6 @@
 
 import React from 'react'
-import './style.css'
+import './AddAluno.css'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import API from '../../../../../services/API'

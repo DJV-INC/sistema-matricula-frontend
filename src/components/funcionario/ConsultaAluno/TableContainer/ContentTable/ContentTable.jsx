@@ -1,10 +1,9 @@
 import React, { Fragment , useEffect, useState} from "react";
 import { Table } from "reactstrap";
-import { useParams } from "react-router-dom";
-import Dropdown from "./Dropdown";
+import Dropdown from "./Dropdown/Dropdown";
 import Status from "../../Status";
 
-import './style.css'
+import './ContentTable.css'
 
 export default function ContentTable({contentData}) {
   const [dropdown, setDropdown] = useState(false)

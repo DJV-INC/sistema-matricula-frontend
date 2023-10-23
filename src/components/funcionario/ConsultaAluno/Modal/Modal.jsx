@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./style.css";
-import AddAluno from "./AddAluno";
-import InfoAluno from "./InfoAluno";
+import "./Modal.css";
+import AddAluno from "./AddAluno/AddAluno";
+import InfoAluno from "./InfoAluno/InfoAluno";
 import { useNavigate, useParams } from "react-router-dom";
-import EditAluno from "./EditAluno";
-import DeleteAluno from "./DeleteAluno";
+import EditAluno from "./EditAluno/EditAluno";
+import DeleteAluno from "./DeleteAluno/DeleteAluno";
 
 export default function Modal() {
    const { modalType = null , id: cpf = null } = useParams()

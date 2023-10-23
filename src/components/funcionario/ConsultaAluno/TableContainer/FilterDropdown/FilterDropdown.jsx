@@ -1,8 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
-import "./style.css"
-import { Button } from 'reactstrap'
+import "./FilterDropdown.css"
 
 export default function FilterDropdown({setTipoPesquisa, tipoPesquisa}) {   
    const contentBtn = [

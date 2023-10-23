@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './style.css'
+import './InfoAluno.css'
 
 import { Table, Button } from 'reactstrap';
 import { useParams, } from 'react-router-dom';

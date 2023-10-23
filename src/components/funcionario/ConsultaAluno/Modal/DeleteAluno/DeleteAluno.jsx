@@ -1,4 +1,4 @@
-import './style.css'
+import './DeleteAluno.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { Form } from 'reactstrap';
 import API from '../../../../../services/API';

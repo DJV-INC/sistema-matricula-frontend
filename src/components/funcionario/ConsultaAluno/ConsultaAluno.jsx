@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-import './style.css'
-import TableContainer from './TableContainer'
+import './ConsultaAluno.css'
+import TableContainer from './TableContainer/TableContainer'
 
 export default function ConsultaAluno() {
   return (

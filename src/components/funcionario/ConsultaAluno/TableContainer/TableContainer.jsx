@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Button, Input } from "reactstrap";
 
-import "./style.css";
-import Modal from "../Modal";
+import "./TableContainer.css";
+import Modal from "../Modal/Modal";
 import { Link, useParams } from "react-router-dom";
-import ContentTable from "./ContentTable";
+import ContentTable from "./ContentTable/ContentTable";
 import API from "../../../../services/API";
-import FilterDropdown from "./FilterDropdown";
+import FilterDropdown from "./FilterDropdown/FilterDropdown";
 
 export default function TableContainer() {
   const params = useParams()
