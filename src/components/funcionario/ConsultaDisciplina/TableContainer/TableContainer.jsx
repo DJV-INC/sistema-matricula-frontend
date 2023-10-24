@@ -18,7 +18,7 @@ export default function TableContainer() {
   const [tipoPesquisa, setTipoPesquisa] = useState("")
   const [dropdownPesquisa, setDropdownPesquisa] = useState([])
 
-  const [dataTurma, setDataTurma] = useState(null)
+  const [nomeDisciplina, setNomeDisciplina] = useState(null)
   const [id, setId] = useState(false)
 
   function handleFilter(e) {
@@ -50,14 +50,6 @@ export default function TableContainer() {
     }
     
   }, [params, pesquisa, tipoPesquisa]);
-
-  useEffect(() => {
-    if (id) {
-      API.get("turmas", `id=${id}`).then(res => {
-        setDataTurma(res)
-      })
-    }
-  }, [id])
 
   return (
     <Fragment>
@@ -91,8 +83,8 @@ export default function TableContainer() {
       <Modal />
 
       <div className="content-tables">
-        <ContentTable contentData={data} setId={setId} />
-        <ConsultaTurma data={dataTurma} />
+        <ContentTable contentData={data} setId={setId} setNomeDisciplina={setNomeDisciplina}/>
+        <ConsultaTurma id={id} disciplina={nomeDisciplina} />
       </div>
 
 

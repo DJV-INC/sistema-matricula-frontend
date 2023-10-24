@@ -37,21 +37,15 @@ th{
    color: #CD6200;
 }
 
-.TabDisciplina{
-   width: 100%;
-}
 
-.TabProfessor{
-   padding: 20px;
-   width: auto;
-   border: 1px solid #ccc;
-   border-radius: 4px;
-}
 
-.item-disciplina-table :hover{
+.item-disciplina-table tr:hover{
    cursor: pointer;
+   --bs-table-accent-bg: #c4cbe9 !important;
+   --bs-table-striped-bg: #c4cbe9 !important;
 }
 
-.item-disciplina-table tr{
-   background-color: #1F9254 !important;
+.item-disciplina-table tr.active{
+   --bs-table-accent-bg: #DFE3F5;
+   --bs-table-striped-bg: #DFE3F5;
 }

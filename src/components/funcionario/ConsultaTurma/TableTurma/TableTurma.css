@@ -1,0 +1,10 @@
+.item-turma-table{
+   transform: 600ms;
+}
+
+.edit-link {
+   color: #1C1B1F;
+}
+.edit-link:hover{
+   color: #5f5e63;
+}

@@ -4,7 +4,7 @@ import Dropdown from "./Dropdown/Dropdown";
 
 import './ContentTable.css'
 
-export default function ContentTable({ contentData, setId }) {
+export default function ContentTable({ contentData, setId, setNomeDisciplina }) {
 
   const [data, setData] = useState({ dados: [] })
 
@@ -12,8 +12,18 @@ export default function ContentTable({ contentData, setId }) {
     setData(contentData)
   }, [contentData]);
 
-  function handleRowTable(id) {
+  function handleRowTable(id, nome, event) {
+    const container = event.currentTarget.parentNode
+    const trList = container.getElementsByTagName("tr")
+
+    for (let index = 0; index < trList.length; index++) {
+      trList[index].classList.remove("active")
+    }
+
     setId(id)
+    setNomeDisciplina(nome)
+
+    event.currentTarget.classList.add("active")
   }
 
   try {
@@ -33,7 +43,7 @@ export default function ContentTable({ contentData, setId }) {
                 {
                   data.dados.map((item) => {
                     return (
-                      <tr onClick={() => {handleRowTable(item.id)}}>
+                      <tr onClick={(e) => {handleRowTable(item.id, item.nome , e)}}>
                         <td>{item.nome}</td>
                         <td>{item.tipo}</td>
                       </tr>

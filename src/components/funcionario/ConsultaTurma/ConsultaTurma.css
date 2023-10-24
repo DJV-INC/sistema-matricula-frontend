@@ -13,10 +13,71 @@
 .turma-table.content-table{
    display: grid;
    grid-template-areas: 
-      "title buttons"
-      "table table";
+      "title title buttons"
+      "table table table";
+   padding: 1rem 2rem;
+   gap: 1rem;
 }
 
 .turma-table.content-table .title{
-   grid-area: titile;
+   grid-area: title;
+}
+
+.turma-table.content-table .buttons{
+   grid-area: buttons;
+
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+
+   gap: 0.5rem;
+}
+
+.turma-table.content-table .buttons a{
+   text-decoration: none;
+}
+
+.turma-table.content-table .buttons .edit-btn{
+   background-color: #fff;
+   border: 1px solid #1C1B1F;
+   border-radius: 4px;
+
+   font-weight: 600;
+   font-size: 0.8rem;
+
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+
+   padding: 0.5rem 1rem;
+}
+
+.turma-table.content-table .buttons .edit-btn:hover{
+   background-color: #eee;
+}
+
+
+.turma-table.content-table .buttons .add-btn{
+   background-color: #1C1B1F;
+   color: #fff;
+   border: 0;
+   border-radius: 4px;
+
+   font-weight: 600;
+   font-size: 0.8rem;
+
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+
+   padding: 0.5rem 1rem;
+}
+
+.turma-table.content-table .buttons a .add-btn:hover{
+   background-color: #2c2b2e;
+}
+
+
+.turma-table.content-table .table{
+   grid-area: table;
 }
