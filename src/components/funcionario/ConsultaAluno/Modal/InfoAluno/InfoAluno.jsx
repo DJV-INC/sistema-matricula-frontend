@@ -52,11 +52,11 @@ function InfoAluno(props) {
                 </div>
                 <div className="info_item">
                     <p className="title_item">Data de Nascimento</p>
-                    <p className="subtitle_item">00/00/0000</p>
+                    <p className="subtitle_item">{data.dataNasc}</p>
                 </div>
                 <div className="info_item">
                     <p className="title_item">Telefone</p>
-                    <p className="subtitle_item">982942491</p>
+                    <p className="subtitle_item">{data.telefone}</p>
                 </div>
             </div>
 
