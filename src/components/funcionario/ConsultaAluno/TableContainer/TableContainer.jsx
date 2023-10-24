@@ -11,7 +11,7 @@ import FilterDropdown from "./FilterDropdown/FilterDropdown";
 export default function TableContainer() {
   const params = useParams()
 
-  const [data, setData] = useState({dados: []})
+  const [data, setData] = useState({ dados: [] })
   const [pesquisa, setPesquisa] = useState(null)
   const [tipoPesquisa, setTipoPesquisa] = useState("")
   const [dropdownPesquisa, setDropdownPesquisa] = useState([])
@@ -35,14 +35,19 @@ export default function TableContainer() {
   useEffect(() => {
     if (tipoPesquisa === "rg") {
       API.get("alunos", `rg=${pesquisa}`).then((res) => {
-        setData({dados: [res.dados]})
+        setData({ dados: [res.dados] })
       })
-    } 
+    }
     if (tipoPesquisa === "cpf") {
       API.get("alunos", `cpf=${pesquisa}`).then((res) => {
+        setData({ dados: [res.dados] })
+      })
+    }
+    if (tipoPesquisa === "status") {
+      API.get("alunos", `status=${pesquisa}`).then((res) => {
         setData({dados: [res.dados]})
       })
-    } 
+    }
     if (!tipoPesquisa || tipoPesquisa === "") {
       API.get("alunos").then((res) => {
         setData(res)
@@ -55,12 +60,19 @@ export default function TableContainer() {
 
       <header className="header-table">
         <div className="right-header">
-          <Input className="pesquisa-input" placeholder="Pesquisar" onChange={handleFilter}/>
-          <Button className="table-btn filtro-btn" id="btn-handle-filter" onClick={dropdownToggle}>
-            <span>Filtro</span>
-            <span class="material-symbols-rounded">tune</span>
-          </Button>
-          <FilterDropdown setTipoPesquisa={setTipoPesquisa} tipoPesquisa={tipoPesquisa} />
+          <div className="searchbar">
+            <span class="material-symbols-rounded">
+              search
+            </span>
+            <input type="text" className="search" placeholder="Pesquisar por" onChange={handleFilter} />
+          </div>
+
+          <select value={tipoPesquisa} onChange={(e) => setTipoPesquisa(e.target.value)}name="filter" id="filter">
+          <option value="" selected>Sem filtro</option>
+            <option value="status">Status</option>
+            <option value="cpf">CPF</option>
+            <option value="rg">RG</option>
+          </select>
         </div>
 
         <div className="left-header">
@@ -75,13 +87,13 @@ export default function TableContainer() {
             <span class="material-symbols-rounded">add</span>
             <span>Adicionar aluno</span>
           </Link>
-          
+
         </div>
       </header>
 
-      <Modal/>
+      <Modal />
 
-      <ContentTable contentData={data}/>
+      <ContentTable contentData={data} />
 
     </Fragment>
   );

@@ -12,10 +12,28 @@
    gap: 0.5rem;
 }
 
-.header-table .pesquisa-input{
-   height: 40px;
-   width: 260px;
+/* Searchbar */
+.searchbar{
+   display: flex;
+   align-items: center;
+   width: min-content;
+   border: 1px solid #9E9E9E;
+   border-radius: 4px;
+   padding: 0 10 0 10;
+   gap: 5px;
 }
+
+.searchbar span{
+   color: #9E9E9E;
+}
+
+.searchbar .search{
+   outline: none;
+   border: none;
+   height: 40px;
+}
+
+
 
 .header-table .table-btn{
    background-color: white;
@@ -65,3 +83,4 @@
    display: flex;
    justify-content: space-between;
 }
+
