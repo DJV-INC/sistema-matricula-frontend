@@ -3,6 +3,7 @@ import React from "react";
 
 import FuncionarioAluno from "./pages/FuncionarioAluno";
 import FuncionarioDisciplina from "./pages/FuncionarioDisciplina";
+import AddTurma from "./components/funcionario/ConsultaTurma/Modal/AddTurma/AddTurma";
 
 
 export default function Router() {
@@ -16,6 +17,7 @@ export default function Router() {
 				<Route exact path="/disciplina/:modalType/:id" element={<FuncionarioDisciplina/>}/>
 				<Route exact path="/disciplina/:modalType" element={<FuncionarioDisciplina/>}/>
 				
+			<Route exact path="/turma" element={<AddTurma/>}/>
 		</Routes>
   	);
 }
