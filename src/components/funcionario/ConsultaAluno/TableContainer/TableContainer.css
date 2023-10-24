@@ -84,3 +84,26 @@
    justify-content: space-between;
 }
 
+#filter {
+   padding: 8px 8px;
+   padding-right: 25px;
+   border-radius: 4px;
+   background-color: rgb(255, 255, 255);
+   background-image: url(../../../../tune.svg);
+   background-repeat: no-repeat;
+   background-position: 98% 50%;
+   width: 130px;
+   outline: none;
+}
+
+#filter, #filter > option{
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   border: 1px solid #9E9E9E;
+}
+
+#filter > option {
+
+}
+
