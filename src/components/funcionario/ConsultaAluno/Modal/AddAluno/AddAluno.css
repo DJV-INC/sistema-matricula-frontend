@@ -67,7 +67,9 @@ label {
     border-radius: 0.25rem;
     padding: 0.490rem 0.10rem;
     transition-duration: 0.4s;
+
 }
+
 
 .Cancel:hover{
     background-color: #ffffff;
@@ -76,8 +78,8 @@ label {
 }
 
 .Link-addAluno-cancel{
-    width: 107%;
+    width: 100%;
     justify-content: center;
     align-items: center;
-    
+    text-decoration: none;
 }

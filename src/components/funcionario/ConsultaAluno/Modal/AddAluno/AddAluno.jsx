@@ -2,7 +2,9 @@
 import React from 'react'
 import './AddAluno.css'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import Form1 from 'react-bootstrap/Form'
 import { Link, useNavigate } from 'react-router-dom'
+import { IMaskInput } from 'react-imask'
 import API from '../../../../../services/API'
 
 
@@ -70,6 +72,7 @@ export default function AddAluno(props) {
               <Input
                 id="NomeCompleto"
                 name="Nome"
+                placeholder="Digite o nome completo"
               />
             </FormGroup>
 
@@ -81,9 +84,12 @@ export default function AddAluno(props) {
                   <Label for="RG">
                     RG
                   </Label>
-                  <Input
-                    id="RG"
-                    name="RG"
+                  <Form1.Control
+                  id="RG"
+                  name="RG"
+                  as={IMaskInput}
+                  mask="00.000.000-0"
+                  placeholder="12.345.678-9"
                   />
                 </FormGroup>
               </Col>
@@ -92,9 +98,12 @@ export default function AddAluno(props) {
                   <Label for="CPF">
                     CPF
                   </Label>
-                  <Input
-                    id="CPF"
-                    name="CPF"
+                  <Form1.Control
+                  id="CPF"
+                  name="CPF"
+                  as={IMaskInput}
+                  mask="000.000.000-00"
+                  placeholder="123.456.789.12"
                   />
                 </FormGroup>
               </Col>
@@ -110,6 +119,7 @@ export default function AddAluno(props) {
                 id="Email"
                 name="Email"
                 type="Email"
+                placeholder="exemplo@gmail.com"
               />
             </FormGroup>
 
@@ -133,9 +143,12 @@ export default function AddAluno(props) {
                   <Label for="Tell">
                     Telefone
                   </Label>
-                  <Input
-                    id="Tell"
-                    name="Tell"
+                  <Form1.Control
+                  id="Tell"
+                  name="Tell"
+                  as={IMaskInput}
+                  mask="(00) 00000-0000"
+                  placeholder="(11) 12345-1234"
                   />
                 </FormGroup>
               </Col>
@@ -146,17 +159,18 @@ export default function AddAluno(props) {
             <br />
             <h2>Endereço</h2>
 
-
-
             <Row>
               <Col md={4}>
                 <FormGroup>
                   <Label for="CEP">
                     CEP
                   </Label>
-                  <Input
+                  <Form1.Control
                     id="CEP"
                     name="CEP"
+                    as={IMaskInput}
+                    mask="00000-000"
+                    placeholder="00000-000"
                   />
                 </FormGroup>
               </Col>
