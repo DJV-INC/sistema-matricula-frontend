@@ -1,5 +1,5 @@
 .header-navbar{
-   background-color: #303030;
+   background-color: #242424;
    width: 100%;
    height: 60px;
 
@@ -30,12 +30,15 @@
    text-decoration: none;
 
    color: white;
+   font-size: 15px;
 }
 
 .header-navbar .navlinks-container .navlink:hover{
    border-bottom: 5px #c3c3c3 solid;
+   transition: 0.1s;
 }  
 
 .header-navbar .navlinks-container .navlink.active{
-   border-bottom: 5px red solid;
+   border-bottom: 4px #ad1212 solid;
+   transition: 0.1s;
 }
