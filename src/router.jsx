@@ -4,8 +4,6 @@ import React from "react";
 import FuncionarioAluno from "./pages/FuncionarioAluno";
 import FuncionarioDisciplina from "./pages/FuncionarioDisciplina";
 import FuncionarioProfessor from "./pages/FuncionarioProfessor";
-import AddTurma from "./components/funcionario/ConsultaTurma/Modal/AddTurma/AddTurma";
-
 
 export default function Router() {
   	return (
@@ -16,12 +14,10 @@ export default function Router() {
 
 			<Route exact path="/disciplina" element={<FuncionarioDisciplina/>}/>
 				<Route exact path="/disciplina/:modalType/:id" element={<FuncionarioDisciplina/>}/>
-				<Route exact path="/disciplina/:modalType" element={<FuncionarioDisciplina/>}/>
-				
-			<Route exact path="/turma" element={<AddTurma/>}/>
-	
+				<Route exact path="/disciplina/:modalType" element={<FuncionarioDisciplina/>}/>	
+					<Route exact path="/disciplina/turma/:modalType/:id" element={<FuncionarioDisciplina/>}/>
+					<Route exact path="/disciplina/turma/:modalType" element={<FuncionarioDisciplina/>}/>
 			<Route exact path="/professor" element={<FuncionarioProfessor/>}/>
-		
 		</Routes>
   	);
 }

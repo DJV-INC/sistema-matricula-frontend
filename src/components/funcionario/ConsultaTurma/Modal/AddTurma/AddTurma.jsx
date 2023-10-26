@@ -1,143 +1,166 @@
-import React from "react";
-import "./AddTurma.css"
+import React, { useState } from "react";
+import "./AddTurma.css";
 import { Col, Label, Row, Form, FormGroup, Input, Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function AddTurma() {
+export default function AddTurma({ func }) {
+  	const [professor, setProfessor] = useState("");
+	const [diaSemana, setDiaSemana] = useState("");
+	const [horario, setHorario] = useState("");
+	const [vagas, setVagas] = useState("");
 
-    return (
-        <div className="modal">
-            <div className="modal-addTurma">
-                <Row>
-                    <Col className="field-addTurma">
-                        <div className="title">Adicionar Turma
-                            <button className="close_ btn">
-                                <span class="material-symbols-rounded">close</span>
-                            </button>
-                        </div>
+	const [addForm, setAddForm] = useState([]);
 
-                        <Row>
-                            <Form method='POST'>
+  	const arrForms = [
+		<TurmaForm />, 
+		<TurmaForm />
+	];
 
-                                {/* Titulo da pagina */}
+  	const navigate = useNavigate();
 
-                                <hr />
-                                <h2>Harmonia 1</h2>
+	function handleSubmit(event) {
+		event.preventDefault();
 
-                                {/* Formularios */}
+		arrForms.map(item => {
+			addForm.push(item.setAddForm())
+		})
 
-                                <FormGroup>
+		console.log(addForm);
 
-                                    <tr>
-                                        <th>Professor</th>
-                                        <th>Dia</th>
-                                        <th>Horário</th>
-                                        <th>Vagas</th>
-                                    </tr>
+		const dados = {
+			professor: event.target["professor-select"].value,
+			diaSemana: event.target["dia-select"].value,
+			horario: event.target["horario"].value,
+			vagas: event.target["vagas"].value,
+		};
 
-                                    <tr>
+		
 
-                                        {/* Professor */}
+		console.log(dados);
 
-                                        <td>
-                                            <Input
-                                                className="select"
-                                                id="professor-select"
-                                                name="professor-select"
-                                                type="select"
-                                            >
-                                                <option>
-                                                    Selecione
-                                                </option>
-                                                <option>
-                                                    Aida Machado
-                                                </option>
-                                                <option>
-                                                    Wilson Rezende
-                                                </option>
-                                                <option>
-                                                    Dante
-                                                </option>
-                                                <option>
-                                                    Mauro Domenech
-                                                </option>
-                                            </Input>
-                                        </td>
+		alert("Turma cadastrada");
 
-                                        {/* Dia */}
+		navigate(-1);
+	}
 
-                                        <td>
-                                            <Input
-                                                className="select"
-                                                id="dia-select"
-                                                name="dia-select"
-                                                type="select"
-                                            >
-                                                <option>
-                                                    Selecione
-                                                </option>
-                                                <option>
-                                                    Semana
-                                                </option>
-                                                <option>
-                                                    Final de Semana
-                                                </option>
-                                                <option>
-                                                    Feriados
-                                                </option>
-                                            </Input>
-                                        </td>
+	return (
+		<div className="modal-addTurma">
+			<Row>
+			<Col className="field-addTurma">
+				<div className="title">
+					Adicionar Turma
+					<button className="close_ btn" onClick={func}>
+					<span class="material-symbols-rounded">close</span>
+					</button>
+				</div>
 
-                                        {/* Horario */}
+				<Row>
+					<Form method="POST" onSubmit={handleSubmit}>
+					{/* Titulo da pagina */}
 
+					<hr />
+					<h2>Harmonia 1</h2>
 
-                                        <td>
-                                            <Input
-                                                id="horario"
-                                                name="horario"
-                                                type="time"
-                                            >
-                                            </Input>
-                                        </td>
+					{/* Formularios */}
 
-                                        {/* Vagas */}
+					<FormGroup>
+						<tr>
+							<th>Professor</th>
+							<th>Dia</th>
+							<th>Horário</th>
+							<th>Vagas</th>
+						</tr>
 
-                                        <td>
-                                            <Input
-                                                id="vagas"
-                                                name="horario"
-                                                type="number"
-                                            >
-                                            </Input>
-                                        </td>
-                                    </tr>
-                                </FormGroup>
-                            </Form>
-                        </Row>
+						{arrForms.map((item) => {
+							return item;
+						})}
+					</FormGroup>
 
-                        <Row >
+					<Row>
+						<div className="AddTurma-buttons">
+							<Button className="addTurma">
+							<span class="material-symbols-rounded">add</span>Adicionar
+							</Button>
 
-                            <div className="AddTurma-buttons">
+							<div className="Link-addTurma-Salvar">
+							<button className="Confirm">Salvar</button>
+							</div>
+						</div>
+					</Row>
+					</Form>
+				</Row>
+			</Col>
+			</Row>
+		</div>
+	);
+}
 
-                                <Button className='addTurma'>
-                                    <span class="material-symbols-rounded">add</span>Adicionar
-                                </Button>
+function TurmaForm({addForm}) {
 
-                                <Link to={"/disciplina"} className='Link-addTurma-Salvar'>
-                                    <button className="Confirm">
-                                        Salvar
-                                    </button>
-                                </Link>
+	const [professor, setProfessor] = useState("");
+  	const [diaSemana, setDiaSemana] = useState("");
+  	const [horario, setHorario] = useState("");
+  	const [vagas, setVagas] = useState("");
 
-                            </div>
+	const arr = {
+		professor,
+		diaSemana,
+		horario,
+		vagas
+	}
 
 
-                        </Row>
+	console.log(arr);
 
-                    </Col>
-                </Row>
-            </div>
-        </div>
+	return (
+		<tr>
+			{/* Professor */}
 
-    );
+			<td>
+			<Input
+				className="select"
+				id="professor-select"
+				name="professor-select"
+				type="select"
+
+				onChange={(e) => setProfessor(e.target.value)}
+			>
+				<option>Selecione</option>
+				<option>Aida Machado</option>
+				<option>Wilson Rezende</option>
+				<option>Dante</option>
+				<option>Mauro Domenech</option>
+			</Input>
+			</td>
+
+			{/* Dia */}
+
+			<td>
+			<Input
+				className="select"
+				id="dia-select"
+				name="dia-select"
+				type="select"
+				onChange={(e) => setDiaSemana(e.target.value)}
+			>
+				<option>Selecione</option>
+				<option>Semana</option>
+				<option>Final de Semana</option>
+				<option>Feriados</option>
+			</Input>
+			</td>
+
+			{/* Horario */}
+
+			<td>
+			<Input id="horario" name="horario" type="time" onChange={(e) => setHorario(e.target.value)}></Input>
+			</td>
+
+			{/* Vagas */}
+
+			<td>
+			<Input id="vagas" name="vagas" type="number" onChange={(e) => setVagas(e.target.value)}></Input>
+			</td>
+		</tr>
+	);
 }

@@ -3,6 +3,8 @@ import './ConsultaTurma.css'
 import TableTurma from './TableTurma/TableTurma'
 import API from '../../../services/API'
 import { Link } from 'react-router-dom'
+import Modal from './Modal/ModalTurma'
+import ModalTurma from './Modal/ModalTurma'
 
 
 export default function ConsultaTurma({id = null, disciplina = null}) {
@@ -46,7 +48,7 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
                      <span>Excluir Turmas</span>
                   </button>
                </Link>
-               <Link to={""}>
+               <Link to={"turma/adicionarTurma"}>
                   <button className='add-btn'>
                      <span className="material-symbols-rounded">add</span>
                      <span>Adicionar Turmas</span>
@@ -57,6 +59,9 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
             <div className='table'>
                {placeholderData()}
             </div>
+
+            <ModalTurma/>
+
          </div>
       )
 
