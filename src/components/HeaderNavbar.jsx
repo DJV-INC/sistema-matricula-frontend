@@ -22,7 +22,7 @@ export default function HeaderNavbar() {
          <div className="navlinks-container">
             <NavLink to={"/"} className={"navlink"}>Alunos</NavLink>
             <NavLink to={"/disciplina"} className={"navlink"}>Disciplinas</NavLink>
-            <NavLink to={"/Professor"} className={"navlink"}>Professores</NavLink>
+            <NavLink to={"/professor"} className={"navlink"}>Professores</NavLink>
          </div>
       </nav>
     </header>
