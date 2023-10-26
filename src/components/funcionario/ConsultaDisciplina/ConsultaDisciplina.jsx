@@ -7,7 +7,7 @@ export default function ConsultaDisciplina() {
   return (
       <div className="container-main">
         <div className='page-title'>
-          <h4>Disciplinas</h4>
+          <h1>Disciplinas</h1>
           <span>Registros</span>
         </div>
         <TableContainer/>
