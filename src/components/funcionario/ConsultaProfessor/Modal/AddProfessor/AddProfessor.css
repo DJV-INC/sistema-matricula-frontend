@@ -1,0 +1,83 @@
+.field-add-disciplina {
+    padding: 33px;
+    padding-top: 30px;
+
+    margin: 2rem 0;
+
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+
+    width: 480px;
+    
+    z-index: 10000;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+hr {
+    color: #CCCCCC, 20%;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 600;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.form-control{
+    height: 40px;
+    border: 1px solid #CCCCCC;
+}
+
+.botoes-div-add-disciplina{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    gap: 18px;
+    height: 40px;
+}
+
+.Confirm {
+    width: 100%;
+    background-color: #0B9529;
+    color: #fff;
+    border: 0;
+}
+
+.Confirm:hover{
+    background-color: #ffffff;
+    border: 1px solid #0B9529;
+    color: #0B9529;
+}
+
+.Cancel {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 0.490rem 0.10rem;
+    transition-duration: 0.4s;
+}
+
+.Cancel:hover{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: #000000;
+}
+
+.Link-add-disciplina-cancel{
+    width: 107%;
+    justify-content: center;
+    align-items: center;
+    
+}
