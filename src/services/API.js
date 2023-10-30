@@ -28,8 +28,8 @@ async function get(table, params = false) {
    return obj
 }
 
-async function post(table, body) {
-   const response = await fetch(`${baseURL}${table}`, {
+async function post(table, body, params = false) {
+   const response = await fetch(`${baseURL}${table}` + (params ? `?${params}` : ""), {
       method: "POST",
       headers: {
          "Content-Type": "application/json"

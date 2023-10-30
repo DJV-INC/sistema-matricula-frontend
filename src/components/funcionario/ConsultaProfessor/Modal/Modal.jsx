@@ -3,8 +3,8 @@ import React from "react";
 import "./Modal.css";
 import { useNavigate, useParams } from "react-router-dom";
 import AddProfessor from "./AddProfessor/AddProfessor";
-import DeleteProfessor from "./DeleteProfessor/DeleteProfessor";
-import EditProfessor from "./EditProfessor/EditProfessor";
+// import DeleteProfessor from "./DeleteProfessor/DeleteProfessor";
+// import EditProfessor from "./EditProfessor/EditProfessor";
 
 export default function Modal() {
    const { modalType = null , id = null } = useParams()
@@ -29,7 +29,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            {<EditProfessor/>}
+            {/* {<EditProfessor/>} */}
          </div>
       );
    }
@@ -39,7 +39,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <DeleteProfessor id={id} func={closeModal}/>
+            {/* <DeleteProfessor id={id} func={closeModal}/> */}
          </div>
       );
    }

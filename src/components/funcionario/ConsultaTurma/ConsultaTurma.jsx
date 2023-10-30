@@ -3,7 +3,6 @@ import './ConsultaTurma.css'
 import TableTurma from './TableTurma/TableTurma'
 import API from '../../../services/API'
 import { Link } from 'react-router-dom'
-import Modal from './Modal/ModalTurma'
 import ModalTurma from './Modal/ModalTurma'
 
 
@@ -31,7 +30,11 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
                )
             } else {
                return (
-                  <TableTurma data={data.dados}/>
+                  <Fragment>
+                     <TableTurma data={data.dados}/>
+                     <ModalTurma turma={data.dados}/>
+                  </Fragment>
+                  
                )
             }
          }
@@ -48,7 +51,7 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
                      <span>Excluir Turmas</span>
                   </button>
                </Link>
-               <Link to={"turma/adicionarTurma"}>
+               <Link to={"turma/adicionarTurma/" + id}>
                   <button className='add-btn'>
                      <span className="material-symbols-rounded">add</span>
                      <span>Adicionar Turmas</span>
@@ -59,9 +62,6 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
             <div className='table'>
                {placeholderData()}
             </div>
-
-            <ModalTurma/>
-
          </div>
       )
 

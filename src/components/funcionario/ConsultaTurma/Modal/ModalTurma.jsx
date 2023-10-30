@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import AddTurma from "./AddTurma/AddTurma";
 
 export default function ModalTurma() {
-   const { modalType = null , id = null } = useParams()
+   const { modalType = null , idDisciplina = null } = useParams()
 
    const navigate = useNavigate()
 
@@ -18,7 +18,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            <AddTurma func={closeModal}/>
+            <AddTurma func={closeModal} idDisciplina={idDisciplina}/>
          </div>
       );
    }
