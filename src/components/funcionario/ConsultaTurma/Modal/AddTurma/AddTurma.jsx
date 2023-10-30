@@ -1,47 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddTurma.css";
 import { Col, Label, Row, Form, FormGroup, Input, Button } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
+import API from "../../../../../services/API";
 
-export default function AddTurma({ func }) {
+export default function AddTurma({ func, idDisciplina }) {
+	const navigate = useNavigate();
+
+	const [listaTurmas, setlistaTurmas] = useState([]);
+  	
   	const [professor, setProfessor] = useState("");
 	const [diaSemana, setDiaSemana] = useState("");
-	const [horario, setHorario] = useState("");
-	const [vagas, setVagas] = useState("");
 
-	const [addForm, setAddForm] = useState([]);
+	useEffect(() => {
+		API.get("turmas" , `id=${idDisciplina}`).then(res => {
+			for (let i = 0; i < res.dados.length; i++) {
+				console.log(res.dados[i].disciplina.id);
+				if (res.dados[i].disciplina.id === parseInt(idDisciplina)) {
+					setDiaSemana(res.dados[i].diaSemana)
+					setProfessor(res.dados[i].professor)
+				}
+			}
+		})
+	}, [navigate, idDisciplina]);
 
-  	const arrForms = [
-		<TurmaForm />, 
-		<TurmaForm />
-	];
 
-  	const navigate = useNavigate();
+	function handleAdd() {
+		console.log(listaTurmas);
+		setlistaTurmas(
+			[...listaTurmas, 
+				<TurmaForm professorData={professor} diaSemanaData={diaSemana} itemList={listaTurmas.length + 1}/>]
+				)
+	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		arrForms.map(item => {
-			addForm.push(item.setAddForm())
+		const arrPost = []
+
+		listaTurmas.map((item, i) => {
+			i++
+			arrPost.push(
+				{
+					professor: event.target[`professor-select-${i}`].value,
+					diaSemana: event.target[`dia-select-${i}`].value,
+					horario: event.target[`horario-${i}`].value,
+					vagas: event.target[`vagas-${i}`].value,
+				}
+			)
 		})
 
-		console.log(addForm);
+		console.log(arrPost);
 
-		const dados = {
-			professor: event.target["professor-select"].value,
-			diaSemana: event.target["dia-select"].value,
-			horario: event.target["horario"].value,
-			vagas: event.target["vagas"].value,
-		};
+		arrPost.map(item => {
+			API.post("turmas", {
+				horario: item.horario,
+				numeroVagas: item.vagas,
+				diaSemana: item.diaSemana,
+			} ,`professor_id=${item.professor}&disciplina_id=${idDisciplina}`)
+		})
 
-		
-
-		console.log(dados);
-
-		alert("Turma cadastrada");
+		alert("Turma(s) cadastrada");
 
 		navigate(-1);
 	}
+
 
 	return (
 		<div className="modal-addTurma">
@@ -55,11 +78,10 @@ export default function AddTurma({ func }) {
 				</div>
 
 				<Row>
-					<Form method="POST" onSubmit={handleSubmit}>
-					{/* Titulo da pagina */}
-
 					<hr />
 					<h2>Harmonia 1</h2>
+					<Form method="POST" onSubmit={handleSubmit}>
+					{/* Titulo da pagina */}
 
 					{/* Formularios */}
 
@@ -71,14 +93,15 @@ export default function AddTurma({ func }) {
 							<th>Vagas</th>
 						</tr>
 
-						{arrForms.map((item) => {
+						{listaTurmas.map((item) => {
 							return item;
 						})}
+
 					</FormGroup>
 
 					<Row>
 						<div className="AddTurma-buttons">
-							<Button className="addTurma">
+							<Button className="addTurma" onClick={handleAdd}>
 							<span class="material-symbols-rounded">add</span>Adicionar
 							</Button>
 
@@ -95,22 +118,8 @@ export default function AddTurma({ func }) {
 	);
 }
 
-function TurmaForm({addForm}) {
-
-	const [professor, setProfessor] = useState("");
-  	const [diaSemana, setDiaSemana] = useState("");
-  	const [horario, setHorario] = useState("");
-  	const [vagas, setVagas] = useState("");
-
-	const arr = {
-		professor,
-		diaSemana,
-		horario,
-		vagas
-	}
-
-
-	console.log(arr);
+function TurmaForm({professorData, diaSemanaData, itemList}) {
+	console.log(itemList);
 
 	return (
 		<tr>
@@ -120,16 +129,11 @@ function TurmaForm({addForm}) {
 			<Input
 				className="select"
 				id="professor-select"
-				name="professor-select"
+				name={`professor-select-${itemList}`}
 				type="select"
-
-				onChange={(e) => setProfessor(e.target.value)}
 			>
 				<option>Selecione</option>
-				<option>Aida Machado</option>
-				<option>Wilson Rezende</option>
-				<option>Dante</option>
-				<option>Mauro Domenech</option>
+				<option value={professorData.id}>{professorData.nomeCompleto}</option>
 			</Input>
 			</td>
 
@@ -139,27 +143,24 @@ function TurmaForm({addForm}) {
 			<Input
 				className="select"
 				id="dia-select"
-				name="dia-select"
+				name={`dia-select-${itemList}`}
 				type="select"
-				onChange={(e) => setDiaSemana(e.target.value)}
 			>
 				<option>Selecione</option>
-				<option>Semana</option>
-				<option>Final de Semana</option>
-				<option>Feriados</option>
+				<option>{diaSemanaData}</option>
 			</Input>
 			</td>
 
 			{/* Horario */}
 
 			<td>
-			<Input id="horario" name="horario" type="time" onChange={(e) => setHorario(e.target.value)}></Input>
+				<Input id="horario" name={`horario-${itemList}`} type="time" ></Input>
 			</td>
 
 			{/* Vagas */}
 
 			<td>
-			<Input id="vagas" name="vagas" type="number" onChange={(e) => setVagas(e.target.value)}></Input>
+				<Input id="vagas" name={`vagas-${itemList}`} type="number" ></Input>
 			</td>
 		</tr>
 	);
