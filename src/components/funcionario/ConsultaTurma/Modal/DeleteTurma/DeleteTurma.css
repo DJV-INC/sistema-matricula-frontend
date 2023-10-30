@@ -1,0 +1,100 @@
+.modal-DeleteTurma {
+    position: absolute;
+
+    padding: 33px;
+    padding-top: 30px;
+    height: auto;
+    
+    margin: 2rem 0;
+
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    
+    z-index: 10000;
+    
+    
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+hr {
+    color: #CCCCCC, 20%;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 600;
+}
+
+td{
+    min-width: 200px;
+    padding: 5px;
+}
+
+.Seleciona-Tudo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteTurma-buttons{
+    
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 18px;
+    height: 40px;
+}
+
+.Excluir {
+    width: 100%;
+    background-color: #901617;
+    color: #fff;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 0.490rem 0.10rem;
+    transition-duration: 0.4s;
+}
+
+.Excluir:hover{
+    background-color: #ffffff;
+    border: 1px solid #901617;
+    color: #901617;
+}
+
+.Link-deleteTurma-Salvar{
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.deleteTurma {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000;
+    border-radius: 0.25rem;
+    padding: 0.490rem 0.10rem;
+    transition-duration: 0.4s;
+}
+
+.deleteTurma:hover{
+    background-color: #000000;
+    border: 0px solid #000000;
+    color: #ffffff;
+}
+
+
+
