@@ -5,6 +5,7 @@ import FuncionarioAluno from "./pages/FuncionarioAluno";
 import FuncionarioDisciplina from "./pages/FuncionarioDisciplina";
 import FuncionarioProfessor from "./pages/FuncionarioProfessor";
 import DeleteTurma from "./components/funcionario/ConsultaTurma/Modal/DeleteTurma/DeleteTurma";
+import EditTurma from "./components/funcionario/ConsultaTurma/Modal/EditTurma/EditTurma";
 
 export default function Router() {
   	return (
@@ -18,7 +19,7 @@ export default function Router() {
 				<Route exact path="/disciplina/:modalType" element={<FuncionarioDisciplina/>}/>	
 					<Route exact path="/disciplina/turma/:modalType/:idDisciplina" element={<FuncionarioDisciplina/>}/>
 					<Route exact path="/disciplina/turma/:modalType" element={<FuncionarioDisciplina/>}/>
-					<Route exact path="/disciplina/turma/delete" element={<DeleteTurma/>}/>
+					<Route exact path="/disciplina/turma/edit" element={<EditTurma/>}/>
 			<Route exact path="/professor" element={<FuncionarioProfessor/>}/>
 			<Route exact path="/professor/:modalType" element={<FuncionarioProfessor/>}/>
 		</Routes>

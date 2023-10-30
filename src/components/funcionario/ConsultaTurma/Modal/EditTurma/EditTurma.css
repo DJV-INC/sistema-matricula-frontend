@@ -1,4 +1,4 @@
-.modal-DeleteTurma {
+.modal-editTurma {
     position: absolute;
 
     padding: 33px;
@@ -39,12 +39,7 @@ td{
     padding: 5px;
 }
 
-.Seleciona-Tudo{
-    display: flex;
-    justify-content: space-between;
-}
-
-.deleteTurma-buttons{
+.editTurma-buttons{
     
     display: flex;
     width: 100%;
@@ -53,9 +48,9 @@ td{
     height: 40px;
 }
 
-.Excluir {
+.Salvar {
     width: 100%;
-    background-color: #901617;
+    background-color: #0B9529;
     color: #fff;
     border: 0;
     border-radius: 0.25rem;
@@ -63,13 +58,13 @@ td{
     transition-duration: 0.4s;
 }
 
-.Excluir:hover{
+.Salvar:hover{
     background-color: #ffffff;
-    border: 1px solid #901617;
-    color: #901617;
+    border: 1px solid #0B9529;
+    color: #0B9529;
 }
 
-.Link-deleteTurma-Salvar{
+.Link-salvarTurma-Salvar{
     width: 20%;
     justify-content: center;
     align-items: center;
