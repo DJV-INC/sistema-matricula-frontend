@@ -51,7 +51,6 @@ async function patch(table, body) {
 
    console.log(`${baseURL}${table}` , body);
 
-
    return response
 }
 
@@ -64,8 +63,11 @@ async function put(table, body) {
       body: JSON.stringify(body)
    })
 
-   console.log(`${baseURL}${table}` , body);
+   if (!response.ok) {
+      console.log(response)
+   }
 
+   console.log(`${baseURL}${table}` , body);
 
    return response
 }
@@ -83,4 +85,4 @@ async function del(table, params = "") {
    return res
 }
 
-export default { get, post, patch, del}
+export default { get, post, patch, del, put}
