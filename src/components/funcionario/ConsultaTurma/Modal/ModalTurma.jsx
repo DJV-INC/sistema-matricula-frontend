@@ -3,9 +3,13 @@ import React from "react";
 import "./Modal.css";
 import { useNavigate, useParams } from "react-router-dom";
 import AddTurma from "./AddTurma/AddTurma";
+import EditTurma from "./EditTurma/EditTurma";
+import DeleteTurma from "./DeleteTurma/DeleteTurma";
 
 export default function ModalTurma() {
-   const { modalType = null , idDisciplina = null } = useParams()
+   const { modalType = null , idDisciplina = null , idTurma = null } = useParams()
+
+   console.log(idDisciplina, idTurma);
 
    const navigate = useNavigate()
 
@@ -28,7 +32,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            {/* <EditAluno func={closeModal}/> */}
+            <EditTurma func={closeModal} idTurma={idTurma} idDisciplina={idDisciplina}/>
          </div>
       );
    }
@@ -48,7 +52,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            {/* <DeleteAluno cpf={cpf} func={closeModal}/> */}
+            <DeleteTurma func={closeModal}/>
          </div>
       );
    }

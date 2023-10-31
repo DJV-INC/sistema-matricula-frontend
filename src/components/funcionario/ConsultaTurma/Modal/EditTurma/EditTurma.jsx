@@ -1,8 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./EditTurma.css";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import API from "../../../../../services/API";
+import { useNavigate } from "react-router-dom";
 
-export default function EditTurma() {
+export default function EditTurma({idTurma, idDisciplina}) {
+
+    const navigate = useNavigate();
+  	const [data, setData] = useState("");
+
+	useEffect(() => {
+		API.get("turmas" , `id=${idDisciplina}`).then(res => {
+			for (let i = 0; i < res.dados.length; i++) {
+				if (res.dados[i].id === parseInt(idTurma)) {
+					setData(res.dados[i])
+                    console.log(res.dados[i]);
+				}
+			}
+		})
+	}, [navigate]);
+
+	function handleSubmit(event) {
+		event.preventDefault();
+
+		const objBody = {
+            id: data.id,
+            professor: event.target[`professor-select-edit`].value,
+            diaSemana: event.target[`dia-select-edit`].value,
+            horario: event.target[`horario-edit`].value,
+            vagas: event.target[`vagas-edit`].value,
+        }
+
+        console.log(objBody);
+
+        API.put("turmas", objBody)
+
+		alert("Turma(s) cadastrada");
+
+		navigate(-1);
+	}
+
+    console.log(data);
+
     return (
         <div className="modal-editTurma">
             <Row>
@@ -15,7 +54,7 @@ export default function EditTurma() {
                     </div>
 
                     <Row>
-                        <Form method="POST">
+                        <Form method="POST" onSubmit={handleSubmit}>
                             {/* Titulo da pagina */}
                             <h2>Harmonia 1</h2>
 
@@ -30,18 +69,14 @@ export default function EditTurma() {
                                     <th>Horário</th>
                                     <th>Vagas</th>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+
+                                <TurmaForm {...data} />
 
                             </FormGroup>
 
                             <Row>
                                 <div className="editTurma-buttons">
-                                    <Button className="deleteTurma">
+                                    <Button onClick={()=> {navigate(-1)}} className="deleteTurma">
                                         Cancelar
                                     </Button>
 
@@ -56,4 +91,73 @@ export default function EditTurma() {
             </Row>
         </div>
     );
+}
+
+function TurmaForm({professor, diaSemana, horario, numeroVagas}) {
+    
+    
+    const [stHorario, setHorario] = useState(horario)
+    const [stNumVagas, setNumVagas] = useState(numeroVagas)
+    
+    useEffect(() => {
+        setHorario(horario)
+        setNumVagas(numeroVagas)
+    }, [horario, numeroVagas]);
+    
+    function handleHorario(e) {
+        setHorario(e.target.value)
+    }
+    function handleNumVagas(e) {
+        setNumVagas(e.target.value)
+    }
+
+    const itemList = "edit"
+	try {
+        return (
+            <tr>
+                {/* Professor */}
+    
+                <td>
+                <Input
+                    className="select"
+                    id="professor-select"
+                    name={`professor-select-${itemList}`}
+                    type="select"
+                >
+                    <option>Selecione</option>
+                    <option selected value={professor.id}>{professor.nomeCompleto}</option>
+                </Input>
+                </td>
+    
+                {/* Dia */}
+    
+                <td>
+                <Input
+                    className="select"
+                    id="dia-select"
+                    name={`dia-select-${itemList}`}
+                    type="select"
+                >
+                    <option>Selecione</option>
+                    <option selected >{diaSemana}</option>
+                </Input>
+                </td>
+    
+                {/* Horario */}
+    
+                <td>
+                    <Input id="horario" name={`horario-${itemList}`} type="time" value={stHorario} 
+                    onChange={handleHorario}/>
+                </td>
+    
+                {/* Vagas */}
+    
+                <td>
+                    <Input id="vagas" name={`vagas-${itemList}`} type="number" value={stNumVagas} onChange={handleNumVagas}/>
+                </td>
+            </tr>
+        );
+    } catch (error) {
+        
+    }
 }
