@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom';
+
 import { Table } from 'reactstrap'
 
 import "./TableTurmaProfessor.css"
@@ -7,11 +7,9 @@ import "./TableTurmaProfessor.css"
 export default function TableTurmaProfessor({data}) {
   return (
          <Fragment>
-         <div className="Tabelas">
-         <div className="TabDisciplina">
-            <Table striped>
+            <table className='table_'>
                <thead>
-               <tr>
+               <tr className='tr_'>
                   <th>Disciplina</th>
                   <th>Dia</th>
                   <th>Horário</th>
@@ -30,9 +28,7 @@ export default function TableTurmaProfessor({data}) {
                      })
                   }
                </tbody>
-            </Table>
-         </div>
-         </div>
+            </table>
       </Fragment>
   )
 }
