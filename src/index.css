@@ -7,3 +7,153 @@
 
   font-family: 'Montserrat', sans-serif;
 }
+
+
+/* Alinhamento */
+.container-main{
+  margin: 50px 150px ;
+}
+
+/* Título das páginas */
+
+.page-title{
+  border-bottom: 1px solid #ddd;
+}
+
+.page-title .title_{
+  color: #242424;
+}
+
+.page-title .subtitle_{
+  font-weight: 500;
+  color: #4D4D4D;
+}
+/* 
+.active{
+  background-color: #000 !important;
+} */
+
+/* Cabeçalho das tabelas */
+.header-table{
+  display: grid;
+  grid-template-columns: 1fr 50%;
+  margin: 20px 0;
+}
+
+.header-table .right-header{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  gap: 0.5rem;
+}
+
+td{
+  font-weight: 500;
+}
+
+th{
+  font-weight: 800;
+}
+
+/* Searchbar */
+.searchbar{
+  display: flex;
+  align-items: center;
+  width: min-content;
+  border: 1px solid #9E9E9E;
+  border-radius: 4px;
+  padding: 0 10 0 10;
+  gap: 5px;
+}
+
+.searchbar span{
+  color: #9E9E9E;
+}
+
+.searchbar .search{
+  outline: none;
+  border: none;
+  height: 40px;
+}
+
+
+
+.header-table .table-btn{
+  background-color: white;
+  border: 1px solid #0000002a;
+  color: #232222;
+  font-weight: bolder;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-table .table-btn:hover{
+  background-color: #eee;
+}
+
+.header-table .left-header{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.header-table .left-header .add-aluno-btn{
+  background-color: #1C1B1F;
+
+  color: white;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  border: 0;
+
+  padding: 10px 16px;
+
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.header-table .filtro-btn{
+  width: 130px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#filter {
+  padding: 8px 8px;
+  padding-right: 25px;
+  border-radius: 4px;
+  background-color: #fff;
+  background-image: url(./tune.svg);
+  background-repeat: no-repeat;
+  width: 130px;
+  background-position: 98% 50%;
+  outline: none;
+}
+
+#filter, #filter > option{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #9E9E9E;
+}
+
+/* Tabelas */
+
+
+
+
+/* Botões */
+/* -- Confirmar */
+
+/* -- Cancelar */
