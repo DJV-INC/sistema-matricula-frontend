@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Button, Input } from "reactstrap";
 
-import "./TableContainer.css";
 import Modal from "../Modal/Modal";
 import { Link, useParams } from "react-router-dom";
 import ContentTable from "./ContentTable/ContentTable";
@@ -45,7 +44,8 @@ export default function TableContainer() {
     }
     if (tipoPesquisa === "status") {
       API.get("alunos", `status=${pesquisa}`).then((res) => {
-        setData({dados: [res.dados]})
+        console.log(pesquisa)
+        setData({ dados: [res.dados]})
       })
     }
     if (!tipoPesquisa || tipoPesquisa === "") {
