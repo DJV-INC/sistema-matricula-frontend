@@ -1,25 +1,6 @@
-td{
-   font-weight: 500;
-}
-
-th{
-   font-weight: 800;
-}
-
-.table{
-   --bs-table-striped-bg: #F7F6FE;
-   --bs-table-bg: #fff;
-}
-
-.options-btn{
-   background-color: transparent;
-   border: 0;
-
-   color: #1C1B1F;
-
-   
-}
-
+/* .table_.disciplina_{
+   width: 380px;
+} */
 
 .status-aluno{
    font-size: 0.9rem;
@@ -36,8 +17,6 @@ th{
    background-color: #FEF2E5;
    color: #CD6200;
 }
-
-
 
 .item-disciplina-table tr:hover{
    cursor: pointer;

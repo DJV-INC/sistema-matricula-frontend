@@ -30,11 +30,9 @@ export default function ContentTable({ contentData, setId, setNomeDisciplina }) 
 
     return (
       <Fragment>
-        <div className="Tabelas">
-          <div className="TabDisciplina">
-            <Table striped>
+            <table className="table_ disciplina_">
               <thead>
-                <tr>
+                <tr className="tr_">
                   <th>Disciplina</th>
                   <th>Tipo</th>
                 </tr>
@@ -51,9 +49,7 @@ export default function ContentTable({ contentData, setId, setNomeDisciplina }) 
                   })
                 }
               </tbody>
-            </Table>
-          </div>
-        </div>
+            </table>
       </Fragment>
     );
   } catch (error) {
