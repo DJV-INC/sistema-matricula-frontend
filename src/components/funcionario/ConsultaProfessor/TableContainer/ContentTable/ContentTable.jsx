@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 //import Dropdown from "./Dropdown/Dropdown";
 
@@ -29,13 +30,11 @@ export default function ContentTable({ contentData, setId}) {
 
     return (
       <Fragment>
-        <div className="Tabelas">
-          <div className="TabProfessor">
-            <Table striped>
+            <table className="table_">
               <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>CPF</th>
+                <tr className="tr_">
+                  <th>Professores</th>
+                  <th>Opções</th>
                 </tr>
               </thead>
               <tbody className="item-professor-table">
@@ -44,15 +43,16 @@ export default function ContentTable({ contentData, setId}) {
                     return (
                       <tr onClick={(e) => {handleRowTable(item.id, e)}}>
                         <td>{item.nomeCompleto}</td>
-                        <td>{item.cpf}</td>
+                        <td><button className="options-btn">
+                      <span className="material-symbols-rounded">more_vert</span>
+                    </button>
+                  </td>
                       </tr>
                     )
                   })
                 }
               </tbody>
-            </Table>
-          </div>
-        </div>
+            </table>
       </Fragment>
     );
   } catch (error) {
