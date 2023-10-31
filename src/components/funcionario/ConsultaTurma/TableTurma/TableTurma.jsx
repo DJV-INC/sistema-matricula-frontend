@@ -29,7 +29,7 @@ export default function TableTurma({data}) {
                               <td>{item.horario}</td>
                               <td>{item.numeroAlunos}/{item.numeroVagas}</td>
                               <td>
-                                 <Link className='edit-link' to={""}>
+                                 <Link className='edit-link' to={`${item.disciplina.id}/turma/editarTurma/${item.id}`}>
                                     <span className="material-symbols-rounded">
                                        edit_square
                                     </span>

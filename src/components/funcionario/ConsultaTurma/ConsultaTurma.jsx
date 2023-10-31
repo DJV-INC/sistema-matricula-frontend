@@ -45,13 +45,13 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
             <h5 className='title'>{disciplina}</h5>
 
             <div className="buttons">
-               <Link to={""}>
+               <Link to={`${id}/turma/excluirTurma`}>
                   <button className='edit-btn'>
                      <span className="material-symbols-rounded">delete</span>
                      <span>Excluir Turmas</span>
                   </button>
                </Link>
-               <Link to={"turma/adicionarTurma/" + id}>
+               <Link to={`${id}/turma/adicionarTurma`}>
                   <button className='add-btn'>
                      <span className="material-symbols-rounded">add</span>
                      <span>Adicionar Turmas</span>
