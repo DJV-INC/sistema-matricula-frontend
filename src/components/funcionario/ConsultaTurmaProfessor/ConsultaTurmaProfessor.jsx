@@ -2,61 +2,76 @@ import React, { Fragment, useEffect, useState } from 'react'
 import './ConsultaTurmaProfessor.css'
 import TableTurmaProfessor from './TableTurmaProfessor/TableTurmaProfessor'
 import API from '../../../services/API'
+import ConsultaProfessorDetalhes from './ConsultaProfessorDetalhes/ConsultaProfessorDetalhes'
 import { Link } from 'react-router-dom'
-//import Modal from './Modal/ModalTurma'
-//import ModalTurma from './Modal/ModalTurma'
 
 
-export default function ConsultaTurmaProfessor({id = null, disciplina = null}) {
+
+export default function ConsultaTurmaProfessor({ id = null }) {
 
    const [data, setData] = useState(null)
+   const [dadosProf, setDadosProf] = useState("")
 
    useEffect(() => {
+      
       if (id) {
          API.get("turmas", `id_professor=${id}`).then(res => {
             setData(res)
+
          }).catch((e) => {
             alert(e)
          })
-      }
-    }, [id])
-   
-   if (data !== null) {
 
+         API.get("professores", `id=${id}`).then(dados => {
+            setDadosProf(dados)
+         })
+         
+      }
+
+
+   }, [id])
+
+
+
+   if (data !== null) {
       function placeholderData() {
          if (Array.isArray(data.dados)) {
             if (data.dados.length === 0) {
                return (
-                  <h5>Nenhuma turma existente para essa disciplina</h5>          
+                  <h5>Nenhuma turma existente para essa disciplina</h5>
                )
             } else {
+
                return (
-                  <TableTurmaProfessor data={data.dados}/>
+                  <>
+                     <ConsultaProfessorDetalhes data={dadosProf.dados} />
+                     <TableTurmaProfessor data={data.dados} />
+                  </>
                )
             }
          }
       }
 
-      return(
+      return (
          <div className='turma-table content-table'>
-            <h5 className='title'>Disciplinas ministradas</h5>
+            <h5 className='title'>Detalhes do professor</h5>
 
-            {/* <div className="buttons">
-               <Link to={""}>
+            <div className="buttons">
+               <Link to={`excluir/${dadosProf.dados.id}`}>
                   <button className='edit-btn'>
                      <span className="material-symbols-rounded">delete</span>
-                     <span>Excluir Turmas</span>
+                     <span>Excluir professor</span>
                   </button>
                </Link>
-               <Link to={"turma/adicionarTurma"}>
+               <Link to={`editar/${dadosProf.dados.cpf}`}>
                   <button className='add-btn'>
-                     <span className="material-symbols-rounded">add</span>
-                     <span>Adicionar Turmas</span>
+                     <span className="material-symbols-rounded">edit</span>
+                     <span>Editar professor</span>
                   </button>
                </Link>
-            </div> */}
+            </div>
 
-            <div className='table'>
+            <div className='table_'>
                {placeholderData()}
             </div>
 
@@ -68,10 +83,10 @@ export default function ConsultaTurmaProfessor({id = null, disciplina = null}) {
    } else {
       return (
          <div className="turma-table empty-table">
-            <h5>Selecione uma disciplina para ver as turmas</h5>
+            <h5>Selecione um  professor para ver seus detalhes</h5>
          </div>
       )
    }
 
-   
+
 }

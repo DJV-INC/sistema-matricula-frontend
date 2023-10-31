@@ -14,7 +14,7 @@
     display: grid;
     grid-template-areas: 
        "title title buttons"
-       "table table table";
+       "table_ table_ table_";
     padding: 1rem 2rem;
     gap: 1rem;
  }
@@ -78,6 +78,6 @@
  }
  
  
- .turma-table.content-table .table{
-    grid-area: table;
+ .turma-table.content-table .table_{
+    grid-area: table_;
  }
