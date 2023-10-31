@@ -7,7 +7,7 @@ import ContentTable from "./ContentTable/ContentTable";
 import API from "../../../../services/API";
 import FilterDropdown from "./FilterDropdown/FilterDropdown";
 
-import "./TableContainer.css";
+import "./TableContainer.css"
 import ConsultaTurma from "../../ConsultaTurma/ConsultaTurma";
 
 export default function TableContainer() {
