@@ -55,6 +55,21 @@ async function patch(table, body) {
    return response
 }
 
+async function put(table, body) {
+   const response = await fetch(`${baseURL}${table}`, {
+      method: "PUT",
+      headers: {
+         "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+   })
+
+   console.log(`${baseURL}${table}` , body);
+
+
+   return response
+}
+
 
 async function del(table, params = "") {
    console.log(`${baseURL}${table}/${params}`);
