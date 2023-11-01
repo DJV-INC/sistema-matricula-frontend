@@ -13,7 +13,7 @@ import ConsultaTurma from "../../ConsultaTurma/ConsultaTurma";
 export default function TableContainer() {
   const params = useParams()
 
-  const [data, setData] = useState({dados: []})
+  const [data, setData] = useState({ dados: [] })
   const [pesquisa, setPesquisa] = useState(null)
   const [tipoPesquisa, setTipoPesquisa] = useState("")
   const [dropdownPesquisa, setDropdownPesquisa] = useState([])
@@ -40,7 +40,7 @@ export default function TableContainer() {
   useEffect(() => {
     if (tipoPesquisa === "nome") {
       API.get("disciplinas", `nome=${pesquisa}`).then((res) => {
-        setData({dados: [res.dados]})
+        setData({ dados: [res.dados] })
       })
     }
     if (!tipoPesquisa || tipoPesquisa === "") {
@@ -48,15 +48,15 @@ export default function TableContainer() {
         setData(res)
       })
     }
-    
+
   }, [params, pesquisa, tipoPesquisa]);
 
   return (
     <Fragment>
 
       <header className="header-table">
-      <div className="right-header">
-          <Input className="pesquisa-input" placeholder="Pesquisar" onChange={handleFilter}/>
+        <div className="right-header">
+          <Input className="pesquisa-input" placeholder="Pesquisar" onChange={handleFilter} />
           <Button className="table-btn filtro-btn" id="btn-handle-filter" onClick={dropdownToggle}>
             <span>Filtro</span>
             <span class="material-symbols-rounded">tune</span>
@@ -83,8 +83,12 @@ export default function TableContainer() {
       <Modal />
 
       <div className="content-tables">
-        <ContentTable contentData={data} setId={setId} setNomeDisciplina={setNomeDisciplina}/>
-        <ConsultaTurma id={id} disciplina={nomeDisciplina} />
+        <div className="left">
+          <ContentTable contentData={data} setId={setId} setNomeDisciplina={setNomeDisciplina} />
+        </div>
+        <div className="right">
+          <ConsultaTurma id={id} disciplina={nomeDisciplina} />
+        </div>
       </div>
 
 
