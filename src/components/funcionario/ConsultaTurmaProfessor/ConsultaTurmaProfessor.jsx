@@ -75,7 +75,7 @@ export default function ConsultaTurmaProfessor({ id = null }) {
                {placeholderData()}
             </div>
 
-            {/*<ModalTurma/>*/}
+            
 
          </div>
       )
