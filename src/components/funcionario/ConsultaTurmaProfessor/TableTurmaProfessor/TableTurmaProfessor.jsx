@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react'
 
-import { Table } from 'reactstrap'
-
 import "./TableTurmaProfessor.css"
 
 export default function TableTurmaProfessor({data}) {
   return (
          <Fragment>
+            <h2>Disciplinas ministradas</h2>
             <table className='table_'>
                <thead>
                <tr className='tr_'>
