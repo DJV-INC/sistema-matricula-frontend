@@ -89,8 +89,14 @@ export default function TableContainer() {
 
       <Modal />
       <div className="content-tables">
-        <ContentTable contentData={data} setId={setId} />
-        <ConsultaTurmaProfessor id={id} />
+        <div className="left">
+          <ContentTable contentData={data} setId={setId} />
+        </div>
+        <div className="right">
+          <ConsultaTurmaProfessor id={id} />
+        </div>
+
+
       </div>
 
 
