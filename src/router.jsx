@@ -21,6 +21,7 @@ export default function Router() {
 					<Route exact path="/disciplina/:idDisciplina/turma/:modalType" element={<FuncionarioDisciplina/>}/>
 					<Route exact path="/disciplina/turma/:modalType" element={<FuncionarioDisciplina/>}/>
 			<Route exact path="/professor" element={<FuncionarioProfessor/>}/>
+			<Route exact path="/professor/:modalType/:id" element={<FuncionarioProfessor/>}/>
 			<Route exact path="/professor/:modalType" element={<FuncionarioProfessor/>}/>
 		</Routes>
   	);
