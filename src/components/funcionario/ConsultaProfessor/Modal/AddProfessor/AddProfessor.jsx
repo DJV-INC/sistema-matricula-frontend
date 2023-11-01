@@ -2,6 +2,8 @@
 import React from 'react'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { Link, useNavigate } from 'react-router-dom'
+import { IMaskInput } from 'react-imask'
+import Form1 from 'react-bootstrap/Form'
 import API from '../../../../../services/API'
 
 import './AddProfessor.css'
@@ -13,8 +15,8 @@ export default function AddProfessor(props) {
     event.preventDefault();
  
     const dados = {
-       nome: event.target.nome.value,
-       cpf: event.target.cpf.value,
+       nomeCompleto: event.target.nome.value,
+       cpf: event.target.CPF.value,
        telefone: event.target.telefone.value
     };
  
@@ -60,7 +62,6 @@ export default function AddProfessor(props) {
               </Label>
               <Input
                 id="nome"
-                
                 name="nome"
               />
             </FormGroup>
@@ -69,10 +70,13 @@ export default function AddProfessor(props) {
               <Label for="CPF">
                 CPF
               </Label>
-              <Input
+              <Form1.Control
                 id="CPF"
                 name="CPF"
                 type="CPF"
+                as={IMaskInput}
+                mask="000.000.000-00"
+                placeholder="123.456.789.11"
               />
             </FormGroup>
 
@@ -90,7 +94,7 @@ export default function AddProfessor(props) {
             <Row>
               <div className='botoes-div-add-disciplina'>
 
-                <Link to={"/"} className='Link-add-disciplina-cancel'>
+                <Link to={"/professor"} className='Link-add-disciplina-cancel'>
                   <button className="Cancel btn">
                     Cancelar
                   </button>
