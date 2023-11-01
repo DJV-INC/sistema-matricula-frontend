@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './AddAluno.css'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import Form1 from 'react-bootstrap/Form'
@@ -9,32 +9,60 @@ import API from '../../../../../services/API'
 
 
 export default function AddAluno(props) {
+  const url = "https://viacep.com.br/ws"
   const navigate = useNavigate()
+  const [viacep, setViacep] = useState("00000000")
+  const [data, setData] = useState([])
+
+  function handleViacep(e) {
+
+    setViacep(e.target.value)
+  }
+
+  useEffect(() => {
+    async function fetchCep() {
+      const resposta = await fetch(`${url}/${viacep}/json/`)
+
+      const res = await resposta.json()
+
+      
+      return res
+
+    }
+
+    fetchCep().then((res) => {
+      setData(res)
+    })
+  }, [viacep])
 
   function handleSubmit(event) {
     event.preventDefault();
- 
+
     const dados = {
-       nomeCompleto: event.target.NomeCompleto.value,
-       rg: event.target.RG.value,
-       cpf: event.target.CPF.value,
-       email: event.target.Email.value,
-       dataNasc: event.target.DataNasc.value,
-       telefone: event.target.Tell.value,
-       cep: event.target.CEP.value,
-       logradouro: event.target.Logradouro.value,
-       numero: event.target.Numero.value,
-       bairro: event.target.Bairro.value,
-       cidade: event.target.Cidade.value,
-       estado: event.target.Estado.value,
+      nomeCompleto: event.target.NomeCompleto.value,
+      rg: event.target.RG.value,
+      cpf: event.target.CPF.value,
+      email: event.target.Email.value,
+      dataNasc: event.target.DataNasc.value,
+      telefone: event.target.Tell.value,
+      cep: event.target.CEP.value,
+      logradouro: event.target.Logradouro.value,
+      numero: event.target.Numero.value,
+      bairro: event.target.Bairro.value,
+      cidade: event.target.Cidade.value,
+      estado: event.target.Estado.value,
     };
- 
+
     API.post("alunos", dados);
- 
+
     alert("Aluno(a) cadastrado");
- 
+
     navigate(-1);
- }
+
+
+  }
+
+
 
   return (
     <div className='modal-addaluno'>
@@ -47,16 +75,16 @@ export default function AddAluno(props) {
           }}
           sm="12"
         >
-            <div className="title">Adicionar aluno
-                <button className="close_ btn" onClick={props.func}>
-                    <span class="material-symbols-rounded">close</span>
-                </button>
-            </div>
+          <div className="title">Adicionar aluno
+            <button className="close_ btn" onClick={props.func}>
+              <span class="material-symbols-rounded">close</span>
+            </button>
+          </div>
           <Form method='POST' onSubmit={handleSubmit}>
 
             {/* Titulo da pagina */}
 
-            
+
             <hr />
             <h2>Dados Pessoais</h2>
 
@@ -85,11 +113,11 @@ export default function AddAluno(props) {
                     RG
                   </Label>
                   <Form1.Control
-                  id="RG"
-                  name="RG"
-                  as={IMaskInput}
-                  mask="00.000.000-0"
-                  placeholder="12.345.678-9"
+                    id="RG"
+                    name="RG"
+                    as={IMaskInput}
+                    mask="00.000.000-0"
+                    placeholder="12.345.678-9"
                   />
                 </FormGroup>
               </Col>
@@ -99,11 +127,11 @@ export default function AddAluno(props) {
                     CPF
                   </Label>
                   <Form1.Control
-                  id="CPF"
-                  name="CPF"
-                  as={IMaskInput}
-                  mask="000.000.000-00"
-                  placeholder="123.456.789.12"
+                    id="CPF"
+                    name="CPF"
+                    as={IMaskInput}
+                    mask="000.000.000-00"
+                    placeholder="123.456.789.12"
                   />
                 </FormGroup>
               </Col>
@@ -144,11 +172,11 @@ export default function AddAluno(props) {
                     Telefone
                   </Label>
                   <Form1.Control
-                  id="Tell"
-                  name="Tell"
-                  as={IMaskInput}
-                  mask="(00) 00000-0000"
-                  placeholder="(11) 12345-1234"
+                    id="Tell"
+                    name="Tell"
+                    as={IMaskInput}
+                    mask="(00) 00000-0000"
+                    placeholder="(11) 12345-1234"
                   />
                 </FormGroup>
               </Col>
@@ -166,53 +194,52 @@ export default function AddAluno(props) {
                     CEP
                   </Label>
                   <Form1.Control
+                    onBlur={handleViacep}
                     id="CEP"
                     name="CEP"
                     as={IMaskInput}
-                    mask="00000-000"
-                    placeholder="00000-000"
+                    mask="00000000"
+                    placeholder="00000000"
                   />
                 </FormGroup>
               </Col>
               <Col md={8}>
-                <FormGroup>
-                  <Label for="Logradouro">
-                    Logradouro
-                  </Label>
-                  <Input
-                    id="Logradouro"
-                    name="Logradouro"
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-
-
-
-            <Row>
-              <Col md={4}>
-                <FormGroup>
+              <FormGroup>
                   <Label for="Numero">
-                    Número
+                    Número da rua
                   </Label>
                   <Input
                     id="Numero"
                     name="Numero"
                   />
                 </FormGroup>
+
               </Col>
-              <Col md={8}>
+            </Row>
+
+            <FormGroup>
+                  <Label for="Logradouro">
+                    Logradouro
+                  </Label>
+                  <Input
+                    disabled={true}
+                    value={data.logradouro ? data.logradouro : ""}
+                    id="Logradouro"
+                    name="Logradouro"
+                  />
+                </FormGroup>
+
                 <FormGroup>
                   <Label for="Bairro">
                     Bairro
                   </Label>
                   <Input
+                    value={data.bairro ? data.bairro : ""}
+                    disabled={true}
                     id="Bairro"
                     name="Bairro"
                   />
                 </FormGroup>
-              </Col>
-            </Row>
 
 
 
@@ -223,6 +250,8 @@ export default function AddAluno(props) {
                     Cidade
                   </Label>
                   <Input
+                    value={data.localidade ? data.localidade : ""}
+                    disabled={true}
                     id="Cidade"
                     name="Cidade"
                   />
@@ -234,6 +263,8 @@ export default function AddAluno(props) {
                     Estado
                   </Label>
                   <Input
+                    value={data.uf ? data.uf : ""}
+                    disabled={true}
                     id="Estado"
                     name="Estado"
                   />
