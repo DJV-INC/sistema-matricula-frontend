@@ -14,6 +14,14 @@
   margin: 50px 150px ;
 }
 
+/* -- da tabela */
+
+.content-tables{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
 /* Título das páginas */
 
 .page-title{
@@ -77,12 +85,12 @@ th{
   height: 40px;
 }
 
-
+/* Header das tabelas */
 
 .header-table .table-btn{
   background-color: white;
   border: 1px solid #0000002a;
-  color: #232222;
+  color: #232222; 
   font-weight: bolder;
 
   display: flex;
