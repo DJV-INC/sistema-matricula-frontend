@@ -34,7 +34,6 @@ export default function ContentTable({ contentData, setId}) {
               <thead>
                 <tr className="tr_">
                   <th>Professores</th>
-                  <th>Opções</th>
                 </tr>
               </thead>
               <tbody className="item-professor-table">
@@ -43,10 +42,6 @@ export default function ContentTable({ contentData, setId}) {
                     return (
                       <tr onClick={(e) => {handleRowTable(item.id, e)}}>
                         <td>{item.nomeCompleto}</td>
-                        <td><button className="options-btn">
-                      <span className="material-symbols-rounded">more_vert</span>
-                    </button>
-                  </td>
                       </tr>
                     )
                   })
