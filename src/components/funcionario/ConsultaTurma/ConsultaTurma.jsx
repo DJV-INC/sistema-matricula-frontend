@@ -59,7 +59,7 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
                </Link>
             </div>
 
-            <div className='table'>
+            <div className='table_'>
                {placeholderData()}
             </div>
          </div>
