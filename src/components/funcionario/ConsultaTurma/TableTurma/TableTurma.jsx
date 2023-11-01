@@ -8,11 +8,9 @@ import API from '../../../../services/API';
 export default function TableTurma({data}) {
   return (
          <Fragment>
-         <div className="Tabelas">
-         <div className="TabDisciplina">
-            <Table striped>
+         <table className="table_">
                <thead>
-               <tr>
+               <tr className="tr_">
                   <th>Professor</th>
                   <th>Dia</th>
                   <th>Horário</th>
@@ -52,9 +50,7 @@ export default function TableTurma({data}) {
                      })
                   }
                </tbody>
-            </Table>
-         </div>
-         </div>
+            </table>
       </Fragment>
   )
 }
