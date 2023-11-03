@@ -2,12 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react'
 import './ConsultaTurma.css'
 import TableTurma from './TableTurma/TableTurma'
 import API from '../../../services/API'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ModalTurma from './Modal/ModalTurma'
 
 
 export default function ConsultaTurma({id = null, disciplina = null}) {
-
+   const navigate = useNavigate()
    const [data, setData] = useState(null)
 
    useEffect(() => {
@@ -18,7 +18,7 @@ export default function ConsultaTurma({id = null, disciplina = null}) {
             alert(e)
          })
       }
-    }, [id])
+    }, [id, navigate])
    
    if (data !== null) {
 
