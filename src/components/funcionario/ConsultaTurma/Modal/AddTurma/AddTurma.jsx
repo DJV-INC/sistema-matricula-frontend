@@ -85,7 +85,7 @@ export default function AddTurma({ func, idDisciplina }) {
 
 					{/* Formularios */}
 
-					<FormGroup>
+					<FormGroup className="form-group">
 						<tr>
 							<th>Professor</th>
 							<th>Dia</th>
