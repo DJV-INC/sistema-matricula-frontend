@@ -25,17 +25,18 @@ export default function EditTurma({idTurma, idDisciplina}) {
 
 		const objBody = {
             id: data.id,
-            professor: event.target[`professor-select-edit`].value,
+            disciplina_id: idDisciplina,
+            professor_id: parseInt(event.target[`professor-select-edit`].value),
             diaSemana: event.target[`dia-select-edit`].value,
             horario: event.target[`horario-edit`].value,
-            vagas: event.target[`vagas-edit`].value,
+            numeroVagas: event.target[`vagas-edit`].value,
         }
 
         console.log(objBody);
 
         API.put("turmas", objBody)
 
-		alert("Turma(s) cadastrada");
+		alert("Turma editada com sucesso");
 
 		navigate(-1);
 	}
