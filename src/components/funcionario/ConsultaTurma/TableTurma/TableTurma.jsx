@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
-import { Table } from 'reactstrap'
-
 import "./TableTurma.css"
-import API from '../../../../services/API';
 
 export default function TableTurma({data}) {
   return (
