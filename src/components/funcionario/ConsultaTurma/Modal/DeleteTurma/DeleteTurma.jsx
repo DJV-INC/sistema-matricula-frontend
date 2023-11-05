@@ -97,14 +97,10 @@ export default function DeleteTurma() {
                             
 
                             <Row>
-                                <div className="deleteTurma-buttons">
-                                    <Link to={"/disciplina"} className="deleteTurma">
-                                        Cancelar
+                                <div className="btn-turma-delete-container">
+                                    <Link to={"/disciplina"} className="deleteTurma delete-btn">Cancelar
                                     </Link>
-
-                                    <div className="Link-deleteTurma-Salvar">
-                                        <button className="Excluir">Excluir Turmas</button>
-                                    </div>
+                                    <button className="excluir delete-btn">Excluir Turmas</button>
                                 </div>
                             </Row>
                         </Form>
