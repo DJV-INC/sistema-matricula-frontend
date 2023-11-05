@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import "./TableTurma.css"
+import Vagas from '../Vagas'
 
 export default function TableTurma({data}) {
   return (
@@ -23,7 +24,7 @@ export default function TableTurma({data}) {
                               <td>{item.professor.nomeCompleto}</td>
                               <td>{item.diaSemana}</td>
                               <td>{item.horario}</td>
-                              <td>{item.numeroAlunos}/{item.numeroVagas}</td>
+                              <td><Vagas nAlunos = {item.numeroAlunos} nVagas = {item.numeroVagas}/></td>
                               <td>
                                  <Link className='edit-link' to={`${item.disciplina.id}/turma/editarTurma/${item.id}`}>
                                     <span className="material-symbols-rounded">

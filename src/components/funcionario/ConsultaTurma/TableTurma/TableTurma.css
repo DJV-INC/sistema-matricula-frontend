@@ -8,3 +8,18 @@
 .edit-link:hover{
    color: #5f5e63;
 }
+
+.vagas_true{
+   padding: 5px 10px 5px 10px;
+   background-color: #EBF9F1;
+   color: #1F9254;
+   border-radius: 4px;
+}
+
+.vagas_false{
+   padding: 5px 10px 5px 10px;
+   background-color: #FEF2E5;
+   color: #CD6200;
+   border-radius: 4px;
+}
+
