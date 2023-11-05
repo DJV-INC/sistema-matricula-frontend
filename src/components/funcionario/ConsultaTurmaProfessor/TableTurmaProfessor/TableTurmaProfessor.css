@@ -8,3 +8,9 @@
  .edit-link:hover{
     color: #5f5e63;
  }
+
+.title_sectable{
+   margin-top: 0.5rem;
+   font-size: 18px;
+   font-weight: 500;
+}

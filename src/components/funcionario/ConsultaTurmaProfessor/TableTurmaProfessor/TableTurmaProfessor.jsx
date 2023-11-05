@@ -5,7 +5,9 @@ import "./TableTurmaProfessor.css"
 export default function TableTurmaProfessor({data}) {
   return (
          <Fragment>
-            <h2>Disciplinas ministradas</h2>
+            <br/>
+            <br/>
+            <h2 className="title_sectable">Disciplinas ministradas</h2>
             <table className='table_'>
                <thead>
                <tr className='tr_'>
