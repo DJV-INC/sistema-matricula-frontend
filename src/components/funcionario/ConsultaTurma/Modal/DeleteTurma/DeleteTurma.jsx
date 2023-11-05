@@ -1,8 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DeleteTurma.css";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import API from "../../../../../services/API";
 
 export default function DeleteTurma() {
+    const navigate = useNavigate()
+    const {idDisciplina} = useParams()
+    const [data, setData] = useState([])
+    const selectedRows = []
+
+    useEffect(() => {
+        if (idDisciplina) {
+           API.get("turmas", `id=${idDisciplina}`).then(res => {
+              setData(res.dados)
+           }).catch((e) => {
+              alert(e)
+           })
+        }
+      }, [idDisciplina])
+
+    function handleDeleteItems(e) {
+        e.preventDefault()
+
+        selectedRows.map(item => {
+            console.log(item[0].slice(-1), item[1]);
+            const id = item[0].slice(-1)
+            if (item[1]) {
+                API.del("turmas", id)
+            }
+        })
+
+        alert("As turmas selecionadas foram excluídas com sucesso")
+
+        navigate(-1)
+    }
+
     return (
         <div className="modal-deleteTurma">
             <Row>
@@ -15,7 +48,7 @@ export default function DeleteTurma() {
                     </div>
 
                     <Row>
-                        <Form method="POST">
+                        <Form method="POST" onSubmit={handleDeleteItems}>
                             {/* Titulo da pagina */}
                             <h2>Harmonia 1</h2>
 
@@ -35,27 +68,39 @@ export default function DeleteTurma() {
                                 <p>Selecionados</p>
                             </FormGroup>
 
-                            <FormGroup>
-                                <tr>
+                            <table className="table-delete-turma">
+                                <thead>
+                                <tr className="tr_">
+                                    <th>Seleção</th>
                                     <th>Professor</th>
                                     <th>Dia</th>
                                     <th>Horário</th>
                                     <th>Vagas</th>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                </thead>
+                                <tbody className="item-turma-table">
+                                {
+                                    data.map(item => {
+                                        return(
+                                            <TableItems 
+                                                data={item} 
+                                                selectedRows={selectedRows}
+                                            />
+                                        )
+                                    })
+                                }
+                                </tbody>
+                            </table>
 
-                            </FormGroup>
+                            
+
+                            
 
                             <Row>
                                 <div className="deleteTurma-buttons">
-                                    <Button className="deleteTurma">
+                                    <Link to={"/disciplina"} className="deleteTurma">
                                         Cancelar
-                                    </Button>
+                                    </Link>
 
                                     <div className="Link-deleteTurma-Salvar">
                                         <button className="Excluir">Excluir Turmas</button>
@@ -68,4 +113,47 @@ export default function DeleteTurma() {
             </Row>
         </div>
     );
+}
+
+function TableItems({ allSelected = false, data, selectedRows }) {
+    const [checked, setChecked] = useState(allSelected)
+
+    function handleRowSelect(e) {
+        let verificador = {
+            existe: false,
+            linha: null
+        }
+
+        selectedRows.map((item, index) => {
+            if (item[0] === e.target.id) {
+                verificador.existe = true
+                if(item[1] !== e.target.checked){
+                    verificador.linha = index
+                } 
+            }
+        })
+        
+        if (verificador.existe) {
+            if (verificador.linha !== null) {
+                selectedRows[verificador.linha][1] = e.target.checked
+            }
+        } else {
+            selectedRows.push([e.target.id, e.target.checked])
+        }
+        
+        console.log(selectedRows);
+        setChecked(e.target.checked)
+    }
+    
+    return (
+        <tr>
+            <td>
+                <input type="checkbox" onChange={handleRowSelect} id={"checkbox-id-"+data.id} checked={checked}/>
+            </td>
+            <td>{data.professor.nomeCompleto}</td>
+            <td>{data.diaSemana}</td>
+            <td>{data.horario}</td>
+            <td>{data.numeroAlunos}/{data.numeroVagas}</td>
+        </tr>
+    )
 }
