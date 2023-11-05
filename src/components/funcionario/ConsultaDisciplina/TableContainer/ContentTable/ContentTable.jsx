@@ -37,7 +37,7 @@ export default function ContentTable({ contentData, setId, setNomeDisciplina }) 
                   <th>Tipo</th>
                 </tr>
               </thead>
-              <tbody className="item-disciplina-table">
+              <tbody className="item-table">
                 {
                   data.dados.map((item) => {
                     return (
@@ -45,6 +45,7 @@ export default function ContentTable({ contentData, setId, setNomeDisciplina }) 
                         <td>{item.nome}</td>
                         <td>{item.tipo}</td>
                       </tr>
+                      
                     )
                   })
                 }
