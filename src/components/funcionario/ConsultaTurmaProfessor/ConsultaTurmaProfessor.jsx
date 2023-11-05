@@ -54,7 +54,7 @@ export default function ConsultaTurmaProfessor({ id = null }) {
 
       return (
          <div className='turma-table content-table'>
-            <h5 className='title'>Detalhes do professor</h5>
+            <h2 className="title_sectable">Detalhes do professor</h2>
 
             <div className="buttons">
                <Link to={`excluir/${dadosProf.dados.id}`}>
