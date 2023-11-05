@@ -10,45 +10,56 @@
 
 
 /* Alinhamento */
-.container-main{
-  margin: 50px 150px ;
+.container-main {
+  margin: 50px 150px;
 }
 
 /* -- da tabela */
 
-.content-tables{
+.content-tables {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px;
 }
 
+.table_ .item-table tr:hover {
+  cursor: pointer;
+  background-color: #e5e3f1;
+  transition: 0.2s;
+}
+
+.table_ .item-table tr.active{
+  background-color: #c5c5d8;
+  transition: 0.2s;
+}
+
 /* Título das páginas */
 
-.page-title{
+.page-title {
   border-bottom: 1px solid #ddd;
 }
 
-.page-title .title_{
+.page-title .title_ {
   color: #242424;
 }
 
-.page-title .subtitle_{
+.page-title .subtitle_ {
   font-weight: 500;
   color: #4D4D4D;
 }
-/* 
-.active{
+
+/* .active {
   background-color: #000 !important;
 } */
 
 /* Cabeçalho das tabelas */
-.header-table{
+.header-table {
   display: grid;
   grid-template-columns: 1fr 50%;
   margin: 20px 0;
 }
 
-.header-table .right-header{
+.header-table .right-header {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -56,16 +67,16 @@
   gap: 0.5rem;
 }
 
-td{
+td {
   font-weight: 500;
 }
 
-th{
+th {
   font-weight: 800;
 }
 
 /* Searchbar */
-.searchbar{
+.searchbar {
   display: flex;
   align-items: center;
   width: min-content;
@@ -75,11 +86,11 @@ th{
   gap: 5px;
 }
 
-.searchbar span{
+.searchbar span {
   color: #9E9E9E;
 }
 
-.searchbar .search{
+.searchbar .search {
   outline: none;
   border: none;
   height: 40px;
@@ -87,10 +98,10 @@ th{
 
 /* Header das tabelas */
 
-.header-table .table-btn{
+.header-table .table-btn {
   background-color: white;
   border: 1px solid #0000002a;
-  color: #232222; 
+  color: #232222;
   font-weight: bolder;
 
   display: flex;
@@ -98,11 +109,11 @@ th{
   gap: 0.5rem;
 }
 
-.header-table .table-btn:hover{
+.header-table .table-btn:hover {
   background-color: #eee;
 }
 
-.header-table .left-header{
+.header-table .left-header {
   display: flex;
   justify-content: end;
   align-items: center;
@@ -110,7 +121,7 @@ th{
 }
 
 
-.header-table .left-header .add-aluno-btn{
+.header-table .left-header .add-aluno-btn {
   background-color: #1C1B1F;
 
   color: white;
@@ -129,7 +140,7 @@ th{
   font-size: 0.9rem;
 }
 
-.header-table .filtro-btn{
+.header-table .filtro-btn {
   width: 130px;
 
   display: flex;
@@ -149,7 +160,8 @@ th{
   outline: none;
 }
 
-#filter, #filter > option{
+#filter,
+#filter>option {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
