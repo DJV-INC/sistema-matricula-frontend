@@ -3,6 +3,18 @@ const apiPath = "api/v1/"
 
 const baseURL = hostPath + apiPath
 
+function errorHandler(dados, entidade) {
+   if (dados.dados.erro === "23505") {
+      dados.dados.mensagem = `Não é possível inserir ${entidade}, pois já existe ${entidade} com esses dados. Por favor, revisar dados`
+   }
+
+   if (dados.dados.erro === "23503") {
+      dados.dados.mensagem = `Não é possível excluir ${entidade}, pois existe turmas atreladas. Tente excluir turmas atreladas e tente novamente`
+   }
+
+   return dados;
+}
+
 
 async function get(table, params = false) {
    
@@ -11,9 +23,7 @@ async function get(table, params = false) {
    try {
       const resposta = await fetch(`${baseURL}${table}` + (params ? `?${params}` : ""));
 
-      if (!resposta.ok) {
-         throw new Error()
-      }
+      console.log(`${baseURL}${table}` + (params ? `?${params}` : ""))
 
       const dados = await resposta.json();
       obj = {
@@ -29,60 +39,78 @@ async function get(table, params = false) {
 }
 
 async function post(table, body, params = false) {
-   const response = await fetch(`${baseURL}${table}` + (params ? `?${params}` : ""), {
-      method: "POST",
-      headers: {
-         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-   })
+   let resposta = {}
 
-   return response
+   try {
+      let inserir = await fetch(`${baseURL}${table}` + (params ? `?${params}` : ""), {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json"
+         },
+         body: JSON.stringify(body)
+      })
+
+      const dados = await inserir.json();
+
+       resposta = {
+         dados: dados
+       }
+   } catch (error) {
+      resposta = {
+         error: error.message
+      }
+   }
+   return resposta
 }
 
 async function patch(table, body) {
-   const response = await fetch(`${baseURL}${table}`, {
-      method: "PATCH",
-      headers: {
-         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-   })
+   let resposta = {}
 
-   console.log(`${baseURL}${table}` , body);
+   try {
+      let atualizar = await fetch(`${baseURL}${table}`, {
+         method: "PATCH",
+         headers: {
+            "Content-Type": "application/json"
+         },
+         body: JSON.stringify(body)
+      })
 
-   return response
-}
+      const dados = await atualizar.json();
 
-async function put(table, body) {
-   const response = await fetch(`${baseURL}${table}`, {
-      method: "PUT",
-      headers: {
-         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-   })
-
-   if (!response.ok) {
-      console.log(response)
+       resposta = {
+         dados: dados
+       }
+   } catch (error) {
+      resposta = {
+         error: error.message
+      }
    }
-
-   console.log(`${baseURL}${table}` , body);
-
-   return response
+   return resposta
 }
-
 
 async function del(table, params = "") {
-   console.log(`${baseURL}${table}/${params}`);
-   const res = await fetch(`${baseURL}${table}/${params}`, {
-      method: "DELETE",
-      headers: {
-         "Content-Type": "application/json"
-      },
-   })
 
-   return res
+   let resposta = {}
+
+   try {
+      let deletar = await fetch(`${baseURL}${table}/${params}`, {
+         method: "DELETE",
+         headers: {
+            "Content-Type": "application/json"
+         },
+      })
+
+      const dados = await deletar.json();
+
+       resposta = {
+         dados: dados
+       }
+   } catch (error) {
+      resposta = {
+         error: error.message
+      }
+   }
+   return resposta
 }
 
-export default { get, post, patch, del, put}
+export default { get, post, patch, del, errorHandler}
