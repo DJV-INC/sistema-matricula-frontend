@@ -18,10 +18,11 @@
    color: #CD6200;
 }
 
-.item-table tr:hover{
-
+.disciplina_ th{
+   min-width: 90px !important;
 }
 
-.item-table tr.active{
-   
+.disciplina_ .link_{
+   text-decoration: none;
+   color: #313133;
 }
