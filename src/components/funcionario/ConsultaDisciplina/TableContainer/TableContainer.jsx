@@ -25,17 +25,6 @@ export default function TableContainer() {
     setPesquisa(e.target.value)
   }
 
-  function dropdownToggle() {
-    const filterDropdown = document.querySelectorAll(".dropdown-filter-container")[0]
-
-    setDropdownPesquisa(!dropdownPesquisa)
-
-    if (dropdownPesquisa) {
-      filterDropdown.classList.add("active")
-    } else {
-      filterDropdown.classList.remove("active")
-    }
-  }
 
   useEffect(() => {
     if (tipoPesquisa === "nome") {
@@ -57,11 +46,10 @@ export default function TableContainer() {
       <header className="header-table">
         <div className="right-header">
           <Input className="pesquisa-input" placeholder="Pesquisar" onChange={handleFilter} />
-          <Button className="table-btn filtro-btn" id="btn-handle-filter" onClick={dropdownToggle}>
-            <span>Filtro</span>
-            <span class="material-symbols-rounded">tune</span>
-          </Button>
-          <FilterDropdown setTipoPesquisa={setTipoPesquisa} tipoPesquisa={tipoPesquisa} />
+          <select value={tipoPesquisa} onChange={(e) => setTipoPesquisa(e.target.value)} name="filter" id="filter">
+            <option value="" selected>Sem filtro</option>
+            <option value="nome">Nome</option>
+          </select>
         </div>
 
         <div className="left-header">
