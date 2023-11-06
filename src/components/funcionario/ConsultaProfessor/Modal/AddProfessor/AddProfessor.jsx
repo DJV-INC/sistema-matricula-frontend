@@ -20,9 +20,12 @@ export default function AddProfessor(props) {
        telefone: event.target.telefone.value
     };
  
-    API.post("professores", dados);
- 
-    alert("Professor cadastrado");
+    API.post("professores", dados).then((res) => {
+      const mensagem = API.errorHandler(res, "professor")
+      console.log(mensagem)
+      alert(mensagem.dados.mensagem)
+    })
+
  
     navigate(-1);
  }
