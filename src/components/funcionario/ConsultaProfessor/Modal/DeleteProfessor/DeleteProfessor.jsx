@@ -10,7 +10,10 @@ function DeleteProfessor(props) {
     const navigate = useNavigate()
 
     const handleSubmit = () => {
-        API.del("professores", props.id)
+        API.del("professores", props.id).then((res) => {
+            const mensagem = API.errorHandler(res, "professor")
+            alert(mensagem.dados.mensagem)
+        })
         navigate("/professor")
     }
 
