@@ -21,23 +21,13 @@ export default function TableContainer() {
     setPesquisa(e.target.value)
   }
 
-  function dropdownToggle(event) {
-    const filterDropdown = document.querySelectorAll(".dropdown-filter-container")[0]
-
-    setDropdownPesquisa(!dropdownPesquisa)
-
-    if (dropdownPesquisa) {
-      filterDropdown.classList.add("active")
-    } else {
-      filterDropdown.classList.remove("active")
-    }
-  }
-
   useEffect(() => {
     if (tipoPesquisa === "nomeCompleto") {
       API.get("professores", `nomeCompleto=${pesquisa}`).then((res) => {
         setData({ dados: [res.dados] })
       })
+      console.log(`nomeCompleto=${pesquisa}`)
+      console.log(data)
     }
     if (tipoPesquisa === "cpf") {
       API.get("professores", `cpf=${pesquisa}`).then((res) => {
@@ -67,7 +57,6 @@ export default function TableContainer() {
             <option value="" selected>Sem filtro</option>
             <option value="nomeCompleto">Nome</option>
             <option value="cpf">CPF</option>
-
           </select>
         </div>
 
