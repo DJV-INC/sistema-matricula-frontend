@@ -1,11 +1,11 @@
 import { Fragment } from "react";
-import HeaderNavbar from "../components/HeaderNavbar";
+import NavbarFuncionario from "../components/NavbarFuncionario";
 import ConsultaDisciplina from "../components/funcionario/ConsultaDisciplina/ConsultaDisciplina";
 
 function FuncionarioDisciplina() {
     return (
         <Fragment>
-            <HeaderNavbar />
+            <NavbarFuncionario />
             <ConsultaDisciplina/>
         </Fragment>
     );

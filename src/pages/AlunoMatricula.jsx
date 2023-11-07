@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
-import HeaderNavbar from '../components/HeaderNavbar'
-import ConsultaMatricula from '../components/aluno/RegistroMatricula/ConsultaMatricula'
+import NavbarAluno from '../components/NavbarAluno'
+import FormMatricula from '../components/aluno/Matricula/FormMatricula'
 
 export default function AlunoMatricula() {
    return (
       <Fragment>
-         <HeaderNavbar/>
-         <ConsultaMatricula/>
+         <NavbarAluno/>
+         <FormMatricula/>
       </Fragment>
    )
 }

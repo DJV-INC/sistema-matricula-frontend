@@ -1,12 +1,12 @@
 import { Fragment } from "react";
-import HeaderNavbar from "../components/HeaderNavbar";
+import NavbarFuncionario from "../components/NavbarFuncionario";
 import ConsultaProfessor from "../components/funcionario/ConsultaProfessor/ConsultaProfessor";
 
 
 function FuncionarioProfessor() {
     return (
         <Fragment>
-            <HeaderNavbar />
+            <NavbarFuncionario />
             <ConsultaProfessor />
         </Fragment>
 
