@@ -1,0 +1,52 @@
+
+.content-matricula{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 20px;
+    min-height: 500px;
+}
+
+
+.container-botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.material-symbols-rounded.flecha {
+    font-size: 30px;
+}
+
+/* Step--Forms*/
+.form{
+    display: flex;
+    margin: auto;
+    
+}
+
+.menu-disciplina{
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    height: min-content;
+    padding: 5px;
+    gap: 5px;
+}
+
+.menu-disciplina .btn-dis{
+    color: #303030;
+    font-weight: 400;
+    height: 50px;
+    background-color: #fff;
+    border: 1.5px solid #9E9E9E;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.menu-disciplina .btn-dis:hover{
+    background-color: #a1a1a1;
+    color: #fff;
+}
+
