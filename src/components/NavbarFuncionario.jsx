@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { NavbarBrand, Navbar } from 'reactstrap'
+import { NavbarBrand} from 'reactstrap'
 
 import './HeaderNavbar.css'
 
-export default function HeaderNavbar() {
+export default function NavbarFuncionario() {
   return (
     <header>
       <nav className="header-navbar">
