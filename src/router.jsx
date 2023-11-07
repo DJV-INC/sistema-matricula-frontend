@@ -11,7 +11,7 @@ export default function Router() {
 		<Routes>
 			{/* Rotas Aluno */}
 
-			<Route exact path="/aluno" element={<AlunoMatricula/>}/>
+			<Route exact path="/aluno/matricula" element={<AlunoMatricula/>}/>
 				{/* <Route exact path="/aluno/:modalType/:id" element={<FuncionarioAluno/>}/>
 				<Route exact path="/aluno/:modalType" element={<FuncionarioAluno/>}/> */}
 
@@ -32,6 +32,7 @@ export default function Router() {
 			<Route exact path="/professor" element={<FuncionarioProfessor/>}/>
 			<Route exact path="/professor/:modalType/:id" element={<FuncionarioProfessor/>}/>
 			<Route exact path="/professor/:modalType" element={<FuncionarioProfessor/>}/>
+			
 		</Routes>
   	);
 }
