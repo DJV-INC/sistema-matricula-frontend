@@ -6,7 +6,7 @@ import API from '../../../../../services/API'
 
 import './AddDiciplina.css'
 
-export default function AddDiciplina(props) {
+export default function AddDiciplina(func) {
   const navigate = useNavigate()
 
   function handleSubmit(event) {
@@ -21,7 +21,7 @@ export default function AddDiciplina(props) {
  
     alert("Disciplina cadastrada");
  
-    navigate(-1);
+    func()
  }
 
   return (
@@ -36,16 +36,16 @@ export default function AddDiciplina(props) {
           sm="12"
         >
             <div className="title">Adicionar disciplina
-                <button className="close_ btn" onClick={props.func}>
+                <Link className="close_ btn" onClick={func}>
                     <span class="material-symbols-rounded">close</span>
-                </button>
+                </Link>
             </div>
           <Form method='POST' onSubmit={handleSubmit}>
 
             {/* Titulo da pagina */}
 
             
-            <hr />
+            {/* <hr /> */}
             <h2>Dados</h2>
 
             {/* Formularios */}
@@ -78,7 +78,7 @@ export default function AddDiciplina(props) {
             <Row>
               <div className='botoes-div-add-disciplina'>
 
-                <Link to={"/"} className='Link-add-disciplina-cancel'>
+                <Link onClick={func} className='Link-add-disciplina-cancel'>
                   <button className="Cancel btn">
                     Cancelar
                   </button>

@@ -1,22 +1,20 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Form } from 'reactstrap';
 import API from '../../../../../services/API';
 
 import './DeleteDisciplina.css'
 
-function DeleteDisciplina(props) {
-
-    const navigate = useNavigate()
+function DeleteDisciplina({id, func}) {
 
     const handleSubmit = () => {
-        API.del("disciplinas", props.id)
-        navigate("/disciplina")
+        API.del("disciplinas", id)
+        func()
     }
 
     return (
         <div className="modal_aluno">
             <div className="title">Excluir disciplina?
-                <button className="close_ btn" onClick={props.func}>
+                <button className="close_ btn" onClick={func}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -47,8 +45,6 @@ function DeleteDisciplina(props) {
 
                     </div>
                 </Form>
-
-
             </div>
         </div>
     )

@@ -29,7 +29,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            {<EditDisciplina/>}
+            {<EditDisciplina func={closeModal}/>}
          </div>
       );
    }

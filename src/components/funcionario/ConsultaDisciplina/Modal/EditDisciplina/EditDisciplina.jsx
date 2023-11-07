@@ -1,13 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import API from '../../../../../services/API';
 
 import './EditDisciplina.css'
 
 export default function EditDisciplina(props) {
-  const navigate = useNavigate()
   const {id} = useParams()
   
   const [data, setData] = useState({})
@@ -35,9 +34,8 @@ export default function EditDisciplina(props) {
  
     alert("Disciplina atualizada");
  
-    navigate(-1);
+    props.func()
  }
-
 
   useEffect(() => {
     API.get(`disciplinas`, `id=${id}`).then((res) => {
