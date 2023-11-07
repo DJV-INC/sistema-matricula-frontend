@@ -4,8 +4,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import API from "../../../../../services/API";
 
-export default function DeleteTurma() {
-    const navigate = useNavigate()
+export default function DeleteTurma({func}) {
     const {idDisciplina} = useParams()
     const [data, setData] = useState([])
     const selectedRows = []
@@ -33,7 +32,7 @@ export default function DeleteTurma() {
 
         alert("As turmas selecionadas foram excluídas com sucesso")
 
-        navigate(-1)
+        func()
     }
 
     return (
@@ -42,7 +41,7 @@ export default function DeleteTurma() {
                 <Col className="field-deleteTurma">
                     <div className="title">
                         Excluir Turma
-                        <button className="close_ btn">
+                        <button className="close_ btn" onClick={func}>
                             <span class="material-symbols-rounded">close</span>
                         </button>
                     </div>
@@ -98,8 +97,8 @@ export default function DeleteTurma() {
 
                             <Row>
                                 <div className="btn-turma-delete-container">
-                                    <Link to={"/disciplina"} className="deleteTurma delete-btn">Cancelar
-                                    </Link>
+                                    <button onClick={func} className="deleteTurma delete-btn">Cancelar
+                                    </button>
                                     <button className="excluir delete-btn">Excluir Turmas</button>
                                 </div>
                             </Row>

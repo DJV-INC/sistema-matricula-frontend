@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./AddTurma.css";
-import { Col, Label, Row, Form, FormGroup, Input, Button } from "reactstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Col, Row, Form, FormGroup, Input, Button } from "reactstrap";
 import API from "../../../../../services/API";
 
 export default function AddTurma({ func, idDisciplina }) {
-	const navigate = useNavigate();
 
 	const [listaTurmas, setlistaTurmas] = useState([]);
   	
@@ -22,7 +20,7 @@ export default function AddTurma({ func, idDisciplina }) {
 				}
 			}
 		})
-	}, [navigate, idDisciplina]);
+	}, [idDisciplina]);
 
 
 	function handleAdd() {
@@ -62,7 +60,7 @@ export default function AddTurma({ func, idDisciplina }) {
 
 		alert("Turma(s) cadastrada");
 
-		navigate(-1);
+		func()
 	}
 
 

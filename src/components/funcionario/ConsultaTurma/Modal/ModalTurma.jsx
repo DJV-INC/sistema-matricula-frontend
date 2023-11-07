@@ -13,7 +13,10 @@ export default function ModalTurma() {
 
    const navigate = useNavigate()
 
-   function closeModal() {
+   function closeModal(e) {
+      if (e) {
+         e.preventDefault()
+      }
       navigate(-1)
    }
    
@@ -33,16 +36,6 @@ export default function ModalTurma() {
            className={"modal"}
          >
             <EditTurma func={closeModal} idTurma={idTurma} idDisciplina={idDisciplina}/>
-         </div>
-      );
-   }
-
-   if (modalType === "consultarTurma") {
-      return (
-         <div
-           className={"modal"}
-         >
-            {/* <InfoAluno func={closeModal}/> */}
          </div>
       );
    }
