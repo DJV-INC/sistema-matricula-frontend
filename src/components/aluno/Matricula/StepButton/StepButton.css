@@ -1,0 +1,29 @@
+
+
+.botao {
+    font-weight: 500;
+    border: 0px none white;
+    padding: 10px 10px;
+    text-align: center;
+    line-height: 200%;
+    background-color: white;
+}
+
+.index {
+    background-color: black;
+    font-weight: 800;
+    color: white;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+}
+
+.botao:hover .index{
+    background-color: #333;
+}
+
+.botao:hover{
+    color: #555;
+}
