@@ -11,6 +11,14 @@ export default function FormMatricula() {
     const [step, setStep] = useState("")
     const [comp, setComp] = useState("")
 
+    function startNav() {
+        document.getElementById("botao").setAttribute("disabled", "")
+    }
+
+    useEffect(()=>{
+        startNav()
+    }, [])
+
     const steps = [1, 2, 3]
 
     function getCurrStep() {
@@ -28,6 +36,14 @@ export default function FormMatricula() {
     }
 
     function handleStep(e) {
+        const botoes = document.getElementsByClassName("botao")
+        const botao = e.currentTarget
+
+        for(const element of botoes) {
+            element.removeAttribute("disabled")
+        }
+
+        botao.setAttribute("disabled", "")
 
         setStep(e.target.value)
     }
@@ -46,15 +62,15 @@ export default function FormMatricula() {
             <div className="content-matricula">
 
                 <div className="container-botao">
-                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina obrigatórias"} index={1} step={step} />
+                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina obrigatórias"} index={1} step={step} disabled={false} />
 
                     <span className="material-symbols-rounded flecha">chevron_right</span>
 
-                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina optativas"} index={2} step={step} />
+                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina optativas"} index={2} step={step} disabled={false} />
 
                     <span className="material-symbols-rounded flecha">chevron_right</span>
 
-                    <StepButton funcao={(e) => handleStep(e)} texto={"Finalização"} index={3} step={step} />
+                    <StepButton funcao={(e) => handleStep(e)} texto={"Finalização"} index={3} step={step} disabled={false} />
                 </div>
 
                 {comp ? comp : <DisObrigatoria/> }
