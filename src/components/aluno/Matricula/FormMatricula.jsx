@@ -28,6 +28,7 @@ export default function FormMatricula() {
     }
 
     function handleStep(e) {
+
         setStep(e.target.value)
     }
 
@@ -45,15 +46,15 @@ export default function FormMatricula() {
             <div className="content-matricula">
 
                 <div className="container-botao">
-                    <StepButton funcao={handleStep} texto={"Disciplina obrigatórias"} index={1} step={step} />
+                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina obrigatórias"} index={1} step={step} />
 
                     <span className="material-symbols-rounded flecha">chevron_right</span>
 
-                    <StepButton funcao={handleStep} texto={"Disciplina optativas"} index={2} step={step} />
+                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina optativas"} index={2} step={step} />
 
                     <span className="material-symbols-rounded flecha">chevron_right</span>
 
-                    <StepButton funcao={handleStep} texto={"Finalização"} index={3} step={step} />
+                    <StepButton funcao={(e) => handleStep(e)} texto={"Finalização"} index={3} step={step} />
                 </div>
 
                 {comp ? comp : <DisObrigatoria/> }
