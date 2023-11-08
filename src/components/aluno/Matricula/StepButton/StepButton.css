@@ -2,6 +2,7 @@
 
 .botao {
     font-weight: 500;
+    color: #8d8d99;
     border: 0px none white;
     padding: 10px 10px;
     text-align: center;
@@ -10,7 +11,7 @@
 }
 
 .index {
-    background-color: black;
+    background-color: #e1e1e6;
     font-weight: 800;
     color: white;
     border-radius: 100%;
@@ -26,4 +27,12 @@
 
 .botao:hover{
     color: #555;
+}
+
+.botao:disabled .index {
+    background-color: #111;
+}
+
+.botao:disabled {
+    color: #111;
 }
