@@ -5,6 +5,7 @@ import FuncionarioAluno from "./pages/FuncionarioAluno";
 import FuncionarioDisciplina from "./pages/FuncionarioDisciplina";
 import FuncionarioProfessor from "./pages/FuncionarioProfessor";
 import AlunoMatricula from "./pages/AlunoMatricula";
+import AlunoBoletim from "./pages/AlunoBoletim";
 
 export default function Router() {
   	return (
@@ -12,7 +13,7 @@ export default function Router() {
 			{/* Rotas Aluno */}
 
 			<Route exact path="/aluno/matricula" element={<AlunoMatricula/>}/>
-			<Route exact path="/aluno/boletim" element={<AlunoMatricula/>}/>
+			<Route exact path="/aluno/boletim" element={<AlunoBoletim/>}/>
 				{/* <Route exact path="/aluno/:modalType/:id" element={<FuncionarioAluno/>}/>
 				<Route exact path="/aluno/:modalType" element={<FuncionarioAluno/>}/> */}
 
