@@ -9,6 +9,7 @@
 
 .container-botao {
     display: flex;
+    margin-top: 20px;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -18,11 +19,21 @@
     font-size: 30px;
 }
 
+/* .breakline{
+    width: 95%;
+    margin: auto;
+    margin-top: 1rem;
+} */
+
 /* Step--Forms*/
 .form{
     display: flex;
     margin: auto;
-    
+    width: 90%;
+    margin-top: 20px;
+    gap:3rem;
+    padding: 20px 0px 0px 0px;
+    border-top: 1px solid #cccccc;
 }
 
 .menu-disciplina{
@@ -45,8 +56,23 @@
     transition: 0.2s;
 }
 
-.menu-disciplina .btn-dis:hover{
-    background-color: #a1a1a1;
-    color: #fff;
+.menu-disciplina .btn-hover:hover{
+    background-color: #e5e3f1;
 }
 
+
+.btn-dis.active {
+    background-color: #111;
+    color: white;
+}
+
+.form-disciplina{
+    flex: 1;
+}
+
+/* Horário */
+.section-hr{
+    border: 1px solid #9E9E9E;
+    border-radius: 4px;
+    padding: 15px;
+}
