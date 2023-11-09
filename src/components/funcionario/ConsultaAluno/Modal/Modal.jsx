@@ -11,13 +11,11 @@ export default function Modal() {
    const { modalType = null , id: cpf = null } = useParams()
    const navigate = useNavigate()
 
-   function closeModal() {
-      //console.log(event.target);
-      //console.log(event.currentTarget);
-
-      //if (event.target === event.currentTarget) {
-         navigate(-1)
-      //}
+   function closeModal(e) {
+      if (e) {
+         e.preventDefault()
+      }
+      navigate(-1)
    }
    
    if (modalType === "adicionar") {
@@ -25,7 +23,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <AddAluno func={closeModal}/>
+            <AddAluno close={closeModal}/>
          </div>
       );
    }
@@ -35,7 +33,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <EditAluno func={closeModal}/>
+            <EditAluno close={closeModal}/>
          </div>
       );
    }
@@ -45,7 +43,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <InfoAluno func={closeModal}/>
+            <InfoAluno close={closeModal}/>
          </div>
       );
    }
@@ -55,7 +53,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <DeleteAluno cpf={cpf} func={closeModal}/>
+            <DeleteAluno cpf={cpf} close={closeModal}/>
          </div>
       );
    }

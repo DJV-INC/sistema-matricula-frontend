@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import './InfoAluno.css'
-
-import { Table, Button } from 'reactstrap';
+import { Table } from 'reactstrap';
 import { useParams, } from 'react-router-dom';
 import API from '../../../../../services/API';
 import Status from '../../Status';
+import './InfoAluno.css'
 
 
-function InfoAluno(props) {
+function InfoAluno({ close }) {
     const {id} = useParams()
     const [data, setData] = useState({})
 
@@ -24,7 +23,7 @@ function InfoAluno(props) {
 
         <div className="modal_aluno">
             <div className="title">Informações do aluno
-                <button className="close_ btn" onClick={props.func}>
+                <button className="close_ btn" onClick={close}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>

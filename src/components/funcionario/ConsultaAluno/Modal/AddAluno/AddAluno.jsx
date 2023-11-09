@@ -3,14 +3,12 @@ import React, { useEffect, useState } from 'react'
 import './AddAluno.css'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import Form1 from 'react-bootstrap/Form'
-import { Link, useNavigate } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
 import API from '../../../../../services/API'
 
 
-export default function AddAluno(props) {
+export default function AddAluno({close}) {
   const url = "https://viacep.com.br/ws"
-  const navigate = useNavigate()
   const [viacep, setViacep] = useState("00000000")
   const [data, setData] = useState([])
 
@@ -57,9 +55,7 @@ export default function AddAluno(props) {
 
     alert("Aluno(a) cadastrado");
 
-    navigate(-1);
-
-
+    close()
   }
 
 
@@ -76,7 +72,7 @@ export default function AddAluno(props) {
           sm="12"
         >
           <div className="title">Adicionar aluno
-            <button className="close_ btn" onClick={props.func}>
+            <button className="close_ btn" onClick={close}>
               <span class="material-symbols-rounded">close</span>
             </button>
           </div>
@@ -276,11 +272,9 @@ export default function AddAluno(props) {
             <Row>
               <div className='botoes-div-addaluno'>
 
-                <Link to={"/"} className='Link-addAluno-cancel'>
-                  <button className="Cancel btn">
-                    Cancelar
-                  </button>
-                </Link>
+                <button onClick={close} className='Cancel btn'>
+                  Cancelar
+                </button>
 
                 <Button className='Confirm'>
                   Adicionar

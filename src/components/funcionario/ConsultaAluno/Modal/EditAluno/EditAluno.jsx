@@ -5,7 +5,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import API from '../../../../../services/API';
 
-export default function EditAluno(props) {
+export default function EditAluno({ close }) {
   const navigate = useNavigate()
   const {id} = useParams()
   
@@ -149,7 +149,7 @@ export default function EditAluno(props) {
         >
 
           <div className="title">Editar aluno
-                <button className="close_ btn" onClick={props.func}>
+                <button className="close_ btn" onClick={close}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
