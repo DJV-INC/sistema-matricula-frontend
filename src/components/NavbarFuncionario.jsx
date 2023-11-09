@@ -8,7 +8,7 @@ export default function NavbarFuncionario() {
   return (
     <header>
       <nav className="header-navbar">
-         <NavbarBrand href="/" className='emm-logo-link'>
+         <NavbarBrand href="/login" className='emm-logo-link'>
             <img
             alt="logo"
             src="/emm-logo.svg"
@@ -20,9 +20,9 @@ export default function NavbarFuncionario() {
          </NavbarBrand>
 
          <div className="navlinks-container">
-            <NavLink to={"/admin"} className={"navlink"}>Alunos</NavLink>
-            <NavLink to={"/admin/disciplina"} className={"navlink"}>Disciplinas</NavLink>
-            <NavLink to={"/admin/professor"} className={"navlink"}>Professores</NavLink>
+            <NavLink to={"/"} className={"navlink"}>Alunos</NavLink>
+            <NavLink to={"/disciplina"} className={"navlink"}>Disciplinas</NavLink>
+            <NavLink to={"/professor"} className={"navlink"}>Professores</NavLink>
          </div>
       </nav>
     </header>
