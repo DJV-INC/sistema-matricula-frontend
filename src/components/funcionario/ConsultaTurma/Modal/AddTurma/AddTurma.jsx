@@ -55,7 +55,7 @@ export default function AddTurma({ func, idDisciplina }) {
 				horario: item.horario,
 				numeroVagas: item.vagas,
 				diaSemana: item.diaSemana,
-			} ,`professor_id=${item.professor}&disciplina_id=${idDisciplina}`)
+			} ,`professor_id=${parseInt(item.professor)}&disciplina_id=${idDisciplina}`)
 		})
 
 		alert("Turma(s) cadastrada");
