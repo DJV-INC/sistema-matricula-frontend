@@ -21,8 +21,9 @@ export default function AddDiciplina(func) {
  
     alert("Disciplina cadastrada");
  
-    func()
+
  }
+
 
   return (
     <div className='modal-add-disciplina'>
@@ -78,7 +79,7 @@ export default function AddDiciplina(func) {
             <Row>
               <div className='botoes-div-add-disciplina'>
 
-                <Link onClick={func} className='Link-add-disciplina-cancel'>
+                <Link to={"/disciplina"} className='Link-add-disciplina-cancel'>
                   <button className="Cancel btn">
                     Cancelar
                   </button>
