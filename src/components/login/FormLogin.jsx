@@ -9,10 +9,10 @@ export default function FormLogin() {
 
             <h1>Login</h1>
 
-            <Link to={"/aluno"} >
+            <Link to={"/aluno/matricula"} >
                <button className='login-btn'>Logar como aluno</button>
             </Link>
-            <Link to={"/admin"}>
+            <Link to={"/"}>
                <button className='login-btn'>Logar como funcionário</button>
             </Link>
          </form>
