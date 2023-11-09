@@ -3,7 +3,7 @@ import "./AddTurma.css";
 import { Col, Row, Form, FormGroup, Input, Button } from "reactstrap";
 import API from "../../../../../services/API";
 
-export default function AddTurma({ func, idDisciplina }) {
+export default function AddTurma({ closeModal, idDisciplina }) {
 
 	const [listaTurmas, setlistaTurmas] = useState([]);
   	
@@ -60,7 +60,7 @@ export default function AddTurma({ func, idDisciplina }) {
 
 		alert("Turma(s) cadastrada");
 
-		func()
+		closeModal()
 	}
 
 
@@ -70,7 +70,7 @@ export default function AddTurma({ func, idDisciplina }) {
 			<Col className="field-addTurma">
 				<div className="title">
 					Adicionar Turma
-					<button className="close_ btn" onClick={func}>
+					<button className="close_ btn" onClick={closeModal}>
 					<span class="material-symbols-rounded">close</span>
 					</button>
 				</div>

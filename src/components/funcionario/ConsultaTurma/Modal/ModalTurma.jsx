@@ -25,7 +25,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            <AddTurma func={closeModal} idDisciplina={idDisciplina}/>
+            <AddTurma closeModal={closeModal} idDisciplina={idDisciplina}/>
          </div>
       );
    }
@@ -35,7 +35,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            <EditTurma func={closeModal} idTurma={idTurma} idDisciplina={idDisciplina}/>
+            <EditTurma closeModal={closeModal} idTurma={idTurma} idDisciplina={idDisciplina}/>
          </div>
       );
    }
@@ -45,7 +45,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            <DeleteTurma func={closeModal}/>
+            <DeleteTurma closeModal={closeModal}/>
          </div>
       );
    }

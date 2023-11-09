@@ -4,7 +4,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import API from "../../../../../services/API";
 
-export default function DeleteTurma({func}) {
+export default function DeleteTurma({closeModal}) {
     const {idDisciplina} = useParams()
     const [data, setData] = useState([])
     const selectedRows = []
@@ -26,13 +26,14 @@ export default function DeleteTurma({func}) {
             console.log(item[0].slice(-1), item[1]);
             const id = item[0].slice(-1)
             if (item[1]) {
+                console.log(Number.parseInt(id))
                 API.del("turmas", id)
             }
         })
 
         alert("As turmas selecionadas foram excluídas com sucesso")
 
-        func()
+        closeModal()
     }
 
     return (
@@ -41,7 +42,7 @@ export default function DeleteTurma({func}) {
                 <Col className="field-deleteTurma">
                     <div className="title">
                         Excluir Turma
-                        <button className="close_ btn" onClick={func}>
+                        <button className="close_ btn" onClick={closeModal}>
                             <span class="material-symbols-rounded">close</span>
                         </button>
                     </div>
@@ -91,13 +92,9 @@ export default function DeleteTurma({func}) {
                                 </tbody>
                             </table>
 
-                            
-
-                            
-
                             <Row>
                                 <div className="btn-turma-delete-container">
-                                    <button onClick={func} className="deleteTurma delete-btn">Cancelar
+                                    <button onClick={closeModal} className="deleteTurma delete-btn">Cancelar
                                     </button>
                                     <button className="excluir delete-btn">Excluir Turmas</button>
                                 </div>

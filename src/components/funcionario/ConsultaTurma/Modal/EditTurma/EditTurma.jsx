@@ -4,7 +4,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import API from "../../../../../services/API";
 import { useNavigate } from "react-router-dom";
 
-export default function EditTurma({func, idTurma, idDisciplina}) {
+export default function EditTurma({closeModal, idTurma, idDisciplina}) {
 
     const navigate = useNavigate();
   	const [data, setData] = useState("");
@@ -38,7 +38,7 @@ export default function EditTurma({func, idTurma, idDisciplina}) {
 
 		alert("Turma editada com sucesso");
 
-		func()
+		closeModal()
 	}
 
     return (
@@ -47,7 +47,7 @@ export default function EditTurma({func, idTurma, idDisciplina}) {
                 <Col className="field-deleteTurma">
                     <div className="title">
                         Editar Turma
-                        <button className="close_ btn" onClick={func}>
+                        <button className="close_ btn" onClick={closeModal}>
                             <span class="material-symbols-rounded">close</span>
                         </button>
                     </div>
@@ -75,7 +75,7 @@ export default function EditTurma({func, idTurma, idDisciplina}) {
 
                             <Row>
                                 <div className="editTurma-buttons">
-                                    <Button onClick={func} className="deleteTurma">
+                                    <Button onClick={closeModal} className="deleteTurma">
                                         Cancelar
                                     </Button>
 
