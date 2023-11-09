@@ -6,8 +6,7 @@ import API from '../../../../../services/API'
 
 import './AddDiciplina.css'
 
-export default function AddDiciplina(func) {
-  const navigate = useNavigate()
+export default function AddDiciplina({func}) {
 
   function handleSubmit(event) {
     event.preventDefault();
