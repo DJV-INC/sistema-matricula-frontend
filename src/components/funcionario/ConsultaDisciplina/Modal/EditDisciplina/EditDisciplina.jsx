@@ -6,7 +6,7 @@ import API from '../../../../../services/API';
 
 import './EditDisciplina.css'
 
-export default function EditDisciplina(props) {
+export default function EditDisciplina({ closeModal }) {
   const {id} = useParams()
   
   const [data, setData] = useState({})
@@ -34,7 +34,7 @@ export default function EditDisciplina(props) {
  
     alert("Disciplina atualizada");
  
-    props.func()
+    closeModal()
  }
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function EditDisciplina(props) {
         >
 
           <div className="title">Editar Disciplina
-                <button className="close_ btn" onClick={props.func}>
+                <button className="close_ btn" onClick={closeModal}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -112,9 +112,9 @@ export default function EditDisciplina(props) {
             <Row>
               <div className='botoes-div-addaluno'>
 
-                  <Link to={"/disciplina"} className="Cancel">
+                  <Button onClick={closeModal} className='Cancel btn'>
                     Cancelar
-                  </Link>
+                  </Button>
 
                   <Button className='Confirm'>
                     Atualizar

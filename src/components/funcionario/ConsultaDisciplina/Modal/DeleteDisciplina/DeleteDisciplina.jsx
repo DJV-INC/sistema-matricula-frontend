@@ -4,17 +4,17 @@ import API from '../../../../../services/API';
 
 import './DeleteDisciplina.css'
 
-function DeleteDisciplina({id, func}) {
+function DeleteDisciplina({id, closeModal}) {
 
     const handleSubmit = () => {
         API.del("disciplinas", id)
-        func()
+        closeModal()
     }
 
     return (
         <div className="modal_aluno">
             <div className="title">Excluir disciplina?
-                <button className="close_ btn" onClick={func}>
+                <button className="close_ btn" onClick={closeModal}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -33,11 +33,11 @@ function DeleteDisciplina({id, func}) {
 
                     <div className='btn-modal'>
 
-                        <Link to={"/disciplina"} className='link_cancel'>
-                            <button className='cancel_ btn'>
+                        <div className='link_cancel'>
+                            <button onClick={closeModal} className='cancel_ btn'>
                                 Cancelar
                             </button>
-                        </Link>
+                        </div>
             
                         <button className='excluir_ btn'>
                             Excluir

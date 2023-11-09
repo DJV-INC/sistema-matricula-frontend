@@ -1,12 +1,11 @@
 
 import React from 'react'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
-import { Link, useNavigate } from 'react-router-dom'
 import API from '../../../../../services/API'
 
 import './AddDiciplina.css'
 
-export default function AddDiciplina({func}) {
+export default function AddDiciplina({ closeModal }) {
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -36,9 +35,9 @@ export default function AddDiciplina({func}) {
           sm="12"
         >
             <div className="title">Adicionar disciplina
-                <Link className="close_ btn" onClick={func}>
+                <button className="close_ btn" onClick={closeModal}>
                     <span class="material-symbols-rounded">close</span>
-                </Link>
+                </button>
             </div>
           <Form method='POST' onSubmit={handleSubmit}>
 
@@ -78,11 +77,9 @@ export default function AddDiciplina({func}) {
             <Row>
               <div className='botoes-div-add-disciplina'>
 
-                <Link to={"/disciplina"} className='Link-add-disciplina-cancel'>
-                  <button className="Cancel btn">
-                    Cancelar
-                  </button>
-                </Link>
+                <Button onClick={closeModal} className='Cancel btn'>
+                  Cancelar
+                </Button>
 
                 <Button className='Confirm'>
                   Adicionar

@@ -10,7 +10,10 @@ export default function Modal() {
    const { modalType = null , id = null } = useParams()
    const navigate = useNavigate()
 
-   function closeModal() {
+   function closeModal(e) {
+      if (e) {
+         e.preventDefault()
+      }
       navigate(-1)
    }
    
@@ -19,7 +22,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <AddDiciplina func={closeModal}/>
+            <AddDiciplina closeModal={closeModal} />
          </div>
       );
    }
@@ -29,7 +32,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            {<EditDisciplina func={closeModal}/>}
+            {<EditDisciplina closeModal={closeModal}/>}
          </div>
       );
    }
@@ -39,7 +42,7 @@ export default function Modal() {
          <div
            className={"modal"}
          >
-            <DeleteDisciplina id={id} func={closeModal}/>
+            <DeleteDisciplina id={id} closeModal={closeModal}/>
          </div>
       );
    }
