@@ -1,16 +1,14 @@
 
 import React from 'react'
 import { Button, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
 import Form1 from 'react-bootstrap/Form'
 import API from '../../../../../services/API'
 
 import './AddProfessor.css'
 
-export default function AddProfessor(props) {
-  const navigate = useNavigate()
-
+export default function AddProfessor({ closeModal }) {
   function handleSubmit(event) {
     event.preventDefault();
  
@@ -27,7 +25,7 @@ export default function AddProfessor(props) {
     })
 
  
-    navigate(-1);
+    closeModal();
  }
 
   return (
@@ -42,7 +40,7 @@ export default function AddProfessor(props) {
           sm="12"
         >
             <div className="title">Adicionar professor
-                <button className="close_ btn" onClick={props.func}>
+                <button className="close_ btn" onClick={closeModal}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -97,11 +95,9 @@ export default function AddProfessor(props) {
             <Row>
               <div className='botoes-div-add-disciplina'>
 
-                <Link to={"/professor"} className='Link-add-disciplina-cancel'>
-                  <button className="Cancel btn">
-                    Cancelar
-                  </button>
-                </Link>
+                <Button onClick={closeModal} className='Cancel btn'>
+                  Cancelar
+                </Button>
 
                 <Button className='Confirm'>
                   Adicionar

@@ -6,7 +6,7 @@ import API from '../../../../../services/API';
 
 import './EditProfessor.css'
 
-export default function EditProfessor(props) {
+export default function EditProfessor({closeModal}) {
   const navigate = useNavigate()
   const {id} = useParams()
   
@@ -36,14 +36,12 @@ export default function EditProfessor(props) {
        cpf: event.target.CPF.value !== "" ? event.target.CPF.value : data.dados.cpf,
        telefone: event.target.telefone.value !== "" ? event.target.telefone.value : data.dados.telefone
     };
-
-    console.log(dados)
  
     API.patch("professores", dados);
  
     alert("Professor atualizado");
  
-    navigate(-1);
+    closeModal()
  }
 
 
@@ -78,7 +76,7 @@ export default function EditProfessor(props) {
         >
 
           <div className="title">Editar professor
-                <button className="close_ btn" onClick={props.func}>
+                <button className="close_ btn" onClick={closeModal}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -136,9 +134,9 @@ export default function EditProfessor(props) {
             <Row>
               <div className='botoes-div-addaluno'>
 
-                  <Link to={"/professor"} className="Cancel">
+                  <Button onClick={closeModal} className='Cancel btn'>
                     Cancelar
-                  </Link>
+                  </Button>
 
                   <Button className='Confirm'>
                     Atualizar

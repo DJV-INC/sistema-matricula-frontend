@@ -4,23 +4,20 @@ import API from '../../../../../services/API';
 
 import './DeleteProfessor.css'
 
-function DeleteProfessor(props) {
-
-
-    const navigate = useNavigate()
+function DeleteProfessor({ id , closeModal}) {
 
     const handleSubmit = () => {
-        API.del("professores", props.id).then((res) => {
+        API.del("professores", id).then((res) => {
             const mensagem = API.errorHandler(res, "professor")
             alert(mensagem.dados.mensagem)
         })
-        navigate("/professor")
+        closeModal()
     }
 
     return (
         <div className="modal_aluno">
             <div className="title">Excluir professor?
-                <button className="close_ btn" onClick={props.func}>
+                <button className="close_ btn" onClick={closeModal}>
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -40,11 +37,11 @@ function DeleteProfessor(props) {
 
                     <div className='btn-modal'>
 
-                        <Link to={"/professor"} className='link_cancel'>
-                            <button className='cancel_ btn'>
+                        <div to={"/professor"} className='link_cancel'>
+                            <button onClick={closeModal} className='cancel_ btn'>
                                 Cancelar
                             </button>
-                        </Link>
+                        </div>
             
                         <button className='excluir_ btn'>
                             Excluir
