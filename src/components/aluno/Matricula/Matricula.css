@@ -1,11 +1,4 @@
-
-.content-matricula{
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 20px;
-    min-height: 500px;
-}
-
+/* Steps do formulário */
 
 .container-botao {
     display: flex;
@@ -15,17 +8,20 @@
     gap: 20px;
 }
 
+
 .material-symbols-rounded.flecha {
     font-size: 30px;
 }
 
-/* .breakline{
-    width: 95%;
-    margin: auto;
-    margin-top: 1rem;
-} */
+.content-matricula{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 20px;
+    min-height: 500px;
+}
 
-/* Step--Forms*/
+/* Forms */
+
 .form{
     display: flex;
     margin: auto;
@@ -60,7 +56,6 @@
     background-color: #e5e3f1;
 }
 
-
 .btn-dis.active {
     background-color: #111;
     color: white;
@@ -70,7 +65,8 @@
     flex: 1;
 }
 
-/* Horário */
+/* Horários */
+
 .section-hr{
     border: 1px solid #9E9E9E;
     border-radius: 4px;
