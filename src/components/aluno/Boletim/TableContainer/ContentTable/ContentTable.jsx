@@ -55,26 +55,13 @@ export default function ContentTable({ contentData }) {
             </tr>
           </thead>
           <tbody>
-            {/* {
-              data.dados.map((item) => {
-                return(
-                <tr>
-                  <td>{item.nomeCompleto}</td>
-                  <td>{item.rg}</td>
-                  <td>{item.cpf}</td>
-                  <td>{item.email}</td>
-                  <td>{item.telefone}</td>
-                  <td><Status status={item.statusMatricula} /></td>
-                  <td>
-                    <button className="options-btn" onClick={dropdownToggle}>
-                      <span className="material-symbols-rounded">more_vert</span>
-                      <Dropdown id={item.cpf} />
-                    </button>
-                  </td>
-                </tr>
-                )
-              })
-            } */}
+            <tr>
+              <td>Harmonia</td>
+              <td>Dante</td>
+              <td>0</td>
+              <td>8.5</td>
+              <td>Aprovado</td>
+            </tr>
           </tbody>
         </table>
 
