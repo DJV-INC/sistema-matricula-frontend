@@ -1,0 +1,32 @@
+.select-container{
+   display: flex;
+   justify-content: end;
+   align-items: center;
+}
+
+.select-container .select-icon{
+   position: absolute;
+   padding-right: 1rem;
+}
+
+#filter {
+   padding: 8px 16px;
+   /* padding-right: 25px; */
+   border-radius: 4px;
+   background-color: #fff;
+   outline: none;
+   width: 250px;
+   font-weight: 600;
+ }
+ 
+ #filter,
+ #filter>option {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   border: 1px solid #9E9E9E;
+   border-radius: 4px;
+   font-weight: 600;
+ 
+ }
+ 

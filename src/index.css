@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   margin: 0;
@@ -45,7 +45,7 @@
 
 .page-title .subtitle_ {
   font-weight: 500;
-  color: #4D4D4D;
+  color: #9E9E9E;
 }
 
 /* .active {
@@ -65,6 +65,10 @@
   align-items: center;
 
   gap: 0.5rem;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: 600;
 }
 
 td {
@@ -148,25 +152,6 @@ th {
 }
 
 
-#filter {
-  padding: 8px 8px;
-  padding-right: 25px;
-  border-radius: 4px;
-  background-color: #fff;
-  background-image: url(./tune.svg);
-  background-repeat: no-repeat;
-  width: 130px;
-  background-position: 98% 50%;
-  outline: none;
-}
-
-#filter,
-#filter>option {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border: 1px solid #9E9E9E;
-}
 
 /* Tabelas */
 

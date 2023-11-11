@@ -4,6 +4,7 @@ import { Button, Input } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
 import ContentTable from "./ContentTable/ContentTable";
 import API from "../../../../services/API";
+import Select from "../../../global/Select/Select";
 
 export default function TableContainer() {
   const params = useParams()
@@ -59,10 +60,10 @@ export default function TableContainer() {
       <header className="header-table">
         <div className="right-header">
 
-          <select value={tipoPesquisa} onChange={(e) => setTipoPesquisa(e.target.value)}name="filter" id="filter">
-          <option value="" selected>Selecione</option>
+          <Select state={tipoPesquisa} setState={setTipoPesquisa} icon={"expand_more"} placeholder="Semestre">
             <option value="status">1° Semestre de 2023</option>
-          </select>
+          </Select>
+          
         </div>
         
       </header>

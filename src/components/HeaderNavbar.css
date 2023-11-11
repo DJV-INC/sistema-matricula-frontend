@@ -30,15 +30,18 @@
    text-decoration: none;
 
    color: white;
-   font-size: 15px;
+   font-size: 1rem;
+   font-weight: 500;
+   
+   transition: 100ms;
 }
 
 .header-navbar .navlinks-container .navlink:hover{
-   border-bottom: 5px #c3c3c3 solid;
-   transition: 0.1s;
+   border-bottom: 4px #c3c3c3 solid;
+   transition: 100ms
 }  
 
 .header-navbar .navlinks-container .navlink.active{
    border-bottom: 4px #ad1212 solid;
-   transition: 0.1s;
+   transition: 100ms
 }
