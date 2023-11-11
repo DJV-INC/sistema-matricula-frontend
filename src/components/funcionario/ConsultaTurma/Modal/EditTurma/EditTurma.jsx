@@ -25,8 +25,8 @@ export default function EditTurma({closeModal, idTurma, idDisciplina}) {
 
 		const objBody = {
             id: data.id,
-            disciplina_id: idDisciplina,
-            professor_id: parseInt(event.target[`professor-select-edit`].value),
+            disciplina_id: Number.parseInt(idDisciplina),
+            professor_id: Number.parseInt(event.target[`professor-select-edit`].value),
             diaSemana: event.target[`dia-select-edit`].value,
             horario: event.target[`horario-edit`].value,
             numeroVagas: event.target[`vagas-edit`].value,
