@@ -7,7 +7,7 @@ export default function TableTurmaProfessor({data}) {
          <Fragment>
             <br/>
             <br/>
-            <h2 className="title_sectable">Disciplinas ministradas</h2>
+            <h3 className="title_sectable">Disciplinas ministradas</h3>
             <table className='table_'>
                <thead>
                <tr className='tr_'>

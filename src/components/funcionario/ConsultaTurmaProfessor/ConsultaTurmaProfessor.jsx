@@ -38,7 +38,7 @@ export default function ConsultaTurmaProfessor({ id = null }) {
          if (Array.isArray(data.dados)) {
             if (data.dados.length === 0) {
                return (
-                  <h5>Nenhuma turma existente para essa disciplina</h5>
+                  <span>Nenhuma turma existente para essa disciplina</span>
                )
             } else {
 
@@ -54,7 +54,7 @@ export default function ConsultaTurmaProfessor({ id = null }) {
 
       return (
          <div className='turma-table content-table'>
-            <h2 className="title_sectable">Detalhes do professor</h2>
+            <h3 className="title_sectable">Detalhes do professor</h3>
 
             <div className="buttons">
                <Link to={`excluir/${dadosProf.dados.id}`}>
