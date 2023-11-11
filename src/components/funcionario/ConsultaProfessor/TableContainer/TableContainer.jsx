@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import ContentTable from "./ContentTable/ContentTable";
 import API from "../../../../services/API";
 import ConsultaTurmaProfessor from "../../ConsultaTurmaProfessor/ConsultaTurmaProfessor";
+import Select from "../../../global/Select/Select";
 // import FilterDropdown from "./FilterDropdown/FilterDropdown";
 
 export default function TableContainer() {
@@ -53,11 +54,11 @@ export default function TableContainer() {
             <input type="text" className="search" placeholder="Pesquisar por" onChange={handleFilter} />
           </div>
 
-          <select value={tipoPesquisa} onChange={(e) => setTipoPesquisa(e.target.value)} name="filter" id="filter">
-            <option value="" selected>Sem filtro</option>
+          <Select state={tipoPesquisa} setState={setTipoPesquisa} icon={"tune"} placeholder="Sem Filtro">
             <option value="nomeCompleto">Nome</option>
             <option value="cpf">CPF</option>
-          </select>
+          </Select>
+
         </div>
 
         <div className="left-header">

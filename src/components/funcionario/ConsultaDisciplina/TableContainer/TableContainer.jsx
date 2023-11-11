@@ -9,6 +9,7 @@ import FilterDropdown from "./FilterDropdown/FilterDropdown";
 
 import "./TableContainer.css"
 import ConsultaTurma from "../../ConsultaTurma/ConsultaTurma";
+import Select from "../../../global/Select/Select";
 
 export default function TableContainer() {
   const params = useParams()
@@ -46,10 +47,11 @@ export default function TableContainer() {
       <header className="header-table">
         <div className="right-header">
           <Input className="pesquisa-input" placeholder="Pesquisar" onChange={handleFilter} />
-          <select value={tipoPesquisa} onChange={(e) => setTipoPesquisa(e.target.value)} name="filter" id="filter">
-            <option value="" selected>Sem filtro</option>
+
+          <Select state={tipoPesquisa} setState={setTipoPesquisa} icon={"tune"} placeholder="Sem Filtro">
             <option value="nome">Nome</option>
-          </select>
+          </Select>
+          
         </div>
 
         <div className="left-header">
