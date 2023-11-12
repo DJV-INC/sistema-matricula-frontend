@@ -20,8 +20,8 @@ export default function NavbarAluno() {
          </NavbarBrand>
 
          <div className="navlinks-container">
-            <NavLink to={"/aluno/matricula"} className={"navlink"}>Matrícula</NavLink>
-            <NavLink to={"/aluno/boletim"} className={"navlink"}>Boletim</NavLink>
+            <NavLink to={"/aluno/1/matricula"} className={"navlink"}>Matrícula</NavLink>
+            <NavLink to={"/aluno/1/boletim"} className={"navlink"}>Boletim</NavLink>
          </div>
       </nav>
     </header>

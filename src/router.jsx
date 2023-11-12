@@ -17,8 +17,8 @@ export default function Router() {
 
 			{/* Rotas Aluno */}
 
-			<Route exact path="/aluno/matricula" element={<AlunoMatricula/>}/>
-			<Route exact path="/aluno/boletim" element={<AlunoBoletim/>}/>
+			<Route exact path="/aluno/:idAluno/matricula" element={<AlunoMatricula/>}/>
+			<Route exact path="/aluno/:idAluno/boletim" element={<AlunoBoletim/>}/>
 				{/* <Route exact path="/aluno/:modalType/:id" element={<FuncionarioAluno/>}/>
 				<Route exact path="/aluno/:modalType" element={<FuncionarioAluno/>}/> */}
 
