@@ -7,39 +7,62 @@ import { useNavigate } from "react-router-dom";
 export default function EditTurma({closeModal, idTurma, idDisciplina}) {
 
     const navigate = useNavigate();
-  	const [data, setData] = useState("");
+  	const [dataTurma, setDataTurma] = useState([]);
+  	const [dataProf, setDataProf] = useState([]);
 
 	useEffect(() => {
+        let obj = {}
+
 		API.get("turmas" , `id=${idDisciplina}`).then(res => {
 			for (let i = 0; i < res.dados.length; i++) {
 				if (res.dados[i].id === parseInt(idTurma)) {
-					setData(res.dados[i])
-                    console.log(res.dados[i]);
+					setDataTurma(res.dados[i])
 				}
 			}
 		})
 	}, [navigate]);
 
+
+
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		const objBody = {
-            id: data.id,
-            disciplina_id: Number.parseInt(idDisciplina),
-            professor_id: Number.parseInt(event.target[`professor-select-edit`].value),
-            diaSemana: event.target[`dia-select-edit`].value,
-            horario: event.target[`horario-edit`].value,
-            numeroVagas: event.target[`vagas-edit`].value,
-        }
+        let professorObj = {}
 
-        console.log(objBody);
+        API.get("professores", `id=${dataTurma.professor.id}`).then((res) => {
+            try {
+                console.log(res.dados);
+                professorObj = res.dados
 
-        API.patch("turmas", objBody)
+                const objBody = {
+                    id: dataTurma.id,
+                    professor: professorObj,
+                    diaSemana: event.target[`dia-select-edit`].value,
+                    horario: event.target[`horario-edit`].value,
+                    numeroVagas: event.target[`vagas-edit`].value,
+                }
+
+                console.warn(objBody);
+
+                API.patch("turmas", objBody)
+
+            } catch (error) {
+                console.log(error);
+            }
+        })
 
 		alert("Turma editada com sucesso");
 
 		closeModal()
 	}
+
+    console.log(dataTurma);
+
+    try {
+        
+    } catch (error) {
+        
+    }
 
     return (
         <div className="modal-editTurma">
@@ -55,7 +78,7 @@ export default function EditTurma({closeModal, idTurma, idDisciplina}) {
                     <Row>
                         <Form method="POST" onSubmit={handleSubmit}>
                             {/* Titulo da pagina */}
-                            <h2>Harmonia 1</h2>
+                            {/* <h2>{data.disciplina.nome}</h2> */}
 
                             <hr />
 
@@ -69,7 +92,7 @@ export default function EditTurma({closeModal, idTurma, idDisciplina}) {
                                     <th>Vagas</th>
                                 </tr>
 
-                                <TurmaForm {...data} />
+                                <TurmaForm {...dataTurma} />
 
                             </FormGroup>
 
