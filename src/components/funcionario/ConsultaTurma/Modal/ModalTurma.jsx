@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Modal.css";
 import { useNavigate, useParams } from "react-router-dom";
 import AddTurma from "./AddTurma/AddTurma";
 import EditTurma from "./EditTurma/EditTurma";
 import DeleteTurma from "./DeleteTurma/DeleteTurma";
+import API from "../../../../services/API";
 
 export default function ModalTurma() {
    const { modalType = null , idDisciplina = null , idTurma = null } = useParams()
+
+   const [nome, setNome] = useState(null)
+
+   API.get("disciplinas", `id=${idDisciplina}`).then(res => {
+      setNome(res.dados.nome)
+   })
 
    console.log(idDisciplina, idTurma);
 
@@ -25,7 +32,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            <AddTurma closeModal={closeModal} idDisciplina={idDisciplina}/>
+            <AddTurma closeModal={closeModal} idDisciplina={idDisciplina} nomeDisciplina={nome}/>
          </div>
       );
    }
@@ -35,7 +42,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            <EditTurma closeModal={closeModal} idTurma={idTurma} idDisciplina={idDisciplina}/>
+            <EditTurma closeModal={closeModal} idTurma={idTurma} idDisciplina={idDisciplina} nomeDisciplina={nome}/>
          </div>
       );
    }
@@ -45,7 +52,7 @@ export default function ModalTurma() {
          <div
            className={"modal"}
          >
-            <DeleteTurma closeModal={closeModal}/>
+            <DeleteTurma closeModal={closeModal} nomeDisciplina={nome}/>
          </div>
       );
    }

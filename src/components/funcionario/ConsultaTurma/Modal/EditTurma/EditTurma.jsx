@@ -4,7 +4,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import API from "../../../../../services/API";
 import { useNavigate } from "react-router-dom";
 
-export default function EditTurma({closeModal, idTurma, idDisciplina}) {
+export default function EditTurma({closeModal, idTurma, idDisciplina, nomeDisciplina}) {
 
     const navigate = useNavigate();
   	const [dataTurma, setDataTurma] = useState([]);
@@ -76,7 +76,7 @@ export default function EditTurma({closeModal, idTurma, idDisciplina}) {
                     <Row>
                         <Form method="POST" onSubmit={handleSubmit}>
                             {/* Titulo da pagina */}
-                            {/* <h2>{data.disciplina.nome}</h2> */}
+                            <h2>{nomeDisciplina}</h2>
 
                             <hr />
 

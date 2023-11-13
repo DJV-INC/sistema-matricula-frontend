@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./DeleteTurma.css";
-import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { useParams } from "react-router-dom";
 import API from "../../../../../services/API";
 
-export default function DeleteTurma({closeModal}) {
+export default function DeleteTurma({closeModal, nomeDisciplina}) {
     const {idDisciplina} = useParams()
     const [data, setData] = useState([])
     const selectedRows = []
@@ -50,7 +50,7 @@ export default function DeleteTurma({closeModal}) {
                     <Row>
                         <Form method="POST" onSubmit={handleDeleteItems}>
                             {/* Titulo da pagina */}
-                            <h2>Harmonia 1</h2>
+                            <h2>{nomeDisciplina}</h2>
 
                             <hr />
 

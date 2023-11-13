@@ -3,7 +3,7 @@ import "./AddTurma.css";
 import { Col, Row, Form, FormGroup, Input, Button } from "reactstrap";
 import API from "../../../../../services/API";
 
-export default function AddTurma({ closeModal, idDisciplina }) {
+export default function AddTurma({ closeModal, idDisciplina, nomeDisciplina }) {
 
 	const [listaTurmas, setlistaTurmas] = useState([]);
   	
@@ -77,7 +77,7 @@ export default function AddTurma({ closeModal, idDisciplina }) {
 
 				<Row>
 					<hr />
-					<h2>Harmonia 1</h2>
+					<h2>{nomeDisciplina}</h2>
 					<Form method="POST" onSubmit={handleSubmit}>
 					{/* Titulo da pagina */}
 
