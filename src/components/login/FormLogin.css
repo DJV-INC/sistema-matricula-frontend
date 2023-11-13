@@ -7,7 +7,7 @@
    align-items: center;
 }
 
-.form-login{
+.container-login{
    border: solid 1px #ccc;
    border-radius: 4px;
    padding: 1rem;
@@ -18,17 +18,62 @@
    align-items: center;
    gap: 1rem;
 }
-.form-login img{
+.container-login img{
    width: 100%;
 }
-.form-login a{
+.container-login a{
    text-decoration: none;
+}
+
+.form-login{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   text-align: center;
+
+   width: 100%;
+   gap: 0.5rem;
+
+}
+
+.form-login input{
+   width: 100%;
+
+   padding: 0.5rem;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+}
+
+.form-login .login-links {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   margin: 1rem 0;
+
+   gap: 1rem;
+}
+
+.form-login .login-links a{
+   color: #1C1B1F;
+   text-decoration: underline;
+}
+
+.form-login .login-links div{
+   display: flex;
+   flex-direction: column;
 }
 
 .login-btn{
    background-color: #1C1B1F;
-    color: white;
-    text-decoration: none;
+   color: white;
+
+   width: 100%;
+   
+   display: flex;
+   justify-content: center;
+   
+   text-decoration: none;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -37,4 +82,8 @@
     border-radius: 4px;
     font-weight: bold;
     font-size: 0.9rem;
+}
+
+.login-btn:hover{
+   color: #ddd;
 }
