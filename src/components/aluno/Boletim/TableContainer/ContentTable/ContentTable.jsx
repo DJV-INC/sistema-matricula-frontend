@@ -2,48 +2,25 @@ import React, { Fragment, useEffect, useState } from "react";
 import './ContentTable.css'
 
 export default function ContentTable({ contentData }) {
-  const [dropdown, setDropdown] = useState(false)
   const [data, setData] = useState({ dados: [] })
 
   useEffect(() => {
     setData(contentData)
   }, [contentData]);
 
-  function dropdownToggle(event) {
-    const nodelistDropdowns = document.querySelectorAll(".dropdown-container")
-    const btn = event.currentTarget
-
-    for (let i = 0; i < nodelistDropdowns.length; i++) {
-      setDropdown(false)
-      nodelistDropdowns[i].classList.remove("active")
-    }
-
-    document.body.addEventListener("click", (e) => {
-      console.log(e.target);
-      if (e.target !== btn || e.target !== btn.querySelector(".dropdown-container") || e.target !== event.target) {
-        if (dropdown) {
-          setDropdown(false)
-        } else {
-          setDropdown(true)
-        }
-      }
-    })
-
-    if (!dropdown) {
-      btn.querySelector(".dropdown-container").classList.add("active")
-    } else {
-      btn.querySelector(".dropdown-container").classList.remove("active")
-      for (let i = 0; i < nodelistDropdowns.length; i++) {
-        nodelistDropdowns[i].classList.remove("active")
-      }
-    }
-  }
-
+  
   try {
+
+    if (data.length === 0) {
+      return(
+        <div className="empty-container">
+          <h4>Nenhum boletim registrado</h4>
+        </div>
+      )
+    }
 
     return (
       <Fragment>
-
         <table className="table_">
           <thead>
             <tr className="tr_">
@@ -55,13 +32,20 @@ export default function ContentTable({ contentData }) {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Harmonia</td>
-              <td>Dante</td>
-              <td>0</td>
-              <td>8.5</td>
-              <td>Aprovado</td>
-            </tr>
+            {
+              data.map(item => {
+                console.log(item)
+                return(
+                  <tr>
+                    <td>Harmonia</td>
+                    <td>Dante</td>
+                    <td>{item.faltas}</td>
+                    <td>{item.notaFinal}</td>
+                    <td>{item.conceito}</td>
+                  </tr>
+                )
+              })
+            }
           </tbody>
         </table>
 
@@ -69,6 +53,12 @@ export default function ContentTable({ contentData }) {
     );
   } catch (error) {
 
+    console.error(error)
+    
+    return (
+      <div className="empty-container">
+        <h4>Erro de exibição (veja no Dev Tools)</h4>
+      </div>
+    )
   }
-
 }

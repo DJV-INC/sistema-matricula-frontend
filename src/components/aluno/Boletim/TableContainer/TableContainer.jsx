@@ -7,7 +7,7 @@ import API from "../../../../services/API";
 import Select from "../../../global/Select/Select";
 
 export default function TableContainer() {
-  const params = useParams()
+  const {idAluno} = useParams()
 
   const [data, setData] = useState({ dados: [] })
   const [pesquisa, setPesquisa] = useState(null)
@@ -30,30 +30,14 @@ export default function TableContainer() {
     }
   }
 
-  // useEffect(() => {
-  //   if (tipoPesquisa === "rg") {
-  //     API.get("alunos", `rg=${pesquisa}`).then((res) => {
-  //       setData({ dados: [res.dados] })
-  //     })
-  //   }
-  //   if (tipoPesquisa === "cpf") {
-  //     API.get("alunos", `cpf=${pesquisa}`).then((res) => {
-  //       setData({ dados: [res.dados] })
-  //     })
-  //   }
-  //   if (tipoPesquisa === "status") {
-  //     API.get("alunos", `status=${pesquisa}`).then((res) => {
-  //       console.log(pesquisa)
-  //       setData({ dados: [res.dados]})
-  //     })
-  //   }
-  //   if (!tipoPesquisa || tipoPesquisa === "") {
-  //     API.get("alunos").then((res) => {
-  //       setData(res)
-  //     })
-  //   }
-  // }, [params, pesquisa, tipoPesquisa]);
+  useEffect(() => {
+    API.get("boletim", `aluno_id=${idAluno}`).then(res => {
+      setData(res.dados)
+    })
+  }, [pesquisa, tipoPesquisa]);
 
+
+  console.log(data);
   return (
     <Fragment>
 

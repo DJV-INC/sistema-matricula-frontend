@@ -53,3 +53,14 @@
    background-color: #FEF2E5;
    color: #CD6200;
 }
+
+.empty-container{
+   border: 1px solid #ddd;
+   border-radius: 4px;
+
+   height: 400px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

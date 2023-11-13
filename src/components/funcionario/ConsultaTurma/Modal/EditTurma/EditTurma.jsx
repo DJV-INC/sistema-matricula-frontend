@@ -11,8 +11,6 @@ export default function EditTurma({closeModal, idTurma, idDisciplina}) {
   	const [dataProf, setDataProf] = useState([]);
 
 	useEffect(() => {
-        let obj = {}
-
 		API.get("turmas" , `id=${idDisciplina}`).then(res => {
 			for (let i = 0; i < res.dados.length; i++) {
 				if (res.dados[i].id === parseInt(idTurma)) {
@@ -20,7 +18,7 @@ export default function EditTurma({closeModal, idTurma, idDisciplina}) {
 				}
 			}
 		})
-	}, [navigate]);
+	}, [navigate, idDisciplina, idTurma, closeModal]);
 
 
 
