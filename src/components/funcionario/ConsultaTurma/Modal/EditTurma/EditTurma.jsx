@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./EditTurma.css";
-import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { Button, Col, Form, FormGroup, Input, Row } from "reactstrap";
 import API from "../../../../../services/API";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,10 @@ export default function EditTurma({closeModal, idTurma, idDisciplina, nomeDiscip
   	const [dataProf, setDataProf] = useState([]);
 
 	useEffect(() => {
+        API.get("professores").then(res => {
+            setDataProf(res.dados)
+        })
+
 		API.get("turmas" , `id=${idDisciplina}`).then(res => {
 			for (let i = 0; i < res.dados.length; i++) {
 				if (res.dados[i].id === parseInt(idTurma)) {
@@ -18,49 +22,34 @@ export default function EditTurma({closeModal, idTurma, idDisciplina, nomeDiscip
 				}
 			}
 		})
-	}, [navigate, idDisciplina, idTurma, closeModal]);
-
-
+	}, [navigate, idDisciplina, closeModal, idTurma]);
 
 	function handleSubmit(event) {
 		event.preventDefault();
 
-        let professorObj = {}
-
-        API.get("professores", `id=${dataTurma.professor.id}`).then((res) => {
+        API.get("professores", `id=${event.target["professor-select-edit"].value}`).then((res) => {
             try {
-                console.log(res.dados);
-                professorObj = res.dados
-
                 const objBody = {
                     id: dataTurma.id,
-                    professor: professorObj,
+                    professor: res.dados,
                     diaSemana: event.target[`dia-select-edit`].value,
                     horario: event.target[`horario-edit`].value,
                     numeroVagas: event.target[`vagas-edit`].value,
                 }
 
-                console.warn(objBody);
+                console.log(objBody);
 
                 API.patch("turmas", objBody)
 
+                alert("Turma editada com sucesso");
+
             } catch (error) {
-                console.log(error);
+                alert(error)
             }
         })
 
-		alert("Turma editada com sucesso");
-
 		closeModal()
 	}
-
-    console.log(dataTurma);
-
-    try {
-        
-    } catch (error) {
-        
-    }
 
     return (
         <div className="modal-editTurma">
@@ -90,7 +79,7 @@ export default function EditTurma({closeModal, idTurma, idDisciplina, nomeDiscip
                                     <th>Vagas</th>
                                 </tr>
 
-                                <TurmaForm {...dataTurma} />
+                                <TurmaForm {...dataTurma} professores={dataProf}/>
 
                             </FormGroup>
 
@@ -113,8 +102,7 @@ export default function EditTurma({closeModal, idTurma, idDisciplina, nomeDiscip
     );
 }
 
-function TurmaForm({professor, diaSemana, horario, numeroVagas}) {
-    
+function TurmaForm({professores, horario, numeroVagas}) {
     
     const [stHorario, setHorario] = useState(horario)
     const [stNumVagas, setNumVagas] = useState(numeroVagas)
@@ -145,7 +133,13 @@ function TurmaForm({professor, diaSemana, horario, numeroVagas}) {
                     type="select"
                 >
                     <option>Selecione</option>
-                    <option selected value={professor.id}>{professor.nomeCompleto}</option>
+                    {
+					professores.map(item => {
+						return (
+							<option value={item.id}>{item.nomeCompleto}</option>
+						)
+					})
+				}
                 </Input>
                 </td>
     
@@ -159,7 +153,11 @@ function TurmaForm({professor, diaSemana, horario, numeroVagas}) {
                     type="select"
                 >
                     <option>Selecione</option>
-                    <option selected >{diaSemana}</option>
+                    <option>Segunda-Feira</option>
+                    <option>Terça-Feira</option>
+                    <option>Quarta-Feira</option>
+                    <option>Quinta-Feira</option>
+                    <option>Sexta-Feira</option>
                 </Input>
                 </td>
     
