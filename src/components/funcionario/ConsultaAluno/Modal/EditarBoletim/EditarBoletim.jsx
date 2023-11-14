@@ -2,10 +2,10 @@ import React from 'react'
 import TableContainer from './TableContainer/TableContainer'
 import { Row, Form, FormGroup, Label, Input, Col, Button } from 'reactstrap';
 
-import './AdicionarBoletim.css'
+import './EditarBoletim.css'
 
 
-function AdicionarBoletim() {
+function EditarBoletim() {
 
     return (
         <div className="container-main">
@@ -32,21 +32,7 @@ function AdicionarBoletim() {
                                     Semestre
                                 </Label>
 
-                                <Input
-                                    id="Semestre"
-                                    name="semestre"
-                                    type="select"
-                                >
-                                    <option>
-                                        Selecionar
-                                    </option>
-                                    <option>
-                                        1° semestre 2023
-                                    </option>
-                                    <option>
-                                        2° semestre 2023
-                                    </option>
-                                </Input>
+                                <h2>1° Semestre 2023</h2>
                             </FormGroup>
 
                             <FormGroup className='Input-boletim'>
@@ -55,22 +41,7 @@ function AdicionarBoletim() {
                                     Disciplina
                                 </Label>
 
-                                <Input
-                                    id="Disciplina"
-                                    name="Disciplina"
-                                    type="select"
-
-                                >
-                                    <option>
-                                        Selecionar
-                                    </option>
-                                    <option>
-                                        Harmonia
-                                    </option>
-                                    <option>
-                                        Instrumento
-                                    </option>
-                                </Input>
+                                <h2>Harmonia</h2>
                             </FormGroup>
                         </div>
 
@@ -138,7 +109,7 @@ function AdicionarBoletim() {
                                 </Button>
 
                                 <Button className='Confirm'>
-                                    Adicionar
+                                    Salvar
                                 </Button>
 
                             </div>
@@ -153,4 +124,4 @@ function AdicionarBoletim() {
     );
 };
 
-export default AdicionarBoletim;
+export default EditarBoletim;
