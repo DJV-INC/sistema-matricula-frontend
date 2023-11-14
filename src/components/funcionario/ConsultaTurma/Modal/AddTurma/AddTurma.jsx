@@ -14,16 +14,7 @@ export default function AddTurma({ closeModal, idDisciplina, nomeDisciplina }) {
 		API.get("professores").then(res => {
 			setProfessor(res.dados)
 		})
-
-		API.get("turmas" , `id=${idDisciplina}`).then(res => {
-			for (let i = 0; i < res.dados.length; i++) {
-				console.log(res.dados[i].disciplina.id);
-				if (res.dados[i].disciplina.id === parseInt(idDisciplina)) {
-					setDiaSemana(res.dados[i].diaSemana)
-				}
-			}
-		})
-	}, [idDisciplina]);
+	}, [idDisciplina, closeModal, nomeDisciplina]);
 
 
 	function handleAdd() {
