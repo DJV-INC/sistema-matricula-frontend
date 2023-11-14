@@ -11,12 +11,15 @@ export default function AddTurma({ closeModal, idDisciplina, nomeDisciplina }) {
 	const [diaSemana, setDiaSemana] = useState("");
 
 	useEffect(() => {
+		API.get("professores").then(res => {
+			setProfessor(res.dados)
+		})
+
 		API.get("turmas" , `id=${idDisciplina}`).then(res => {
 			for (let i = 0; i < res.dados.length; i++) {
 				console.log(res.dados[i].disciplina.id);
 				if (res.dados[i].disciplina.id === parseInt(idDisciplina)) {
 					setDiaSemana(res.dados[i].diaSemana)
-					setProfessor(res.dados[i].professor)
 				}
 			}
 		})
@@ -131,7 +134,13 @@ function TurmaForm({professorData, diaSemanaData, itemList}) {
 				type="select"
 			>
 				<option>Selecione</option>
-				<option value={professorData.id}>{professorData.nomeCompleto}</option>
+				{
+					professorData.map(item => {
+						return (
+							<option value={item.id}>{item.nomeCompleto}</option>
+						)
+					})
+				}
 			</Input>
 			</td>
 
@@ -145,7 +154,11 @@ function TurmaForm({professorData, diaSemanaData, itemList}) {
 				type="select"
 			>
 				<option>Selecione</option>
-				<option>{diaSemanaData}</option>
+				<option>Segunda-Feira</option>
+				<option>Terça-Feira</option>
+				<option>Quarta-Feira</option>
+				<option>Quinta-Feira</option>
+				<option>Sexta-Feira</option>
 			</Input>
 			</td>
 
