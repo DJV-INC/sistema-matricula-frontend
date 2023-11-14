@@ -6,7 +6,12 @@ import FuncionarioDisciplina from "./pages/FuncionarioDisciplina";
 import FuncionarioProfessor from "./pages/FuncionarioProfessor";
 import AlunoMatricula from "./pages/AlunoMatricula";
 import AlunoBoletim from "./pages/AlunoBoletim";
+
 import Login from "./pages/Login";
+
+import ConsultaBoletim from "./components/funcionario/ConsultaAluno/Modal/ConsultaBoletim/ConsultaBoletim";
+import AdicionarBoletim from "./components/funcionario/ConsultaAluno/Modal/AdicionarBoletimFuncionario/AdicionarBoletim";
+
 
 export default function Router() {
   	return (
@@ -39,6 +44,10 @@ export default function Router() {
 			<Route exact path="/professor" element={<FuncionarioProfessor/>}/>
 			<Route exact path="/professor/:modalType/:id" element={<FuncionarioProfessor/>}/>
 			<Route exact path="/professor/:modalType" element={<FuncionarioProfessor/>}/>
+			
+			<Route exact path="/boletim" element={<ConsultaBoletim/>}/>
+			<Route exact path="/addboletim" element={<AdicionarBoletim/>}/>
+			
 			
 		</Routes>
   	);

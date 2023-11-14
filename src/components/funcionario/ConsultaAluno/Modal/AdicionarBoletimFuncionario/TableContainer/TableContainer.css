@@ -1,19 +1,24 @@
-.header-table{
-   display: grid;
-   grid-template-columns: 1fr 50%;
-   margin: 20px 0;
-}
-
-.header-table .right-header{
+.right-header-boletim {
    display: flex;
-   justify-content: start;
-   align-items: center;
+   justify-content: space-between;
+   width: 100%;
 
    gap: 0.5rem;
 }
 
+.adicionar-boletim {
+   width: 25%;
+   background-color: #0B9529;
+   color: #fff;
+   border: 0;
+   border-radius: 0.25rem;
+   padding: 0.490rem 0.10rem;
+   transition-duration: 0.4s;
+   text-decoration: none;
+}
+
 /* Searchbar */
-.searchbar{
+/* .searchbar {
    display: flex;
    align-items: center;
    width: min-content;
@@ -23,11 +28,11 @@
    gap: 5px;
 }
 
-.searchbar span{
+.searchbar span {
    color: #9E9E9E;
 }
 
-.searchbar .search{
+.searchbar .search {
    outline: none;
    border: none;
    height: 40px;
@@ -35,7 +40,7 @@
 
 
 
-.header-table .table-btn{
+.header-table .table-btn {
    background-color: white;
    border: 1px solid #0000002a;
    color: #232222;
@@ -46,11 +51,11 @@
    gap: 0.5rem;
 }
 
-.header-table .table-btn:hover{
+.header-table .table-btn:hover {
    background-color: #eee;
 }
 
-.header-table .left-header{
+.header-table .left-header {
    display: flex;
    justify-content: end;
    align-items: center;
@@ -58,7 +63,7 @@
 }
 
 
-.header-table .left-header .add-aluno-btn{
+.header-table .left-header .add-aluno-btn {
    background-color: #1C1B1F;
 
    color: white;
@@ -77,7 +82,7 @@
    font-size: 0.9rem;
 }
 
-.header-table .filtro-btn{
+.header-table .filtro-btn {
    width: 130px;
 
    display: flex;
@@ -97,9 +102,10 @@
    outline: none;
 }
 
-#filter, #filter > option{
+#filter,
+#filter>option {
    appearance: none;
    -webkit-appearance: none;
    -moz-appearance: none;
    border: 1px solid #9E9E9E;
-}
+} */
