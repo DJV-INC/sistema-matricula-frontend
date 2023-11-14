@@ -7,7 +7,7 @@ import API from "../../../../../services/API";
 export default function DeleteTurma({closeModal, nomeDisciplina}) {
     const {idDisciplina} = useParams()
     const [data, setData] = useState([])
-    const selectedRows = []
+    const [selectedRows] = useState([])
 
     useEffect(() => {
         if (idDisciplina) {
@@ -21,19 +21,27 @@ export default function DeleteTurma({closeModal, nomeDisciplina}) {
 
     function handleDeleteItems(e) {
         e.preventDefault()
-
+        console.log(selectedRows)
         selectedRows.map(item => {
             console.log(item[0].slice(-1), item[1]);
             const id = item[0].slice(-1)
             if (item[1]) {
-                console.log(Number.parseInt(id))
-                API.del("turmas", id)
+                API.del("turmas", id).then(res => {
+                    // try {
+                    //     if (res.ok) {
+                    //         alert("Turma id:" + id + " - As turmas selecionadas foram excluídas com sucesso")
+                    //     } else {
+                    //         throw new Error()
+                    //     }
+                    // } catch (error) {
+                    //     console.error(error)
+                    //     alert(error)
+                    // }
+                    closeModal()
+                })
             }
         })
 
-        alert("As turmas selecionadas foram excluídas com sucesso")
-
-        closeModal()
     }
 
     return (
