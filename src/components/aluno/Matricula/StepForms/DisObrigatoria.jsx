@@ -1,11 +1,16 @@
 import { React } from 'react'
 import { useState, useEffect } from 'react'
 import { Collapse } from 'reactstrap'
+import API from '../../../../services/API'
 
 export default function DisObrigatoria() {
     const [formDis, setFormDis] = useState("")
+    const [disciplinas, setDisciplinas] = useState([])
 
-    function handleDis(event) {
+    const [idDis, setIdDis] = useState([])
+    const [turmas, setTurmas] = useState([])
+
+    function handleDis(event, id) {
         const botoes = document.getElementsByClassName("btn-dis")
         const botao = event.currentTarget
 
@@ -14,18 +19,36 @@ export default function DisObrigatoria() {
             element.classList.add("btn-hover")
         }
 
-        
-        
         console.log(botao)
-
-
         botao.setAttribute("class", botao.className.replace("btn-hover", "active"))
 
+        //Setando id da disciplina para fetch das turmas no useEffect
+        setIdDis(id)
     }
 
+    useEffect(() => {
 
-    const disciplinas = ["Harmonia", "Contraponto", "Teoria Musical"]
+        var array = [1, 2, 3, 4]
+        var index = array.indexOf(2)
+        array.splice(index, 1)
+        console.log(array)
+
+        API.get("disciplinas", "tipo=OBRIGATORIA").then((res) => {
+            console.log(res.dados)
+            setDisciplinas(res.dados)
+        })
+
+    }, [])
+
+    useEffect(() => {
+        API.get("turmas", `id=${idDis}`).then((res) => {
+            console.log(res.dados)
+            setTurmas(res.dados)
+        })
+    }, [idDis])
+
     const testes = ["Hora 1", "Hora 2", "Hora 3"]
+
     return (
         // <>
         //     <hr className="breakline"/>
@@ -33,7 +56,7 @@ export default function DisObrigatoria() {
             <div className="menu-disciplina">
                 {disciplinas.map((disciplina) => {
                     return (
-                        <button className="btn-dis btn-hover" onClick={(e) => { handleDis(e) }}>{disciplina}</button>
+                        <button className="btn-dis btn-hover" value={disciplina.id} onClick={(e) => { handleDis(e, e.target.value) }}>{disciplina.nome}</button>
                     )
                 })}
             </div>
@@ -46,22 +69,24 @@ export default function DisObrigatoria() {
 
                     <table>
                         <thead>
-                            <tr>
+                            <tr>{
+                                
+                            }
                                 <th>Prof. Marizilda</th>
                                 <th>Prof. Dante</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr><td>{testes.map((hora) => {
-                                return(
+                                return (
                                     <p>{hora}</p>
                                 )
                             })}</td>
-                            <td>{testes.map((hora) => {
-                                return(
-                                    <p>{hora}</p>
-                                )
-                            })}</td>
+                                <td>{testes.map((hora) => {
+                                    return (
+                                        <p>{hora}</p>
+                                    )
+                                })}</td>
                             </tr>
                         </tbody>
                     </table>
