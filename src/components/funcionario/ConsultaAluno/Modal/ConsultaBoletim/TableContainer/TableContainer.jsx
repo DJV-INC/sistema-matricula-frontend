@@ -9,7 +9,11 @@ import Select from "../../../../../global/Select/Select";
 import "./TableContainer.css";
 
 export default function TableContainer() {
-  const {idAluno} = useParams()
+
+
+  const [aluno, setAluno] = useState([])
+
+  const { id } = useParams()
 
   const [data, setData] = useState({ dados: [] })
   const [pesquisa, setPesquisa] = useState(null)
@@ -33,7 +37,15 @@ export default function TableContainer() {
   }
 
   useEffect(() => {
-    API.get("boletim", `aluno_id=${idAluno}`).then(res => {
+    API.get ("alunos", `cpf=${id}`).then(res => {
+      setAluno(res.dados)
+    })
+  })
+
+  console.log(aluno);
+
+  useEffect(() => {
+    API.get("boletim", `aluno_id=${aluno.id}`).then(res => {
       setData(res.dados)
     })
   }, [pesquisa, tipoPesquisa]);
@@ -57,7 +69,7 @@ export default function TableContainer() {
             <button className="adicionar-boletim" type="button"> Adicionar Boletim</button>
           </Link>
         </div>
-        
+
       </header>
 
       <ContentTable contentData={data} />
