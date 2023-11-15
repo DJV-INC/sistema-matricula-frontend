@@ -8,7 +8,7 @@ export default function ContentTable({ contentData }) {
     setData(contentData)
   }, [contentData]);
 
-  
+  console.log(data)
   try {
 
     if (data.length === 0) {
@@ -37,8 +37,8 @@ export default function ContentTable({ contentData }) {
                 console.log(item)
                 return(
                   <tr>
-                    <td>Harmonia</td>
-                    <td>Dante</td>
+                    <td>{item.disciplina}</td>
+                    <td>{item.professor}</td>
                     <td>{item.faltas}</td>
                     <td>{item.notaFinal}</td>
                     <td>{item.conceito}</td>
