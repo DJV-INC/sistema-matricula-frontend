@@ -6,6 +6,8 @@ import InfoAluno from "./InfoAluno/InfoAluno";
 import { useNavigate, useParams } from "react-router-dom";
 import EditAluno from "./EditAluno/EditAluno";
 import DeleteAluno from "./DeleteAluno/DeleteAluno";
+import ConsultaBoletim from "./ConsultaBoletim/ConsultaBoletim";
+import AdicionarBoletim from "./AdicionarBoletimFuncionario/AdicionarBoletim";
 
 export default function Modal() {
    const { modalType = null , id: cpf = null } = useParams()
@@ -54,6 +56,24 @@ export default function Modal() {
            className={"modal"}
          >
             <DeleteAluno cpf={cpf} close={closeModal}/>
+         </div>
+      );
+   }
+   if (modalType === "boletim") {
+      return (
+         <div
+           className={"modal"}
+         >
+            <ConsultaBoletim cpf={cpf} close={closeModal}/>
+         </div>
+      );
+   }
+   if (modalType === "inserirBoletim") {
+      return (
+         <div
+           className={"modal"}
+         >
+            <AdicionarBoletim cpf={cpf} close={closeModal}/>
          </div>
       );
    }

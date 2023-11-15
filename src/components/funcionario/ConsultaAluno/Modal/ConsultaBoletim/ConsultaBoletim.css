@@ -1,0 +1,12 @@
+.modal-boletim {
+   display: flex;
+   flex-direction: column;
+   margin: auto;
+   margin-top: 1rem;
+
+   padding: 20px;
+
+   background: #fff;
+   border: 1px solid #00000018;
+   border-radius: 4px;
+}

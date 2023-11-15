@@ -14,9 +14,9 @@ export default function Dropdown(props) {
             <span class="material-symbols-rounded">edit</span>
             <span>Editar Aluno</span>
          </Link>
-         <Link className="link-container" to={`/`}>
+         <Link className="link-container" to={`boletim/${props.id}`}>
             <span class="material-symbols-rounded">edit_square</span>
-            <span>Inserir Boletim</span>
+            <span>Gerenciar Boletins</span>
          </Link>
          <Link className="link-container" to={`excluir/${props.id}`}>
             <span class="material-symbols-rounded">delete</span>

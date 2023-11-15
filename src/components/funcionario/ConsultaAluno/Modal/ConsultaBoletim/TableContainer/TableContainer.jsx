@@ -53,8 +53,9 @@ export default function TableContainer() {
 
           </Select>
 
-          <button className="adicionar-boletim" type="button"> Adicionar Boletim</button>
-          
+          <Link to={"/inserirBoletim"}>
+            <button className="adicionar-boletim" type="button"> Adicionar Boletim</button>
+          </Link>
         </div>
         
       </header>
