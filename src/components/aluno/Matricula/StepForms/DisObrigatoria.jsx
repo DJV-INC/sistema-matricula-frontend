@@ -9,6 +9,10 @@ export default function DisObrigatoria() {
 
     const [idDis, setIdDis] = useState([])
     const [turmas, setTurmas] = useState([])
+    const [aux, setAux] = useState([])
+
+
+    let nomes = [0, 1, 2, 3, 4]
 
     function handleDis(event, id) {
         const botoes = document.getElementsByClassName("btn-dis")
@@ -26,12 +30,11 @@ export default function DisObrigatoria() {
         setIdDis(id)
     }
 
-    useEffect(() => {
+    function cutOff(index) {
+        turmas.splice(index, 1)
+    }
 
-        var array = [1, 2, 3, 4]
-        var index = array.indexOf(2)
-        array.splice(index, 1)
-        console.log(array)
+    useEffect(() => {
 
         API.get("disciplinas", "tipo=OBRIGATORIA").then((res) => {
             console.log(res.dados)
@@ -44,10 +47,15 @@ export default function DisObrigatoria() {
         API.get("turmas", `id=${idDis}`).then((res) => {
             console.log(res.dados)
             setTurmas(res.dados)
+            setAux(res.dados)
         })
     }, [idDis])
 
-    const testes = ["Hora 1", "Hora 2", "Hora 3"]
+    const testes = {
+        0: { "nome": "Jackeline" },
+        1: { "nome": "Victor" }
+    }
+
 
     return (
         // <>
@@ -69,24 +77,37 @@ export default function DisObrigatoria() {
 
                     <table>
                         <thead>
-                            <tr>{
-                                
-                            }
-                                <th>Prof. Marizilda</th>
-                                <th>Prof. Dante</th>
-                            </tr>
+                            <th>A</th>
                         </thead>
                         <tbody>
-                            <tr><td>{testes.map((hora) => {
-                                return (
-                                    <p>{hora}</p>
-                                )
-                            })}</td>
-                                <td>{testes.map((hora) => {
-                                    return (
-                                        <p>{hora}</p>
-                                    )
-                                })}</td>
+                            <tr>
+                                <td>
+                                    {
+                                        turmas.map((turma) => {
+                                            let prof = turma.professor.nomeCompleto
+
+                                            turmas.map((item, index) => {
+                                                let nProf = item.professor.nomeCompleto
+                                                if (nProf === prof) {
+                                                    console.log(prof)
+                                                    cutOff(index)
+                                                }
+                                            })
+
+                                            aux.push(turma)
+                                        })
+                                    }
+                                    {
+                                        aux.map((item) => {
+                                            console.log(turmas)
+                                            return (
+                                                <h1>{item.professor.nomeCompleto}</h1>
+                                            )
+                                        })
+                                    }
+                                </td>
+            //Esse trampo de cima foi pro thead -- para os TDs vou usar a reposta original só pra pegar
+            //os horários
                             </tr>
                         </tbody>
                     </table>
