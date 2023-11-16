@@ -8,8 +8,10 @@ import Select from "../../../../../global/Select/Select";
 
 import "./TableContainer.css";
 
-export default function TableContainer({close, cpf}) {
-  const {idAluno} = useParams()
+export default function TableContainer({cpf}) {
+
+
+  const [aluno, setAluno] = useState([])
 
   const [data, setData] = useState({ dados: [] })
   const [pesquisa, setPesquisa] = useState(null)
@@ -33,7 +35,7 @@ export default function TableContainer({close, cpf}) {
   }
 
   useEffect(() => {
-    API.get ("alunos", `cpf=${id}`).then(res => {
+    API.get ("alunos", `cpf=${cpf}`).then(res => {
       setAluno(res.dados)
     })
   })
