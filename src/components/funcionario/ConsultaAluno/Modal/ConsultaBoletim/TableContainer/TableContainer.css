@@ -6,14 +6,22 @@
    gap: 0.5rem;
 }
 
-.adicionar-boletim {
-   width: 25%;
-   background-color: #0B9529;
+.adicionar-boletim{
+   width: 50%;
+   background-color: #000000;
    color: #fff;
    border: 0;
    border-radius: 0.25rem;
    padding: 0.490rem 0.10rem;
    transition-duration: 0.4s;
+   text-decoration: none;
+}
+
+.link-btn-add-boletim{
+   width: 700px;
+   
+   display: flex;
+   justify-content: flex-end;
    text-decoration: none;
 }
 

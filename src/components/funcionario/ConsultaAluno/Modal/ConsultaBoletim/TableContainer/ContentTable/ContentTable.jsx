@@ -2,44 +2,13 @@ import React, { Fragment, useEffect, useState } from "react";
 import './ContentTable.css'
 
 export default function ContentTable({ contentData }) {
-  const [data, setData] = useState({ dados: [] })
+  const [data, setData] = useState([])
 
   useEffect(() => {
     setData(contentData)
   }, [contentData]);
 
-  // return (
-  //   <Fragment>
-        
-  //       <table className="table_">
-  //         <thead>
-  //           <tr className="tr_">
-  //             <th>Disciplina</th>
-  //             <th>Professor</th>
-  //             <th>Faltas</th>
-  //             <th>Nota</th>
-  //             <th>Conceito</th>
-  //             <th></th>
-  //           </tr>
-  //         </thead>
-  //         <tbody>
-  //           <tr>
-  //             <td>Harmonia</td>
-  //             <td>Dante</td>
-  //             <td>1</td>
-  //             <td>9.5</td>
-  //             <td>Aprocado</td>
-  //             <td>
-  //               <button className="options-btn">
-  //                 <span className="material-symbols-rounded">more_vert</span>
-  //               </button>
-  //             </td>
-  //           </tr>
-  //         </tbody>
-  //       </table>
-
-  //   </Fragment>
-  // );
+  console.log(contentData);
 
   try {
 
@@ -66,11 +35,10 @@ export default function ContentTable({ contentData }) {
           <tbody>
             {
               data.map(item => {
-                console.log(item)
                 return(
                   <tr>
-                    <td>Harmonia</td>
-                    <td>Dante</td>
+                    <td>{item.disciplina}</td>
+                    <td>{item.professor}</td>
                     <td>{item.faltas}</td>
                     <td>{item.notaFinal}</td>
                     <td>{item.conceito}</td>

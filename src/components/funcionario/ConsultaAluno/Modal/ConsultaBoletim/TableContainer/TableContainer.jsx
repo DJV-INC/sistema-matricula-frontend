@@ -1,6 +1,4 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Button, Input } from "reactstrap";
-
 import { Link, useParams } from "react-router-dom";
 import ContentTable from "./ContentTable/ContentTable";
 import API from "../../../../../../services/API";
@@ -36,20 +34,20 @@ export default function TableContainer({cpf}) {
 
   useEffect(() => {
     API.get ("alunos", `cpf=${cpf}`).then(res => {
+      console.log(res.dados);
       setAluno(res.dados)
     })
-  })
+  }, [])
 
-  console.log(aluno);
+  console.warn(aluno.id);
 
   useEffect(() => {
     API.get("boletim", `aluno_id=${aluno.id}`).then(res => {
       setData(res.dados)
     })
-  }, [pesquisa, tipoPesquisa]);
+  }, [aluno]);
 
 
-  console.log(data);
   return (
     <Fragment>
 
@@ -63,7 +61,7 @@ export default function TableContainer({cpf}) {
 
           </Select>
 
-          <Link to={`/inserirBoletim/${cpf}`}>
+          <Link to={`/inserirBoletim/${cpf}`} className="link-btn-add-boletim">
             <button className="adicionar-boletim" type="button"> Adicionar Boletim</button>
           </Link>
         </div>

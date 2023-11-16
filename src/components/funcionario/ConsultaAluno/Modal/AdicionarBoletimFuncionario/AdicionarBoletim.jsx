@@ -50,7 +50,6 @@ function AdicionarBoletim({close, cpf}) {
      
         alert("Disciplina cadastrada");
      
-    
     }
     
 
