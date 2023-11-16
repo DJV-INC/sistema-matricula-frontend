@@ -48,8 +48,9 @@ function AdicionarBoletim({close, cpf}) {
      
         API.post("boletim", dados, `aluno_id=${aluno.id}`);
      
-        alert("Disciplina cadastrada");
-     
+        alert("Novo boletim cadastrado para " + aluno.nomeCompleto);
+
+        close()
     }
     
 
