@@ -3,10 +3,9 @@ import TableContainer from './TableContainer/TableContainer'
 import './ConsultaBoletim.css'
 
 
-function ConsultaBoletim(close) {
+function ConsultaBoletim({close, cpf}) {
 
     const [addState, setAddState] = useState(false)
-
     return (
         <div className="modal-boletim">
             <div className="container-boletim">
@@ -27,7 +26,7 @@ function ConsultaBoletim(close) {
                     <p className='subtitle_'>Victor Cardoso</p>
                 </div>
 
-                <TableContainer />
+                <TableContainer cpf={cpf}/>
             </div>
 
         </div>

@@ -8,12 +8,8 @@ import Select from "../../../../../global/Select/Select";
 
 import "./TableContainer.css";
 
-export default function TableContainer() {
-
-
-  const [aluno, setAluno] = useState([])
-
-  const { id } = useParams()
+export default function TableContainer({close, cpf}) {
+  const {idAluno} = useParams()
 
   const [data, setData] = useState({ dados: [] })
   const [pesquisa, setPesquisa] = useState(null)
@@ -65,7 +61,7 @@ export default function TableContainer() {
 
           </Select>
 
-          <Link to={"/inserirBoletim"}>
+          <Link to={`/inserirBoletim/${cpf}`}>
             <button className="adicionar-boletim" type="button"> Adicionar Boletim</button>
           </Link>
         </div>

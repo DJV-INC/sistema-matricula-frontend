@@ -1,11 +1,58 @@
-import React from 'react'
-import TableContainer from './TableContainer/TableContainer'
+import React, { useEffect, useState } from 'react'
 import { Row, Form, FormGroup, Label, Input, Col, Button } from 'reactstrap';
 
 import './AdicionarBoletim.css'
+import API from '../../../../../services/API';
+
+function AdicionarBoletim({close, cpf}) {
+    const [aluno, setAluno] = useState([])
+    const [professores, setProfessores] = useState([])
+    const [disciplinas, setDisciplinas] = useState([])
+
+    useEffect(() => {
+        API.get("alunos", `cpf=${cpf}`).then(    res   =>    {
+            setAluno(res.dados)
+        })
+        API.get("disciplinas").then(    res   =>    {
+            setDisciplinas(res.dados)
+        })
+        API.get("professores").then(    res   =>    {
+            setProfessores(res.dados)
+        })
+    }, []);
 
 
-function AdicionarBoletim({close}) {
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        // let professorObj = {}
+        // let disciplinaObj = {}
+
+        // for (let i = 0; i < disciplinas.length; i++) {
+        //     console.log(disciplinas[i].id, parseInt(event.target.disciplina.value));
+        //     if(disciplinas[i].id === parseInt(event.target.disciplina.value)){
+        //         disciplinaObj = disciplinas[i]
+        //     }
+        // }
+     
+        const dados = {
+            semestre: event.target.semestre.value,
+            disciplina: event.target.disciplina.value,
+            professor: event.target.professor.value,
+            faltas: event.target.faltas.value,
+            notaFinal: event.target.nota.value,
+            conceito: event.target.conceito.value.toUpperCase()
+        };
+
+        console.log(dados);
+     
+        API.post("boletim", dados, `aluno_id=${aluno.id}`);
+     
+        alert("Disciplina cadastrada");
+     
+    
+    }
+    
 
     return (
         <div className="modal-boletim">
@@ -22,13 +69,13 @@ function AdicionarBoletim({close}) {
 
                 <div className="ItemAlunoBoletim">
                     <Label>Aluno</Label>
-                    <h2 className='title_'>Victor Cardoso</h2>
+                    <h2 className='title_'>{aluno.nomeCompleto}</h2>
                 </div>
 
                 <div className='Form-Boletim'>
 
                     <Row>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
 
                             <div className='Form-Boletim-part1'>
 
@@ -47,11 +94,36 @@ function AdicionarBoletim({close}) {
                                             Selecionar
                                         </option>
                                         <option>
-                                            1° semestre 2023
+                                            1 semestre 2023
                                         </option>
                                         <option>
-                                            2° semestre 2023
+                                            2 semestre 2023
                                         </option>
+                                    </Input>
+                                </FormGroup>
+
+                                <FormGroup className='Input-boletim'>
+
+                                    <Label for="professor">
+                                        Professor
+                                    </Label>
+
+                                    <Input
+                                        id="professor"
+                                        name="professor"
+                                        type="select"
+                                    >
+                                        <option>
+                                            Selecionar
+                                        </option>
+                                        { professores.map(item => {
+                                            return (
+                                                <option value={item.nomeCompleto}>
+                                                    {item.nomeCompleto}
+                                                </option>
+                                            )
+                                        })}
+                                        
                                     </Input>
                                 </FormGroup>
 
@@ -62,37 +134,37 @@ function AdicionarBoletim({close}) {
                                     </Label>
 
                                     <Input
-                                        id="Disciplina"
-                                        name="Disciplina"
+                                        id="disciplina"
+                                        name="disciplina"
                                         type="select"
 
                                     >
                                         <option>
                                             Selecionar
                                         </option>
-                                        <option>
-                                            Harmonia
-                                        </option>
-                                        <option>
-                                            Instrumento
-                                        </option>
+                                        { disciplinas.map(item => {
+                                            return (
+                                                <option value={item.nome}>
+                                                    {item.nome}
+                                                </option>
+                                            )
+                                        })}
                                     </Input>
                                 </FormGroup>
                             </div>
 
                             <div className='Form-Boletim-part2'>
                                 <FormGroup className='Input-boletim'>
-                                    <Label for="Faltas">
+                                    <Label for="faltas">
                                         Faltas
                                     </Label>
 
                                     <Input
-                                        id="Faltas"
-                                        name="Faltas"
+                                        id="faltas"
+                                        name="faltas"
                                         type="number"
-
+                                        min={0}
                                     >
-
 
                                     </Input>
                                 </FormGroup>
@@ -102,10 +174,11 @@ function AdicionarBoletim({close}) {
                                     </Label>
 
                                     <Input
-                                        id="Nota"
-                                        name="Nota"
+                                        id="nota"
+                                        name="nota"
                                         type="number"
-
+                                        min={0}
+                                        max={10}
                                     >
 
 
@@ -118,8 +191,8 @@ function AdicionarBoletim({close}) {
                                     </Label>
 
                                     <Input
-                                        id="Conceito"
-                                        name="Conceito"
+                                        id="conceito"
+                                        name="conceito"
                                         type="select"
 
                                     >

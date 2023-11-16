@@ -13,7 +13,6 @@ export default function AddAluno({close}) {
   const [data, setData] = useState([])
 
   function handleViacep(e) {
-
     setViacep(e.target.value)
   }
 
