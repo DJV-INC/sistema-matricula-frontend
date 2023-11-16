@@ -1,4 +1,4 @@
-const hostPath = "http://localhost:8080/"
+const hostPath = "https://simus-1697659562484.azurewebsites.net/"
 const apiPath = "api/v1/"
 
 const baseURL = hostPath + apiPath
