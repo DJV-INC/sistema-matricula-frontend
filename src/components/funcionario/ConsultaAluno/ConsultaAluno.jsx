@@ -1,5 +1,4 @@
 import React from 'react'
-
 import TableContainer from './TableContainer/TableContainer'
 
 export default function ConsultaAluno() {
