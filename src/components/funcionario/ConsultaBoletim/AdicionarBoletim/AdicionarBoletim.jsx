@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, Label, Input } from 'reactstrap';
 
 import './AdicionarBoletim.css'
-import API from '../../../../../services/API';
+import API from '../../../../services/API';
 
 function AdicionarBoletim({close, cpf}) {
     const [aluno, setAluno] = useState([])

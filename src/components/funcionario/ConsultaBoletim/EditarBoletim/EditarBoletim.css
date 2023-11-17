@@ -1,3 +1,9 @@
+.boletim-modal-title{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
 .ItemAlunoBoletim{
     margin-top: 16px;
 }
@@ -26,3 +32,11 @@
     width: 100%;
 }
 
+.add-boletim-button-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-boletim-button-container .confirm-btn{
+    background-color: #0B9529;
+}

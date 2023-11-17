@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ContentTable from "./ContentTable/ContentTable";
-import API from "../../../../../../services/API";
-import Select from "../../../../../global/Select/Select";
+import API from "../../../../../services/API";
+import Select from "../../../../global/Select/Select";
 
 import "./TableContainer.css";
 

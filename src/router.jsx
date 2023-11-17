@@ -9,10 +9,6 @@ import AlunoBoletim from "./pages/AlunoBoletim";
 
 import Login from "./pages/Login";
 
-import ConsultaBoletim from "./components/funcionario/ConsultaAluno/Modal/ConsultaBoletim/ConsultaBoletim";
-import AdicionarBoletim from "./components/funcionario/ConsultaAluno/Modal/AdicionarBoletimFuncionario/AdicionarBoletim";
-import EditarBoletim from "./components/funcionario/ConsultaAluno/Modal/EditarBoletim/EditarBoletim";
-
 
 export default function Router() {
 	return (
@@ -33,6 +29,7 @@ export default function Router() {
 			<Route exact path="/" element={<FuncionarioAluno />} />
 			<Route exact path="/:modalType/:id" element={<FuncionarioAluno />} />
 			<Route exact path="/:modalType" element={<FuncionarioAluno />} />
+			<Route exact path="/:modalType/:cpf/:boletimType" element={<FuncionarioAluno />} />
 
 			<Route exact path="/disciplina" element={<FuncionarioDisciplina />} />
 			<Route exact path="/disciplina/:modalType/:id" element={<FuncionarioDisciplina />} />
@@ -45,11 +42,6 @@ export default function Router() {
 			<Route exact path="/professor" element={<FuncionarioProfessor />} />
 			<Route exact path="/professor/:modalType/:id" element={<FuncionarioProfessor />} />
 			<Route exact path="/professor/:modalType" element={<FuncionarioProfessor />} />
-
-			<Route exact path="/boletim" element={<ConsultaBoletim />} />
-			<Route exact path="/addboletim" element={<AdicionarBoletim />} />
-			<Route exact path="/editboletim" element={<EditarBoletim/>}/>
-
 
 		</Routes>
 	);

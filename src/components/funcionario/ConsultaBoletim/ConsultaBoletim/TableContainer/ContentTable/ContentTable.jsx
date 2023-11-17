@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import './ContentTable.css'
+import { Link } from "react-router-dom";
 
 export default function ContentTable({ contentData }) {
   const [data, setData] = useState([])
@@ -30,6 +31,7 @@ export default function ContentTable({ contentData }) {
               <th>Faltas</th>
               <th>Nota</th>
               <th>Conceito</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

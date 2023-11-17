@@ -6,8 +6,10 @@ import InfoAluno from "./InfoAluno/InfoAluno";
 import { useNavigate, useParams } from "react-router-dom";
 import EditAluno from "./EditAluno/EditAluno";
 import DeleteAluno from "./DeleteAluno/DeleteAluno";
-import ConsultaBoletim from "./ConsultaBoletim/ConsultaBoletim";
-import AdicionarBoletim from "./AdicionarBoletimFuncionario/AdicionarBoletim";
+import EditarBoletim from "../../ConsultaBoletim/EditarBoletim/EditarBoletim";
+import AdicionarBoletim from "../../ConsultaBoletim/AdicionarBoletim/AdicionarBoletim";
+import ConsultaBoletim from "../../ConsultaBoletim/ConsultaBoletim/ConsultaBoletim";
+
 
 export default function Modal() {
    const { modalType = null , id: cpf = null } = useParams()
@@ -74,6 +76,15 @@ export default function Modal() {
            className={"modal"}
          >
             <AdicionarBoletim cpf={cpf} close={closeModal}/>
+         </div>
+      );
+   }
+   if (modalType === "editarBoletim") {
+      return (
+         <div
+           className={"modal"}
+         >
+            <EditarBoletim cpf={cpf} close={closeModal}/>
          </div>
       );
    }

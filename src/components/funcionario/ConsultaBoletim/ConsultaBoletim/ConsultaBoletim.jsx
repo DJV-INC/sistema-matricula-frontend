@@ -5,7 +5,6 @@ import './ConsultaBoletim.css'
 
 function ConsultaBoletim({close, cpf}) {
 
-    const [addState, setAddState] = useState(false)
     return (
         <div className="modal-boletim">
             <div className="container-boletim">
