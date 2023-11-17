@@ -31,7 +31,6 @@ export default function ContentTable({ contentData }) {
               <th>Faltas</th>
               <th>Nota</th>
               <th>Conceito</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
