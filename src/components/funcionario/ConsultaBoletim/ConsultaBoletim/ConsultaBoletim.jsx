@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TableContainer from './TableContainer/TableContainer'
 import './ConsultaBoletim.css'
+import API from '../../../../services/API'
 
 
 function ConsultaBoletim({close, cpf}) {
 
+    const [aluno, setAluno] = useState([])
+
+    useEffect(() => {
+        API.get("alunos", `cpf=${cpf}`).then(    res   =>    {
+            setAluno(res.dados)
+        })
+    }, [cpf]);
+
     return (
         <div className="modal-boletim">
             <div className="container-boletim">
-                <div className='page-title'>
+                <div className='boletim-modal-title'>
                     <div>
                         <h1 className='title_ BoletimAlunoTitle'>Boletim</h1>
                         <p className='subtitle_'>Selecione o semestre para acessar o boletim respectivo</p>
@@ -22,10 +31,10 @@ function ConsultaBoletim({close, cpf}) {
 
                 <div className="">
                     <h2 className='title_'>Aluno</h2>
-                    <p className='subtitle_'>Victor Cardoso</p>
+                    <p className='subtitle_'>{aluno.nomeCompleto}</p>
                 </div>
 
-                <TableContainer cpf={cpf}/>
+                <TableContainer aluno={aluno} cpf={cpf}/>
             </div>
 
         </div>
