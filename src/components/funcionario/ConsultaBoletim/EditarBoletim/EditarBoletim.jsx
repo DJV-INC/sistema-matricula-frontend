@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Form, Label, Input } from 'reactstrap';
 
 import './EditarBoletim.css'
 import API from '../../../../services/API';
 
 function EditarBoletim({close, cpf}) {
-
-    const [boletim, setBoletim] = useState([])
-    
     const [aluno, setAluno] = useState([])
     const [professores, setProfessores] = useState([])
     const [disciplinas, setDisciplinas] = useState([])
+    const [boletim, setBoletim] = useState([])
 
     useEffect(() => {
         API.get("alunos", `cpf=${cpf}`).then(    res   =>    {
@@ -22,42 +20,43 @@ function EditarBoletim({close, cpf}) {
         API.get("professores").then(    res   =>    {
             setProfessores(res.dados)
         })
-    }, []);
-
+    }, [cpf]);
 
     useEffect(() => {
         API.get("boletim", `aluno_id=${aluno.id}`).then(    res   =>    {
             setBoletim(res.dados)
         })
-    }, []);
+    }, [aluno, boletim, cpf]);
+
+    console.log(boletim);
     
-   function handleSubmit(event) {
-    event.preventDefault();
+    function handleSubmit(event) {
+        event.preventDefault();
 
-    const dados = []
+        const dados = []
 
-    for (let i = 0; i < disciplinas.length; i++) {
-        dados.push({
-            semestre: event.target.semestre.value,
-            disciplina: disciplinas[i].nome,
-            professor: event.target["professor-" + disciplinas[i].id].value,
-            faltas: event.target["faltas-" + disciplinas[i].id].value,
-            notaFinal: event.target["nota-" + disciplinas[i].id].value,
-            conceito: event.target["conceito-" + disciplinas[i].id].value.toUpperCase(),
-        })
+        for (let i = 0; i < disciplinas.length; i++) {
+            dados.push({
+                semestre: event.target.semestre.value,
+                disciplina: disciplinas[i].nome,
+                professor: event.target["professor-" + disciplinas[i].id].value,
+                faltas: event.target["faltas-" + disciplinas[i].id].value,
+                notaFinal: event.target["nota-" + disciplinas[i].id].value,
+                conceito: event.target["conceito-" + disciplinas[i].id].value.toUpperCase(),
+            })
+        }
+
+        if(dados.length !== 0){
+            dados.map(linhaBoletim => {
+                API.post("boletim", linhaBoletim, `aluno_id=${aluno.id}`);
+            })
+            alert("Novo boletim cadastrado para " + aluno.nomeCompleto);
+            // close()
+        } else {
+            alert("Não há dados para cadastrar")
+            // close()
+        }
     }
-
-    if(dados.length !== 0){
-        dados.map(linhaBoletim => {
-            API.post("boletim", linhaBoletim, `aluno_id=${aluno.id}`);
-        })
-        alert("Novo boletim cadastrado para " + aluno.nomeCompleto);
-        close()
-    } else {
-        alert("Não há dados para cadastrar")
-        close()
-    }
-}
 
     return (
         <div className="modal-boletim">
@@ -103,26 +102,39 @@ function EditarBoletim({close, cpf}) {
                         </tr>
                     </thead>
                     <tbody>
-                    {disciplinas.map(item => {
+                    {boletim.map(item => {
                         return(
                             <tr>
-                                <td>{item.nome}</td>
+                                <td>{item.disciplina}</td>
                                 <td>
                                     <Input required id={"professor-" + item.id} name={"professor-" + item.id} type="select">
                                         <option>
                                             Selecionar
                                         </option>
-                                        { professores.map(item => {
+                                        { professores.map(prof => {
+                                            let selectedProf = ""
+                                            if (prof.nomeCompleto === item.professor) {
+                                                selectedProf = (
+                                                    <option selected value={prof.nomeCompleto}>
+                                                        {prof.nomeCompleto}
+                                                    </option>
+                                                )
+                                            }
                                             return (
-                                            <option value={item.nomeCompleto}>
-                                                    {item.nomeCompleto}
-                                            </option>
+                                                <Fragment>
+                                                    <option value={prof.nomeCompleto}>
+                                                            {prof.nomeCompleto}
+                                                    </option>
+                                                    {selectedProf}
+                                                </Fragment>
+                                            
                                             )
+
                                         })}
                                     </Input>
                                 </td>
                                 <td>
-                                    <Input required id={"faltas-" + item.id} name={"faltas-" + item.id} type="number" min={0}/>
+                                    <Input required id={"faltas-" + item.id} name={"faltas-" + item.id} type="number" min={0} value={item.faltas}/>
                                 </td>
                                 <td>
                                     <Input required id={"nota" + item.id} name={"nota-" + item.id} type="number" min={0} max={10}/>

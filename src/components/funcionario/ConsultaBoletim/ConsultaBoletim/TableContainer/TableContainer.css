@@ -7,7 +7,7 @@
 }
 
 .adicionar-boletim{
-   width: 50%;
+   width: 300px;
    background-color: #000000;
    color: #fff;
    border: 0;
@@ -18,7 +18,7 @@
 }
 
 .link-btn-add-boletim{
-   width: 700px;
+   /* width: 700px; */
    
    display: flex;
    justify-content: flex-end;

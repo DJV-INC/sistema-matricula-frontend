@@ -61,6 +61,9 @@ export default function TableContainer({cpf}) {
 
           </Select>
 
+          <Link to={`/editarBoletim/${12345678910}`} className="link-btn-add-boletim">
+            <button className="adicionar-boletim" type="button"> Editar Boletim</button>
+          </Link>
           <Link to={`/inserirBoletim/${cpf}`} className="link-btn-add-boletim">
             <button className="adicionar-boletim" type="button"> Adicionar Boletim</button>
           </Link>
