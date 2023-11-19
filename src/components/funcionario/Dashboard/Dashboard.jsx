@@ -1,5 +1,6 @@
 import React from 'react'
 import './Dashboard.css'
+import GraficoLinha from './GraficoLinha'
 
 export default function Dashboard() {
   return (
@@ -36,9 +37,11 @@ export default function Dashboard() {
          </div>
       </div>
 
+      <h1>Mais Informações</h1>
 
       <div className="grafico-container">
-         
+         <GraficoLinha/>
+         <GraficoLinha/>
       </div>
    </div>
   )
