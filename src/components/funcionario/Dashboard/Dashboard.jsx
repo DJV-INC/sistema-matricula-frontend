@@ -1,12 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Dashboard.css'
 import GraficoLinha from './GraficoLinha'
 import GraficoPizza from './GraficoPizza'
 import Select from '../../global/Select/Select'
 
+import API from '../../../services/API'
+
 export default function Dashboard() {
    const [chartSelectState1, setChartSelectState1] = useState([])
    const [chartSelectState2, setChartSelectState2] = useState([])
+
+   const [alunos, setAlunos] = useState([])
+   const [professores, setProfessores] = useState([])
+   const [disciplinas, setDisciplinas] = useState([])
+
+   useEffect(() => {
+      API.get("alunos").then(res => {
+         setAlunos(res.dados)
+      })
+      API.get("professores").then(res => {
+         setProfessores(res.dados)
+      })
+      API.get("disciplinas").then(res => {
+         setDisciplinas(res.dados)
+      })
+   }, []);
 
   return (
    <div className='container-main'>
@@ -17,28 +35,28 @@ export default function Dashboard() {
 
       <div className="stats-cards-container">
          <div className="stats-card">
-            <span className='stats-number'>45</span>
+            <span className='stats-number'>{alunos.length || 0 }</span>
+            <span className='stats-title'>Alunos Cadastrados</span>
+         </div>
+         <div className="stats-card">
+            <span className='stats-number'>{alunos.length || 0 }</span>
             <span className='stats-title'>Alunos Matriculados</span>
          </div>
          <div className="stats-card">
-            <span className='stats-number'>45</span>
-            <span className='stats-title'>Alunos Matriculados</span>
+            <span className='stats-number'>{professores.length || 0}</span>
+            <span className='stats-title'>Professores Cadastrados</span>
+         </div>
+         <div className="stats-card">
+            <span className='stats-number'>{disciplinas.length || 0}</span>
+            <span className='stats-title'>Disciplinas Cadastradas</span>
          </div>
          <div className="stats-card">
             <span className='stats-number'>45</span>
-            <span className='stats-title'>Alunos Matriculados</span>
+            <span className='stats-title'>Turmas Cadastradas</span>
          </div>
          <div className="stats-card">
             <span className='stats-number'>45</span>
-            <span className='stats-title'>Alunos Matriculados</span>
-         </div>
-         <div className="stats-card">
-            <span className='stats-number'>45</span>
-            <span className='stats-title'>Alunos Matriculados</span>
-         </div>
-         <div className="stats-card">
-            <span className='stats-number'>45</span>
-            <span className='stats-title'>Alunos Matriculados</span>
+            <span className='stats-title'>Boletins Cadastrados</span>
          </div>
       </div>
 
