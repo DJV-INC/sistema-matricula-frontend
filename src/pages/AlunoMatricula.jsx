@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 import NavbarAluno from '../components/NavbarAluno'
-import FormMatricula from '../components/aluno/Matricula/FormMatricula'
+import ConsultaMatricula from '../components/aluno/Matricula/ConsultaMatricula'
 
 export default function AlunoMatricula() {
    return (
       <Fragment>
          <NavbarAluno/>
-         <FormMatricula/>
+         <ConsultaMatricula/>
       </Fragment>
    )
 }
