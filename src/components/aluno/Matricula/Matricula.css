@@ -173,3 +173,19 @@
     background-color: #087720;
     border-color: #087720;
 }
+
+.btn-undo{
+    display: flex;
+    gap: 10px;
+    border-radius: 4px;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    background-color: #0b6295;
+    color: #F0F3FD;
+}
+
+.btn-undo:hover{
+    background-color: #084568;
+    transition: 0.2s;
+}
