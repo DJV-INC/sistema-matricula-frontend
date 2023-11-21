@@ -4,38 +4,76 @@ import DisObrigatoria from './StepForms/DisObrigatoria'
 import DisOptativa from './StepForms/DisOptativa'
 import FinalForm from './StepForms/FinalForm'
 import StepButton from './StepButton/StepButton'
+import FormTurmas from './StepForms/FormTurmas'
 
 import './Matricula.css'
 
 export default function FormMatricula() {
     const [step, setStep] = useState("")
-    const [comp, setComp] = useState("")
+    const [ids, setIds] = useState("")
 
-    function startNav() {
-        document.getElementById("botao").setAttribute("disabled", "")
+    let arr = []
+
+    const childToParent = (childdata) => {
+        arr.push(childdata)
+        setIds(arr)
     }
 
-    useEffect(()=>{
-        startNav()
-    }, [])
+    // function startNav() {
+    //     document.getElementById("botao").setAttribute("disabled", "")
+    // }
 
-    const steps = [1, 2, 3]
+    // useEffect(() => {
 
-    function getCurrStep() {
+    //     startNav()
+    // }, [])
+
+    /*function getCurrStep() {
         switch (step) {
             case "1":
-                return <DisObrigatoria/>
+                return <DisObrigatoria childToParent={childToParent}/>
 
             case "2":
-                return <DisOptativa/>
+                return <DisOptativa />
 
             case "3":
-                return <FinalForm/>
+                return <FinalForm ids={"teste"}/>
 
         }
-    }
+    }*/
 
-    function handleStep(e) {
+    return (
+        <div className="container-main">
+            <div className='page-title'>
+                <h1>{ids}</h1>
+                <h1 className='title_'>Matrícula</h1>
+                <p className='subtitle_'>Registrar</p>
+            </div>
+
+            <div className="content-matricula">
+
+                {/* <div className="container-botao">
+                    <StepButton  texto={"Disciplina obrigatórias"} index={1} step={step} disabled={false} />
+
+                    <span className="material-symbols-rounded flecha">chevron_right</span>
+
+                    <StepButton  texto={"Disciplina optativas"} index={2} step={step} disabled={false} />
+                    
+                </div> */}
+
+                <FormTurmas/>
+
+                {/* {comp ? comp : <DisObrigatoria childToParent={childToParent}/> } */}
+
+
+            </div>
+        </div>
+    )
+}
+
+
+/*
+ const handleStep = (e) => {
         const botoes = document.getElementsByClassName("botao")
         const botao = e.currentTarget
 
@@ -48,35 +86,5 @@ export default function FormMatricula() {
         setStep(e.target.value)
     }
 
-    useEffect(() => {
-        setComp(getCurrStep())
-    }, [step])
 
-    return (
-        <div className="container-main">
-            <div className='page-title'>
-                <h1 className='title_'>Matrícula</h1>
-                <p className='subtitle_'>Registrar</p>
-            </div>
-
-            <div className="content-matricula">
-
-                <div className="container-botao">
-                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina obrigatórias"} index={1} step={step} disabled={false} />
-
-                    <span className="material-symbols-rounded flecha">chevron_right</span>
-
-                    <StepButton funcao={(e) => handleStep(e)} texto={"Disciplina optativas"} index={2} step={step} disabled={false} />
-
-                    <span className="material-symbols-rounded flecha">chevron_right</span>
-
-                    <StepButton funcao={(e) => handleStep(e)} texto={"Finalização"} index={3} step={step} disabled={false} />
-                </div>
-
-                {comp ? comp : <DisObrigatoria/> }
-
-
-            </div>
-        </div>
-    )
-}
+*/ 
