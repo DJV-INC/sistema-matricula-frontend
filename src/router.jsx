@@ -10,6 +10,7 @@ import AlunoBoletim from "./pages/AlunoBoletim";
 import Login from "./pages/Login";
 import FormMatricula from "./components/aluno/Matricula/FormMatricula";
 
+import FuncionarioDash from "./pages/FuncionarioDash";
 
 export default function Router() {
 	return (
@@ -32,6 +33,8 @@ export default function Router() {
 			<Route exact path="/:modalType/:id" element={<FuncionarioAluno />} />
 			<Route exact path="/:modalType" element={<FuncionarioAluno />} />
 			<Route exact path="/:modalType/:cpf/:boletimType" element={<FuncionarioAluno />} />
+
+			<Route exact path="/dash" element={<FuncionarioDash />} />
 
 			<Route exact path="/disciplina" element={<FuncionarioDisciplina />} />
 			<Route exact path="/disciplina/:modalType/:id" element={<FuncionarioDisciplina />} />

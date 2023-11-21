@@ -20,6 +20,7 @@ export default function NavbarFuncionario() {
          </NavbarBrand>
 
          <div className="navlinks-container">
+            <NavLink to={"/dash"} className={"navlink"}>Dashboard</NavLink>
             <NavLink to={"/"} className={"navlink"}>Alunos</NavLink>
             <NavLink to={"/disciplina"} className={"navlink"}>Disciplinas</NavLink>
             <NavLink to={"/professor"} className={"navlink"}>Professores</NavLink>
