@@ -36,6 +36,8 @@
 /* Título das páginas */
 
 .page-title {
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid #ddd;
 }
 
@@ -46,6 +48,16 @@
 .page-title .subtitle_ {
   font-weight: 500;
   color: #4D4D4D;
+}
+
+.page-title.head-matricula {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
 }
 
 /* .active {
