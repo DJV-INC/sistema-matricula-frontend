@@ -20,8 +20,6 @@ export default function Dashboard() {
    const [graficoTurmas] = useState(getGrafcoTurma())
    const [graficoAlunos] = useState(getGraficoAlunos())
 
-   const [qntdTurmas] = useState(getQntdTurmas())
-
    useEffect(() => {
       API.get("alunos").then(res => {
          setAlunos(res.dados)
@@ -98,7 +96,7 @@ export default function Dashboard() {
                      </Select> */}
                   </div>
                   <div className='grafico'>
-                     <GraficoPizza data={graficoTurmas[0]}/>
+                     <GraficoPizza data={graficoTurmas}/>
                   </div>
                </div>
       

@@ -1,18 +1,11 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Tooltip, ResponsiveContainer } from 'recharts';
 
-const data = [
-  {
-      "name": "Harmonia",
-      "value": 2
-  },
-  {
-      "name": "Musica de Câmara",
-      "value": 2
-  }
-]
+export default function GraficoPizza({data}){
+  
+  console.log(data);
 
-export default function GraficoPizza(){
+  if (data.length > 0) {
     return (
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
@@ -30,4 +23,7 @@ export default function GraficoPizza(){
         </PieChart>
       </ResponsiveContainer>
     );
+  } else {
+    return ("Loading")
+  }
 }
