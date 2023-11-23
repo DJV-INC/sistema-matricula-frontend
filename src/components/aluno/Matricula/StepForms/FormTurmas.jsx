@@ -103,7 +103,7 @@ export default function FormTurmas() {
 
 
         async function post() {
-            let inserir = await fetch(`http://localhost:8080/api/v1/matriculas?idAluno=${idAluno}&idTurma=${idTurma}`, {
+            let inserir = await fetch(`https://simus-1697659562484.azurewebsites.net/api/v1/matriculas?idAluno=${idAluno}&idTurma=${idTurma}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
