@@ -5,14 +5,22 @@ import GraficoPizza from './GraficoPizza'
 import Select from '../../global/Select/Select'
 
 import API from '../../../services/API'
+import getGraficoAlunos from './getGraficoAlunos'
+import getGrafcoTurma from './getGraficoTurma'
+import getQntdTurmas from './getQntdTurmas'
 
 export default function Dashboard() {
-   const [chartSelectState1, setChartSelectState1] = useState([])
-   const [chartSelectState2, setChartSelectState2] = useState([])
+   // const [chartSelectState1, setChartSelectState1] = useState([])
+   // const [chartSelectState2, setChartSelectState2] = useState([])
 
    const [alunos, setAlunos] = useState([])
    const [professores, setProfessores] = useState([])
    const [disciplinas, setDisciplinas] = useState([])
+   
+   const [graficoTurmas] = useState(getGrafcoTurma())
+   const [graficoAlunos] = useState(getGraficoAlunos())
+
+   const [qntdTurmas] = useState(getQntdTurmas())
 
    useEffect(() => {
       API.get("alunos").then(res => {
@@ -50,14 +58,14 @@ export default function Dashboard() {
             <span className='stats-number'>{disciplinas.length || 0}</span>
             <span className='stats-title'>Disciplinas Cadastradas</span>
          </div>
-         <div className="stats-card">
-            <span className='stats-number'>45</span>
+         {/* <div className="stats-card">
+            <span className='stats-number'>{qntdTurmas}</span>
             <span className='stats-title'>Turmas Cadastradas</span>
          </div>
          <div className="stats-card">
             <span className='stats-number'>45</span>
             <span className='stats-title'>Boletins Cadastrados</span>
-         </div>
+         </div> */}
       </div>
 
       <br />
@@ -67,27 +75,30 @@ export default function Dashboard() {
       <div className="grafico-container">
          <div className="stats-card">
             <div className='grafico-titulo'>
-               <Select state={chartSelectState1} setState={setChartSelectState1} icon={"tune"}>
+               <h2>Alunos cadastrados e matriculados</h2>
+               {/* <Select state={chartSelectState1} setState={setChartSelectState1} icon={"tune"}>
                   <option value="status">Alunos Matriculados</option>
                   <option value="status">Professores Cadastrados</option>
-               </Select>
+               </Select> */}
             </div>
             <div className='grafico'>
-               <GraficoLinha/>
+               <GraficoLinha data={graficoAlunos}/>
             </div>
          </div>
 
          <div className="stats-card">
             <div className='grafico-titulo'>
-               <Select state={chartSelectState2} setState={setChartSelectState2} icon={"tune"}>
+               <h2>Quantidade de turmas por disciplina</h2>
+               {/* <Select state={chartSelectState2} setState={setChartSelectState2} icon={"tune"}>
                   <option value="status">Alunos por disciplina</option>
                   <option value="status">Professores por disciplina</option>
-               </Select>
+               </Select> */}
             </div>
             <div className='grafico'>
-               <GraficoPizza/>
+               <GraficoPizza data={graficoTurmas[0]}/>
             </div>
          </div>
+
       </div>
    </div>
   )

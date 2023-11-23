@@ -1,44 +1,35 @@
-import React from 'react'
-import { YAxis, XAxis, Tooltip, AreaChart, Area, ResponsiveContainer } from 'recharts';
-const data = [
-   {name: 'Janeiro', 'Alunos': 480}, 
-   {name: 'Feveriro', "Alunos": 700},
-   {name: 'Março', "Alunos": 500},
-   {name: 'Abril', "Alunos": 340},
-   {name: 'Maio', "Alunos": 230},
-   {name: 'Junho', "Alunos": 180},
-   {name: 'Julho', "Alunos": 280},
-   {name: 'Agosto', "Alunos": 600},
-   {name: 'Setembro', "Alunos": 200},
-   {name: 'Outubro', "Alunos": 100},
-   {name: 'Novembro', "Alunos": 80},
-   {name: 'Dezembro', "Alunos": 50},
-];
+import React, { PureComponent, useEffect } from 'react';
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+export default function GraficoLinha({data}){
+    
+    if (data.length > 0) {
+      return (
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="Alunos" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="cadastrados" fill="#470606" activeBar={<Rectangle fill="#ad1212" stroke="#470606" strokeWidth={3} />} />
+            <Bar dataKey="matriculados" fill="#8f1516" activeBar={<Rectangle fill="#ff3314" stroke="#930c0c" strokeWidth={3}/>} />
+          </BarChart>
+        </ResponsiveContainer>
+      );
+    } else {
+      return ("Loading")
+    }
 
-
-
-export default function GraficoLinha() {
-  return (
-      <ResponsiveContainer width="95%" height="100%">
-        <AreaChart
-          width={500}
-          height={400}
-          data={data}
-
-          margin={{
-            top: 10,
-            right: 30,
-            left: 0,
-            bottom: 0,
-          }}
-        >
-          {/* <CartesianGrid strokeDasharray="5 3" /> */}
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Area type="monotone" dataKey="Alunos" strokeWidth={2} stroke="#600a0a" fill="#ad1212" />
-        </AreaChart>
-      </ResponsiveContainer>
-  )
+    
 }
