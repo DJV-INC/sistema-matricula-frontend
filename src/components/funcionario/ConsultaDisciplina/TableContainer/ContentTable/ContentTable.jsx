@@ -50,9 +50,9 @@ export default function ContentTable({ contentData, setId, setNomeDisciplina }) 
                       <Link className="link_" to={`editar/${item.id}`}>
                         <span class="material-symbols-rounded">edit_square</span>
                       </Link>
-                      {/* <Link className="link-container" to={`excluir/${item.id}`}>
+                      <Link className="link_" to={`excluir/${item.id}`}>
                         <span class="material-symbols-rounded">delete</span>
-                      </Link> */}
+                      </Link>
                     </td>
                   </tr>
 
