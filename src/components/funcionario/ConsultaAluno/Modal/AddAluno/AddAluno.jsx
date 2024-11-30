@@ -7,13 +7,51 @@ import { IMaskInput } from 'react-imask'
 import API from '../../../../../services/API'
 
 
-export default function AddAluno({close}) {
+export default function AddAluno({ close }) {
   const url = "https://viacep.com.br/ws"
   const [viacep, setViacep] = useState("00000000")
   const [data, setData] = useState([])
 
   function handleViacep(e) {
-    setViacep(e.target.value)
+    ocultarErro();
+    console.log(data)
+    let cep = e.target.value
+    if (cep.length == 8) {
+      if (data.erro) {
+        setViacep(cep)
+        console.log(`data.erro cep = ${viacep}`)
+        exibirErro();
+      } else {
+        console.log(`else cep = ${viacep}`)
+        ocultarErro();
+        setViacep(cep)
+      }
+
+    }
+
+
+  }
+
+  function limpaEndereco() {
+    let campos = document.getElementsByClassName("endereco")
+
+    for (let i = 0; i < campos.length; i++) {
+      campos[i].value = ""
+    }
+  }
+
+  
+  function ocultarErro() {
+    const span = document.getElementById("errocep")
+    span.style.display = "none"
+  }
+
+  function exibirErro() {
+    const campoRua = document.getElementById("Logradouro")
+    if (campoRua.value === "") {
+      const span = document.getElementById("errocep")
+      span.style.display = "inline"
+    }
   }
 
   useEffect(() => {
@@ -22,13 +60,16 @@ export default function AddAluno({close}) {
 
       const res = await resposta.json()
 
-      
+
       return res
 
     }
 
     fetchCep().then((res) => {
-      setData(res)
+      if (!res.erro) {
+        ocultarErro();
+      }
+        setData(res)
     })
   }, [viacep])
 
@@ -196,45 +237,51 @@ export default function AddAluno({close}) {
                     mask="00000000"
                     placeholder="00000000"
                   />
+                  <span className='errocep' id='errocep'>CEP inválido</span>
                 </FormGroup>
               </Col>
               <Col md={8}>
-              <FormGroup>
+                <FormGroup>
                   <Label for="Numero">
                     Número da rua
                   </Label>
                   <Input
                     id="Numero"
                     name="Numero"
+                    className="endereco"
                   />
                 </FormGroup>
 
               </Col>
             </Row>
 
-            <FormGroup>
-                  <Label for="Logradouro">
-                    Logradouro
-                  </Label>
-                  <Input
-                    disabled={true}
-                    value={data.logradouro ? data.logradouro : ""}
-                    id="Logradouro"
-                    name="Logradouro"
-                  />
-                </FormGroup>
 
-                <FormGroup>
-                  <Label for="Bairro">
-                    Bairro
-                  </Label>
-                  <Input
-                    value={data.bairro ? data.bairro : ""}
-                    disabled={true}
-                    id="Bairro"
-                    name="Bairro"
-                  />
-                </FormGroup>
+
+            <FormGroup>
+              <Label for="Logradouro">
+                Logradouro
+              </Label>
+              <Input
+                disabled={true}
+                value={data.logradouro ? data.logradouro : ""}
+                id="Logradouro"
+                name="Logradouro"
+                className="endereco"
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="Bairro">
+                Bairro
+              </Label>
+              <Input
+                value={data.bairro ? data.bairro : ""}
+                disabled={true}
+                id="Bairro"
+                name="Bairro"
+                className="endereco"
+              />
+            </FormGroup>
 
 
 
@@ -249,6 +296,7 @@ export default function AddAluno({close}) {
                     disabled={true}
                     id="Cidade"
                     name="Cidade"
+                    className="endereco"
                   />
                 </FormGroup>
               </Col>
@@ -262,6 +310,7 @@ export default function AddAluno({close}) {
                     disabled={true}
                     id="Estado"
                     name="Estado"
+                    className="endereco"
                   />
                 </FormGroup>
               </Col>

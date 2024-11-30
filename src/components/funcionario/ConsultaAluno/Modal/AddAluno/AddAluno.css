@@ -83,3 +83,8 @@ label {
     align-items: center;
     text-decoration: none;
 }
+
+#errocep {
+    color: red;
+    display: none;
+}

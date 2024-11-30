@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form } from 'reactstrap';
 import API from '../../../../../services/API';
 
 import './DeleteDisciplina.css'
 
 function DeleteDisciplina({id, closeModal}) {
+    const navigate = useNavigate()
 
     const handleSubmit = () => {
-        API.del("disciplinas", id)
-        closeModal()
+        API.del("disciplinas", id).then((res) => {
+            const mensagem = API.errorHandler(res, "disciplina")
+            alert(mensagem.dados.mensagem)
+        })
+        navigate("/disciplina")
     }
 
     return (

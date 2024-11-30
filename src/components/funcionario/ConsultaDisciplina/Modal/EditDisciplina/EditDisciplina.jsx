@@ -102,11 +102,16 @@ export default function EditDisciplina({ closeModal }) {
               <Input
                 id="tipo"
                 name="tipo"
-                type="tipo"
+                type="select"
                 value={tipo}
                 onChange={handleTipo}
-              />
-              </FormGroup>
+              >
+                <option value="OBRIGATORIA">Obrigatória</option>
+                <option value="OPTATIVA">Optativa</option>
+                <option value="INSTRUMENTAL">Instrumental</option>
+                </Input>
+            </FormGroup>
+
 
 
             <Row>

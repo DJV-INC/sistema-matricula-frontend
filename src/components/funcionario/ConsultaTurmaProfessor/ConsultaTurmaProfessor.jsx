@@ -38,7 +38,7 @@ export default function ConsultaTurmaProfessor({ id = null }) {
          if (Array.isArray(data.dados)) {
             if (data.dados.length === 0) {
                return (
-                  <span>Nenhuma turma existente para essa disciplina</span>
+                  <span>Nenhuma turma existente para esse professor</span>
                )
             } else {
 

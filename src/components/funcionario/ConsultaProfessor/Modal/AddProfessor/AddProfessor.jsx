@@ -18,10 +18,15 @@ export default function AddProfessor({ closeModal }) {
        telefone: event.target.telefone.value
     };
  
-    API.post("professores", dados).then((res) => {
+    API.post("professores", dados).then((res) => { 
       const mensagem = API.errorHandler(res, "professor")
       console.log(mensagem)
-      alert(mensagem.dados.mensagem)
+      if (mensagem.dados.id > 0) {
+        alert("Professor cadastrado com sucesso")
+      } else {
+        alert(mensagem.dados.mensagem)
+      }
+
     })
 
  
@@ -85,11 +90,13 @@ export default function AddProfessor({ closeModal }) {
               <Label for="telefone">
                 Telefone
               </Label>
-              <Input
-              id="telefone"
-              name="telefone"
-              type="telefone"
-              />
+              <Form1.Control
+                    id="telefone"
+                    name="telefone"
+                    as={IMaskInput}
+                    mask="(00) 00000-0000"
+                    placeholder="(11) 12345-1234"
+                  />
             </FormGroup>
 
             <Row>

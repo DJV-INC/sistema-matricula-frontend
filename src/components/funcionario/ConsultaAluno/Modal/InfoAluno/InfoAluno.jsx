@@ -61,9 +61,9 @@ function InfoAluno({ close }) {
 
             <div className="title_sec">Matrícula</div>
             <div className="table_matricula">
-                <Table striped>
+                <table className='table_'>
                     <thead>
-                        <tr>
+                        <tr className='tr_'>
                             <th>Disciplina</th>
                             <th>Dia/Hora</th>
                             <th>Professor</th>
@@ -81,7 +81,7 @@ function InfoAluno({ close }) {
                             <td>Wilson Rezende</td>
                         </tr>
                     </tbody>
-                </Table>
+                </table>
             </div>
         </div>
 

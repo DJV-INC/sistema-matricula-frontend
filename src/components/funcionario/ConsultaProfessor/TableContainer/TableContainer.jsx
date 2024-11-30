@@ -55,7 +55,6 @@ export default function TableContainer() {
           </div>
 
           <Select state={tipoPesquisa} setState={setTipoPesquisa} icon={"tune"} placeholder="Sem Filtro">
-            <option value="nomeCompleto">Nome</option>
             <option value="cpf">CPF</option>
           </Select>
 

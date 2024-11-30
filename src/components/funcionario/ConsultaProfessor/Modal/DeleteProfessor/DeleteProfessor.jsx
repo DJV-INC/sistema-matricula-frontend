@@ -5,13 +5,14 @@ import API from '../../../../../services/API';
 import './DeleteProfessor.css'
 
 function DeleteProfessor({ id , closeModal}) {
+    const navigate = useNavigate()
 
     const handleSubmit = () => {
         API.del("professores", id).then((res) => {
             const mensagem = API.errorHandler(res, "professor")
             alert(mensagem.dados.mensagem)
         })
-        closeModal()
+        navigate("/professor")
     }
 
     return (

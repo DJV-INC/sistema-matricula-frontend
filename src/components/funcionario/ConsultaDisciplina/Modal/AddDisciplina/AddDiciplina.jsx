@@ -15,9 +15,16 @@ export default function AddDiciplina({ closeModal }) {
        tipo: event.target.tipo.value
     };
  
-    API.post("disciplinas", dados);
- 
-    alert("Disciplina cadastrada");
+    API.post("disciplinas", dados).then((res) => {
+      const mensagem = API.errorHandler(res, "disciplina")
+      console.log(mensagem)
+      if (mensagem.dados.id > 0) {
+        alert("Disciplina cadastrada com sucesso")
+      } else {
+        alert(mensagem.dados.mensagem)
+      }
+    })
+
  
 
  }
@@ -70,8 +77,12 @@ export default function AddDiciplina({ closeModal }) {
               <Input
                 id="tipo"
                 name="tipo"
-                type="tipo"
-              />
+                type="select"
+              >
+                <option value="OBRIGATORIA">Obrigatória</option>
+                <option value="OPTATIVA">Optativa</option>
+                <option value="INSTRUMENTAL">Instrumental</option>
+                </Input>
             </FormGroup>
 
             <Row>

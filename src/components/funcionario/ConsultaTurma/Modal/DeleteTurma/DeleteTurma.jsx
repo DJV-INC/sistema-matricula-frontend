@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./DeleteTurma.css";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import API from "../../../../../services/API";
 
-export default function DeleteTurma({closeModal, nomeDisciplina}) {
-    const {idDisciplina} = useParams()
+export default function DeleteTurma({ closeModal, nomeDisciplina }) {
+    const { idDisciplina } = useParams()
     const [data, setData] = useState([])
     const [selectedRows] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (idDisciplina) {
-           API.get("turmas", `id=${idDisciplina}`).then(res => {
-              setData(res.dados)
-           }).catch((e) => {
-              alert(e)
-           })
+            API.get("turmas", `id=${idDisciplina}`).then(res => {
+                setData(res.dados)
+            }).catch((e) => {
+                alert(e)
+            })
         }
-      }, [idDisciplina])
+    }, [idDisciplina])
 
     function handleDeleteItems(e) {
         e.preventDefault()
@@ -26,18 +27,11 @@ export default function DeleteTurma({closeModal, nomeDisciplina}) {
             console.log(item[0].slice(-1), item[1]);
             const id = item[0].slice(-1)
             if (item[1]) {
-                API.del("turmas", id).then(res => {
-                    // try {
-                    //     if (res.ok) {
-                    //         alert("Turma id:" + id + " - As turmas selecionadas foram excluídas com sucesso")
-                    //     } else {
-                    //         throw new Error()
-                    //     }
-                    // } catch (error) {
-                    //     console.error(error)
-                    //     alert(error)
-                    // }
-                    closeModal()
+                API.del("turmas", id).then((res) => {
+                    console.log(res)
+                    const mensagem = API.errorHandler(res, "turmas")
+                    alert(mensagem.dados.mensagem)
+                    navigate("/disciplina")
                 })
             }
         })
@@ -78,25 +72,25 @@ export default function DeleteTurma({closeModal, nomeDisciplina}) {
 
                             <table className="table-delete-turma">
                                 <thead>
-                                <tr className="tr_">
-                                    <th>Seleção</th>
-                                    <th>Professor</th>
-                                    <th>Dia</th>
-                                    <th>Horário</th>
-                                    <th>Vagas</th>
-                                </tr>
+                                    <tr className="tr_">
+                                        <th>Seleção</th>
+                                        <th>Professor</th>
+                                        <th>Dia</th>
+                                        <th>Horário</th>
+                                        <th>Vagas</th>
+                                    </tr>
                                 </thead>
                                 <tbody className="item-turma-table">
-                                {
-                                    data.map(item => {
-                                        return(
-                                            <TableItems 
-                                                data={item} 
-                                                selectedRows={selectedRows}
-                                            />
-                                        )
-                                    })
-                                }
+                                    {
+                                        data.map(item => {
+                                            return (
+                                                <TableItems
+                                                    data={item}
+                                                    selectedRows={selectedRows}
+                                                />
+                                            )
+                                        })
+                                    }
                                 </tbody>
                             </table>
 
@@ -127,12 +121,12 @@ function TableItems({ allSelected = false, data, selectedRows }) {
         selectedRows.map((item, index) => {
             if (item[0] === e.target.id) {
                 verificador.existe = true
-                if(item[1] !== e.target.checked){
+                if (item[1] !== e.target.checked) {
                     verificador.linha = index
-                } 
+                }
             }
         })
-        
+
         if (verificador.existe) {
             if (verificador.linha !== null) {
                 selectedRows[verificador.linha][1] = e.target.checked
@@ -140,15 +134,15 @@ function TableItems({ allSelected = false, data, selectedRows }) {
         } else {
             selectedRows.push([e.target.id, e.target.checked])
         }
-        
+
         console.log(selectedRows);
         setChecked(e.target.checked)
     }
-    
+
     return (
         <tr>
             <td>
-                <input type="checkbox" onChange={handleRowSelect} id={"checkbox-id-"+data.id} checked={checked}/>
+                <input type="checkbox" onChange={handleRowSelect} id={"checkbox-id-" + data.id} checked={checked} />
             </td>
             <td>{data.professor.nomeCompleto}</td>
             <td>{data.diaSemana}</td>
